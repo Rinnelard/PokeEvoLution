@@ -27,3 +27,4 @@ EXTRAS\_
 -   Que aparezca una imagen del puchamon al lado del nombre de cada uno en la lista desplegable del input
 -   Agregar fondo de gif
 -   Agregar script de audio de fondo
+-   Que todo el texto vaya apareciendo letra por letra
