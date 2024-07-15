@@ -1,37 +1,37 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const pokemonInput = document.getElementById("pokemon-input");
-    const suggestionsList = document.getElementById("suggestions-list");
+    const inputPokemon = document.getElementById("inputPokemon");
+    const listaDeSugerencias = document.getElementById("sugerenciasPokemon");
 
     // Evento input para actualizar las sugerencias según lo que el usuario escribe
-    pokemonInput.addEventListener("input", () => {
-        const searchTerm = pokemonInput.value.trim().toLowerCase();
-        if (searchTerm.length >= 2) {
+    inputPokemon.addEventListener("input", () => {
+        const terminoDeBusqueda = inputPokemon.value.trim().toLowerCase();
+        if (terminoDeBusqueda.length >= 2) {
             // Filtrar solo si hay al menos 2 caracteres
-            fetchAndDisplayPokemonSuggestions(searchTerm);
+            mostrarSugerenciasPokemon(terminoDeBusqueda);
         } else {
-            clearSuggestions();
+            limpiarSugerencias();
         }
     });
 
     // Función para obtener y mostrar las sugerencias de Pokémon según el término de búsqueda
-    function fetchAndDisplayPokemonSuggestions(searchTerm) {
+    function mostrarSugerenciasPokemon(terminoDeBusqueda) {
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
-            .then((response) => {
-                if (!response.ok) {
+            .then((respuesta) => {
+                if (!respuesta.ok) {
                     throw new Error("No se pudieron obtener los Pokémon");
                 }
-                return response.json();
+                return respuesta.json();
             })
             .then((data) => {
                 // Filtrar la lista de Pokémon según el término de búsqueda
-                const filteredPokemon = data.results.filter((pokemon) => {
-                    return pokemon.name.includes(searchTerm);
+                const pokemonFiltrado = data.results.filter((pokemon) => {
+                    return pokemon.name.includes(terminoDeBusqueda);
                 });
 
                 // Mostrar las sugerencias en la lista
-                renderSuggestions(filteredPokemon);
+                mostrarSugerencias(pokemonFiltrado);
             })
             .catch((error) => {
                 console.error("Error al obtener Pokémon:", error);
@@ -39,25 +39,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Función para renderizar las sugerencias en la lista
-    function renderSuggestions(pokemonList) {
-        clearSuggestions(); // Limpiar la lista antes de añadir nuevas sugerencias
+    function mostrarSugerencias(listaDePokemon) {
+        limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
 
-        pokemonList.forEach((pokemon) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = pokemon.name;
-            listItem.addEventListener("click", () => {
+        listaDePokemon.forEach((pokemon) => {
+            const listaPokemon = document.createElement("li");
+            listaPokemon.textContent = pokemon.name;
+            listaPokemon.addEventListener("click", () => {
                 // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
-                pokemonInput.value = pokemon.name;
-                clearSuggestions();
-                searchPokemon(pokemon.name);
+                inputPokemon.value = pokemon.name;
+                limpiarSugerencias();
+                buscarPokemon(pokemon.name);
             });
-            suggestionsList.appendChild(listItem);
+            listaDeSugerencias.appendChild(listaPokemon);
         });
     }
 
     // Función para limpiar la lista de sugerencias
-    function clearSuggestions() {
-        suggestionsList.innerHTML = "";
+    function limpiarSugerencias() {
+        listaDeSugerencias.innerHTML = "";
     }
 
     // Evento submit del formulario
@@ -66,31 +66,31 @@ document.addEventListener("DOMContentLoaded", () => {
         .addEventListener("submit", (event) => {
             event.preventDefault(); // Evitar el envío tradicional del formulario
 
-            const pokemonName = pokemonInput.value.trim().toLowerCase();
-            if (pokemonName) {
-                searchPokemon(pokemonName);
+            const nombrePokemon = inputPokemon.value.trim().toLowerCase();
+            if (nombrePokemon) {
+                buscarPokemon(nombrePokemon);
             } else {
                 alert("Por favor, introduce el nombre o número de un Pokémon.");
             }
         });
 
     // Función para buscar y mostrar la información del Pokémon seleccionado
-    function searchPokemon(pokemonName) {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-            .then((response) => {
-                if (!response.ok) {
+    function buscarPokemon(nombrePokemon) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+            .then((respuesta) => {
+                if (!respuesta.ok) {
                     throw new Error("Pokémon no encontrado");
                 }
-                return response.json();
+                return respuesta.json();
             })
             .then((data) => {
-                const pokemonInfo = document.getElementById("pokemon-info");
-                const frontImage = data.sprites.front_default;
-                const backImage = data.sprites.back_default;
+                const pokemonInfo = document.getElementById("contenido");
+                const imagenDeFrente = data.sprites.front_default;
+                const imagenDeDetras = data.sprites.back_default;
                 pokemonInfo.innerHTML = `
-                    <h2>${capitalizeFirstLetter(data.name)}</h2>
-                    <img src="${frontImage}" alt="${data.name} front">
-                    <img src="${backImage}" alt="${data.name} back">
+                    <h2>${primeraLetraMayuscula(data.name)}</h2>
+                    <img src="${imagenDeFrente}" alt="${data.name} front">
+                    <img src="${imagenDeDetras}" alt="${data.name} back">
                     <p>Altura: ${data.height / 10} m</p>
                     <p>Peso: ${data.weight / 10} kg</p>
                     <p>Puntos de vida: ${data.stats[0].base_stat}</p>
@@ -99,21 +99,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>Velocidad: ${data.stats[5].base_stat}</p>
                     <p>Tipos: ${data.types
                         .map((typeInfo) =>
-                            capitalizeFirstLetter(typeInfo.type.name)
+                            primeraLetraMayuscula(typeInfo.type.name)
                         )
                         .join(", ")}</p>
                 `;
                 pokemonInfo.classList.add("show");
             })
             .catch((error) => {
-                const pokemonInfo = document.getElementById("pokemon-info");
+                const pokemonInfo = document.getElementById("contenido");
                 pokemonInfo.innerHTML = `<p>${error.message}</p>`;
                 pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
             });
     }
 
     // Función para capitalizar la primera letra de una cadena
-    function capitalizeFirstLetter(string) {
+    function primeraLetraMayuscula(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 });
