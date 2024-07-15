@@ -1,13 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.contenidoPokemon {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 10%;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contenidoPokemon.show {
+  display: block; /* Mostrar el contenedor cuando tenga la clase 'show' */
+}
+
 header {
   color: black;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -54,7 +71,7 @@ input {
 
 #subtitulo {
   color: #ffffff;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   font-size: 12px;
   background-color: #4caf50;
   padding: 10px;
@@ -74,6 +91,6 @@ body {
   color: white;
 }
 
-#pokemon-info{
+#pokemon-info {
   color: black;
 }
