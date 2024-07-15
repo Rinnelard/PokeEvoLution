@@ -1,33 +1,5 @@
 "use strict";
 
-<<<<<<< HEAD
-// función con el input
-
-const input = document.querySelector("input#search");
-
-console.log(input.value);
-
-const pokemonData = (pokemonName) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-        .then((respuesta) => respuesta.json()) // aqui el return esta implicito.
-        .then((data) => {
-            console.log("---Pokedex ---");
-            console.log(`El nombre del pokemon es: ${data.name}`);
-            // Mostrar habilidades:
-            const pokeAbilities = data.abilities.map(
-                (pokemonAbility) => pokemonAbility.ability.name
-            ); //le aplicamos map al array de abilities y no a ability porque esto es un objeto y map es para arrays. CUANDO ITERAMOS RECORDAMOS QUE DEBE DE ESTAR EN SINGULAR PORQUE ITERAMOS DATO A DATO. El ultimo ability ya es el del objeto. DENTRO DE LA API DEBE DE ENTRAR A OTRA API, PERO CUANDO LE PONEMOS EL NOMBRE VA A BUSCARLO SOLO, NO DEBEMOS DE PONERLE OTRO ENLACE NI NADA.
-            console.log(`Las habilidades del pokemon son: ${pokeAbilities}`);
-        });
-};
-
-// EVENTO CLICK
-
-const btnBuscar = document.querySelector("button");
-console.log(btnBuscar);
-
-btnBuscar.addEventListener("click", pokemonData(input.value));
-=======
 document.addEventListener("DOMContentLoaded", () => {
     const pokemonInput = document.getElementById("pokemon-input");
     const suggestionsList = document.getElementById("suggestions-list");
@@ -35,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Evento input para actualizar las sugerencias según lo que el usuario escribe
     pokemonInput.addEventListener("input", () => {
         const searchTerm = pokemonInput.value.trim().toLowerCase();
-        if (searchTerm.length >= 2) { // Filtrar solo si hay al menos 2 caracteres
+        if (searchTerm.length >= 2) {
+            // Filtrar solo si hay al menos 2 caracteres
             fetchAndDisplayPokemonSuggestions(searchTerm);
         } else {
             clearSuggestions();
@@ -45,22 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para obtener y mostrar las sugerencias de Pokémon según el término de búsqueda
     function fetchAndDisplayPokemonSuggestions(searchTerm) {
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
-            .then(response => {
+            .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudieron obtener los Pokémon");
                 }
                 return response.json();
             })
-            .then(data => {
+            .then((data) => {
                 // Filtrar la lista de Pokémon según el término de búsqueda
-                const filteredPokemon = data.results.filter(pokemon => {
+                const filteredPokemon = data.results.filter((pokemon) => {
                     return pokemon.name.includes(searchTerm);
                 });
 
                 // Mostrar las sugerencias en la lista
                 renderSuggestions(filteredPokemon);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error("Error al obtener Pokémon:", error);
             });
     }
@@ -69,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderSuggestions(pokemonList) {
         clearSuggestions(); // Limpiar la lista antes de añadir nuevas sugerencias
 
-        pokemonList.forEach(pokemon => {
+        pokemonList.forEach((pokemon) => {
             const listItem = document.createElement("li");
             listItem.textContent = pokemon.name;
             listItem.addEventListener("click", () => {
@@ -88,27 +61,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Evento submit del formulario
-    document.querySelector(".text-search").addEventListener("submit", (event) => {
-        event.preventDefault(); // Evitar el envío tradicional del formulario
+    document
+        .querySelector(".text-search")
+        .addEventListener("submit", (event) => {
+            event.preventDefault(); // Evitar el envío tradicional del formulario
 
-        const pokemonName = pokemonInput.value.trim().toLowerCase();
-        if (pokemonName) {
-            searchPokemon(pokemonName);
-        } else {
-            alert("Por favor, introduce el nombre o número de un Pokémon.");
-        }
-    });
+            const pokemonName = pokemonInput.value.trim().toLowerCase();
+            if (pokemonName) {
+                searchPokemon(pokemonName);
+            } else {
+                alert("Por favor, introduce el nombre o número de un Pokémon.");
+            }
+        });
 
     // Función para buscar y mostrar la información del Pokémon seleccionado
     function searchPokemon(pokemonName) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-            .then(response => {
+            .then((response) => {
                 if (!response.ok) {
                     throw new Error("Pokémon no encontrado");
                 }
                 return response.json();
             })
-            .then(data => {
+            .then((data) => {
                 const pokemonInfo = document.getElementById("pokemon-info");
                 const frontImage = data.sprites.front_default;
                 const backImage = data.sprites.back_default;
@@ -123,12 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>Defensa: ${data.stats[2].base_stat}</p>
                     <p>Velocidad: ${data.stats[5].base_stat}</p>
                     <p>Tipos: ${data.types
-                        .map(typeInfo => capitalizeFirstLetter(typeInfo.type.name))
+                        .map((typeInfo) =>
+                            capitalizeFirstLetter(typeInfo.type.name)
+                        )
                         .join(", ")}</p>
                 `;
                 pokemonInfo.classList.add("show");
             })
-            .catch(error => {
+            .catch((error) => {
                 const pokemonInfo = document.getElementById("pokemon-info");
                 pokemonInfo.innerHTML = `<p>${error.message}</p>`;
                 pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
@@ -140,4 +117,3 @@ document.addEventListener("DOMContentLoaded", () => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 });
->>>>>>> Angel
