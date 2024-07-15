@@ -15,9 +15,11 @@ document.querySelector('.text-search').addEventListener('submit', event => {
             .then(data => {
                 const pokemonInfo = document.getElementById('pokemon-info');
                 const frontImage = data.sprites.front_default;
+                const backImage = data.sprites.back_default;
                 pokemonInfo.innerHTML = `
                     <h2>${capitalizeFirstLetter(data.name)}</h2>
-                    <img src"${frontImage}" alt="${data.name} front">
+                    <img src="${frontImage}" alt="${data.name} front">
+                    <img src="${backImage}" alt="${data.name} back">
                     <p>Altura: ${data.height / 10} m</p>
                     <p>Peso: ${data.weight / 10} kg</p>
                     <p>Puntos de vida: ${data.stats[0].base_stat}</p>
