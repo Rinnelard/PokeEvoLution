@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 header {
   color: black;
 }
@@ -47,8 +54,9 @@ input {
 
 #subtitulo {
   color: #ffffff;
-  font-size: 14px;
-  background-color: #4caf50; /* Green background */
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 12px;
+  background-color: #4caf50;
   padding: 10px;
   border-radius: 5px;
   width: fit-content;
@@ -64,4 +72,8 @@ body {
   background-attachment: fixed; /* La imagen se mantiene fija al hacer scroll */
   background-position: center; /* La imagen está centrada */
   color: white;
+}
+
+#pokemon-info{
+  color: black;
 }

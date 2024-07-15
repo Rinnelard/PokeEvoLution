@@ -1,31 +1,39 @@
 'use strict';
 
-// función con el input
+document.querySelector('.text-search').addEventListener('submit', event => {
+    event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
 
-const input = document.querySelector('input#search')
+    const pokemonNameOrId = document.getElementById('search').value.toLowerCase().trim();
+    if (pokemonNameOrId) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Pokémon no encontrado');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const pokemonInfo = document.getElementById('pokemon-info');
+                pokemonInfo.innerHTML = `
+                    <h2>${capitalizeFirstLetter(data.name)}</h2>
+                    <p>Altura: ${data.height / 10} m</p>
+                    <p>Peso: ${data.weight / 10} kg</p>
+                    <p>Puntos de vida: ${data.stats[0].base_stat}</p>
+                    <p>Ataque: ${data.stats[1].base_stat}</p>
+                    <p>Defensa: ${data.stats[2].base_stat}</p>
+                    <p>Velocidad: ${data.stats[5].base_stat}</p>
+                    <p>Tipos: ${data.types.map(typeInfo => capitalizeFirstLetter(typeInfo.type.name)).join(', ')}</p>
+                `;
+            })
+            .catch(error => {
+                const pokemonInfo = document.getElementById('pokemon-info');
+                pokemonInfo.innerHTML = `<p>${error.message}</p>`;
+            });
+    } else {
+        alert('Por favor, escribe el nombre o el número de un Pokémon.');
+    }
+});
 
-console.log(input.value);
-
-const pokemonData = pokemonName => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-        .then(respuesta => respuesta.json()) // aqui el return esta implicito.
-        .then(data => {
-            console.log("---Pokedex ---");
-            console.log(`El nombre del pokemon es: ${data.name}`);
-            // Mostrar habilidades:
-            const pokeAbilities = data.abilities.map(pokemonAbility =>  pokemonAbility.ability.name); //le aplicamos map al array de abilities y no a ability porque esto es un objeto y map es para arrays. CUANDO ITERAMOS RECORDAMOS QUE DEBE DE ESTAR EN SINGULAR PORQUE ITERAMOS DATO A DATO. El ultimo ability ya es el del objeto. DENTRO DE LA API DEBE DE ENTRAR A OTRA API, PERO CUANDO LE PONEMOS EL NOMBRE VA A BUSCARLO SOLO, NO DEBEMOS DE PONERLE OTRO ENLACE NI NADA.
-            console.log(`Las habilidades del pokemon son: ${pokeAbilities}`); 
-        })
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-// EVENTO CLICK
-
-const btnBuscar = document.querySelector('button');
-console.log(btnBuscar);
-
-
-btnBuscar.addEventListener('click', pokemonData(input.value));
-
-
-
-
