@@ -1,0 +1,17 @@
+header{
+    background-color: white;
+    color: black;
+    
+}
+
+
+body {
+
+    background-image: url('./img/fondo.png');
+    background-size: cover; /* La imagen cubre toda la pantalla */
+    background-repeat: no-repeat; /* La imagen no se repite */
+    background-attachment: fixed; /* La imagen se mantiene fija al hacer scroll */
+    background-position: center; /* La imagen está centrada */
+    color: white; 
+ 
+}
