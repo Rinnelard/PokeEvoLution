@@ -1,57 +1,39 @@
 'use strict';
 
+document.querySelector('.text-search').addEventListener('submit', event => {
+    event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
 
-const input = document.querySelector('input#search');
+    const pokemonNameOrId = document.getElementById('search').value.toLowerCase().trim();
+    if (pokemonNameOrId) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Pokémon no encontrado');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const pokemonInfo = document.getElementById('pokemon-info');
+                pokemonInfo.innerHTML = `
+                    <h2>${capitalizeFirstLetter(data.name)}</h2>
+                    <p>Altura: ${data.height / 10} m</p>
+                    <p>Peso: ${data.weight / 10} kg</p>
+                    <p>Puntos de vida: ${data.stats[0].base_stat}</p>
+                    <p>Ataque: ${data.stats[1].base_stat}</p>
+                    <p>Defensa: ${data.stats[2].base_stat}</p>
+                    <p>Velocidad: ${data.stats[5].base_stat}</p>
+                    <p>Tipos: ${data.types.map(typeInfo => capitalizeFirstLetter(typeInfo.type.name)).join(', ')}</p>
+                `;
+            })
+            .catch(error => {
+                const pokemonInfo = document.getElementById('pokemon-info');
+                pokemonInfo.innerHTML = `<p>${error.message}</p>`;
+            });
+    } else {
+        alert('Por favor, escribe el nombre o el número de un Pokémon.');
+    }
+});
 
-const btnBuscar = document.querySelector('button');
-
-const pokemonData = () => {
-    const pokemonName = input.value.trim();
-    console.log(pokemonName);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-        .then(respuesta => respuesta.json()) // aqui el return esta implicito.
-        .then(data => {
-            console.log("---Pokedex ---");
-            console.log(`El nombre del pokemon es: ${data.name}`);
-            // Mostrar habilidades:
-            const pokeAbilities = data.abilities.map(pokemonAbility =>  pokemonAbility.ability.name); 
-            console.log(`Las habilidades del pokemon son: ${pokeAbilities}`); 
-        })
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
-btnBuscar.addEventListener('click', pokemonData);
-
-
-
-
-
-
-
-/* const btnBuscar = document.querySelector('button');
-
-function valorInput() {
-    const input = document.querySelector('input#search');
-    let valor = input.value
-    return valor;
-}
-
-const pokemonData = () => {
-    const pokemonName = input.value;
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-        .then(respuesta => respuesta.json()) 
-        .then(data => {
-            console.log("---Pokedex ---");
-            console.log(`El nombre del pokemon es: ${data.name}`);
-            const pokeAbilities = data.abilities.map(pokemonAbility =>  pokemonAbility.ability.name); 
-            console.log(`Las habilidades del pokemon son: ${pokeAbilities}`); 
-        })
-        .catch(error => {
-            console.log('Error al obtener los datos:', error);
-        })
-}
-
-btnBuscar.addEventListener('click', pokemonData);
- */
-
-
-
-
