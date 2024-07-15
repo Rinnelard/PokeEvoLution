@@ -1,68 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
-  background-color: white;
-  color: black;
+    color: black;
 }
 form {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding: 13px;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 13px;
+    width: 100%;
 }
 
 label {
-  color: #ffffff;
-  font-size: 30px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
+    color: black;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .grupoInput {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
 }
 
 input {
-  display: block;
-  border: solid gray 2px;
-  width: calc(100% - 80px);
-  height: 40px;
+    display: block;
+    border: solid gray 2px;
+    width: calc(100% - 80px);
+    height: 40px;
 }
 
 .btnEnviar {
-  border-radius: 10vmax;
-  background-color: #ee6b2f;
-  text-align: center;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  height: 40px;
-  width: 80px;
-  cursor: pointer;
+    border-radius: 10vmax;
+    background-color: #ee6b2f;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    height: 40px;
+    width: 80px;
+    cursor: pointer;
 }
 
 #subtitulo {
-  color: #ffffff;
-  font-size: 14px;
-  background-color: #4caf50; /* Green background */
-  padding: 10px;
-  border-radius: 5px;
-  width: fit-content;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 10px;
+    color: #ffffff;
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 12px;
+    background-color: #4caf50;
+    padding: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 10px;
 }
 
 body {
-  background-image: url("./img/fondo.png");
-  background-size: cover; /* La imagen cubre toda la pantalla */
-  background-repeat: no-repeat; /* La imagen no se repite */
-  background-attachment: fixed; /* La imagen se mantiene fija al hacer scroll */
-  background-position: center; /* La imagen está centrada */
-  color: white;
+    background-image: url("./img/fondo.png");
+    background-size: cover; /* La imagen cubre toda la pantalla */
+    background-repeat: no-repeat; /* La imagen no se repite */
+    background-attachment: fixed; /* La imagen se mantiene fija al hacer scroll */
+    background-position: center; /* La imagen está centrada */
+    color: white;
+}
+
+#pokemon-info {
+    color: black;
 }
