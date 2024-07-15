@@ -1,25 +1,90 @@
 "use strict";
 
-document.querySelector(".text-search").addEventListener("submit", (event) => {
-  event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+document.addEventListener("DOMContentLoaded", () => {
+    const pokemonInput = document.getElementById("pokemon-input");
+    const suggestionsList = document.getElementById("suggestions-list");
 
-  const pokemonNameOrId = document
-    .getElementById("search")
-    .value.toLowerCase()
-    .trim();
-  if (pokemonNameOrId) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Pokémon no encontrado");
+    // Evento input para actualizar las sugerencias según lo que el usuario escribe
+    pokemonInput.addEventListener("input", () => {
+        const searchTerm = pokemonInput.value.trim().toLowerCase();
+        if (searchTerm.length >= 2) { // Filtrar solo si hay al menos 2 caracteres
+            fetchAndDisplayPokemonSuggestions(searchTerm);
+        } else {
+            clearSuggestions();
         }
-        return response.json();
-      })
-      .then((data) => {
-        const pokemonInfo = document.getElementById("pokemon-info");
-        const frontImage = data.sprites.front_default;
-        const backImage = data.sprites.back_default;
-        pokemonInfo.innerHTML = `
+    });
+
+    // Función para obtener y mostrar las sugerencias de Pokémon según el término de búsqueda
+    function fetchAndDisplayPokemonSuggestions(searchTerm) {
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("No se pudieron obtener los Pokémon");
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Filtrar la lista de Pokémon según el término de búsqueda
+                const filteredPokemon = data.results.filter(pokemon => {
+                    return pokemon.name.includes(searchTerm);
+                });
+
+                // Mostrar las sugerencias en la lista
+                renderSuggestions(filteredPokemon);
+            })
+            .catch(error => {
+                console.error("Error al obtener Pokémon:", error);
+            });
+    }
+
+    // Función para renderizar las sugerencias en la lista
+    function renderSuggestions(pokemonList) {
+        clearSuggestions(); // Limpiar la lista antes de añadir nuevas sugerencias
+
+        pokemonList.forEach(pokemon => {
+            const listItem = document.createElement("li");
+            listItem.textContent = pokemon.name;
+            listItem.addEventListener("click", () => {
+                // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
+                pokemonInput.value = pokemon.name;
+                clearSuggestions();
+                searchPokemon(pokemon.name);
+            });
+            suggestionsList.appendChild(listItem);
+        });
+    }
+
+    // Función para limpiar la lista de sugerencias
+    function clearSuggestions() {
+        suggestionsList.innerHTML = "";
+    }
+
+    // Evento submit del formulario
+    document.querySelector(".text-search").addEventListener("submit", (event) => {
+        event.preventDefault(); // Evitar el envío tradicional del formulario
+
+        const pokemonName = pokemonInput.value.trim().toLowerCase();
+        if (pokemonName) {
+            searchPokemon(pokemonName);
+        } else {
+            alert("Por favor, introduce el nombre o número de un Pokémon.");
+        }
+    });
+
+    // Función para buscar y mostrar la información del Pokémon seleccionado
+    function searchPokemon(pokemonName) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Pokémon no encontrado");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const pokemonInfo = document.getElementById("pokemon-info");
+                const frontImage = data.sprites.front_default;
+                const backImage = data.sprites.back_default;
+                pokemonInfo.innerHTML = `
                     <h2>${capitalizeFirstLetter(data.name)}</h2>
                     <img src="${frontImage}" alt="${data.name} front">
                     <img src="${backImage}" alt="${data.name} back">
@@ -30,22 +95,20 @@ document.querySelector(".text-search").addEventListener("submit", (event) => {
                     <p>Defensa: ${data.stats[2].base_stat}</p>
                     <p>Velocidad: ${data.stats[5].base_stat}</p>
                     <p>Tipos: ${data.types
-                      .map((typeInfo) =>
-                        capitalizeFirstLetter(typeInfo.type.name)
-                      )
-                      .join(", ")}</p>
+                        .map(typeInfo => capitalizeFirstLetter(typeInfo.type.name))
+                        .join(", ")}</p>
                 `;
-        pokemonInfo.classList.add("show");
-      })
-      .catch((error) => {
-        const pokemonInfo = document.getElementById("pokemon-info");
-        pokemonInfo.innerHTML = `<p>${error.message}</p>`;
-      });
-  } else {
-    alert("Por favor, escribe el nombre o el número de un Pokémon.");
-  }
-});
+                pokemonInfo.classList.add("show");
+            })
+            .catch(error => {
+                const pokemonInfo = document.getElementById("pokemon-info");
+                pokemonInfo.innerHTML = `<p>${error.message}</p>`;
+                pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
+            });
+    }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    // Función para capitalizar la primera letra de una cadena
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+});

@@ -1,8 +1,83 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("./img/fondo.png");
+  background-size: cover; /* La imagen cubre toda la pantalla */
+  background-repeat: no-repeat; /* La imagen no se repite */
+  background-attachment: fixed; /* La imagen se mantiene fija al hacer scroll */
+  background-position: center; /* La imagen está centrada */
+  color: white;
+}
+
+header img {
+  display: block;
+  margin: 20px auto; /* Espaciado superior e inferior */
+}
+
+.text-search {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.grupoInput {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+}
+
+#pokemon-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+}
+
+#suggestions-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  position: absolute;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+  z-index: 1000;
+  box-sizing: border-box;
+  color: #4CAF50;
+}
+
+#suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#suggestions-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.btnEnviar {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.btnEnviar i {
+  margin-right: 5px;
 }
 
 .contenidoPokemon {
@@ -10,7 +85,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  max-width: 10%;
+  max-width: 90%; /* Ajuste de ancho */
   margin: auto;
   display: none;
   flex-direction: column;
@@ -19,6 +94,14 @@
 
 .contenidoPokemon.show {
   display: block; /* Mostrar el contenedor cuando tenga la clase 'show' */
+}
+
+.pokemon-info {
+  display: none;
+}
+
+.pokemon-info.show {
+  display: block;
 }
 
 header {
@@ -38,14 +121,6 @@ label {
   font-size: 30px;
   text-transform: uppercase;
   margin-bottom: 5px;
-}
-
-.grupoInput {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 20px;
 }
 
 input {
