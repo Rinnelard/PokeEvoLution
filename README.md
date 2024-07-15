@@ -2,15 +2,28 @@
 
 ProyectoPokemonHAB
 
-# Comedme los cojones
+## HTML
 
--   En el orden que querais
--   me sirve desde los huevos
--   no mucho que me salen rojeces
+-   Una imagen de pokedex centrada
 
-## Ya podeis continuar con lo vuestro
+EXTRA\_
 
-## Chupamela
+-   Generar botones en los botones de la imagen para asiganrle funciones (Seleccionar por tipo, etc...)
 
-## dfsjhfksdhkjf
-wefgerfgsdfvsdv
+## CSS
+
+-   La lista desplegable del input debe ser infinita pero con un tamaño fijo con una barra desplegable para poder visualizar todos los resultados
+
+## JS
+
+-   Tendremos una imagen de la pokedex en el centro donde se pone el input a la derecha y sale la imagen con la info a la izquierda
+-   Aplicar logica de que al coincidir una búqueda en el input, se muestren varias opciones
+-   Asociar la logica de busqueda de la API para mostra modificando el html, imagen y datos del pokemon en cuestión (Nombre, altura, peso, puntos de vida, ataque, defensa, velocidad y tipos)
+-
+-   Que muestre una imagen frontal y trasera del puchamon
+
+EXTRAS\_
+
+-   Que aparezca una imagen del puchamon al lado del nombre de cada uno en la lista desplegable del input
+-   Agregar fondo de gif
+-   Agregar script de audio de fondo
