@@ -1,8 +1,7 @@
 'use strict';
 
 document.querySelector('.text-search').addEventListener('submit', event => {
-    event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
-
+    event.preventDefault();
     const pokemonNameOrId = document.getElementById('search').value.toLowerCase().trim();
     if (pokemonNameOrId) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`)

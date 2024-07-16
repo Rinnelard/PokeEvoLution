@@ -75,6 +75,7 @@ body {
 }
 
 #pokemon-info{
-  width: auto;
+  margin: 50px;
+  width: 300px;
   background-color: black;
 }
