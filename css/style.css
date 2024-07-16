@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Arial", sans-serif;
     background-image: url("./img/fondo.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -90,10 +90,14 @@ section#contenidoPokemon {
     align-items: flex-start;
 }
 
-section#contenidoPokemon > img {
+#img1 {
     width: 90%;
     height: 95%;
     max-width: 400px;
+}
+/* Oculta la imagen de la pokeDex grande en pantallas pequeñas */
+#img2 {
+    display: none; 
 }
 
 section#contenidoPokemon > section#contenido {
@@ -226,3 +230,27 @@ footer > section#nombres {
     justify-content: center;
     align-items: center;
 }
+
+@media (min-width: 1024px) {
+#img1{
+    display: none; 
+    max-width: none;
+}
+#img2{
+    display: block;
+    width: 180%;
+    height: 100%;
+    max-width: none;
+}
+section#contenidoPokemon > section#contenido > img#frontal {
+    grid-area: frontal;
+    width: 17vh;
+    height: 17vh;
+    z-index: 1;
+    position: relative; /* Asegura que el posicionamiento sea relativo al contenedor */
+    left: 90px; /* Ajusta el valor según la cantidad de desplazamiento que desees */
+}
+}
+
+
+
