@@ -29,7 +29,6 @@ main {
 header {
     grid-area: header;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -130,7 +129,22 @@ section#contenidoPokemon > section#contenido > img#frontal {
     width: 17vh;
     height: 17vh;
     z-index: 1;
+    /*     animation: mover 2s linear infinite; */
 }
+
+/* Que baile el puchamon */
+
+/* @keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: scaleX(-1);
+    }
+    100% {
+        transform: translateY(0);
+    }
+} */
 
 section#contenidoPokemon > section#contenido > img#sueloFrontal {
     position: absolute;
