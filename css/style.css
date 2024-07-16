@@ -307,7 +307,6 @@ footer > section#nombres {
 @keyframes spin {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
-<<<<<<< HEAD
 }
 @media (min-width: 1024px) {
     #img1{
