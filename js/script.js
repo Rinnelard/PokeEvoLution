@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const inputPokemon = document.getElementById("inputPokemon");
     const listaDeSugerencias = document.getElementById("sugerenciasPokemon");
+    const btnBuscar = document.getElementById("btnBuscar");
 
     // Evento input para actualizar las sugerencias según lo que el usuario escribe
     inputPokemon.addEventListener("input", () => {
@@ -12,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarSugerenciasPokemon(terminoDeBusqueda);
         } else {
             limpiarSugerencias();
+        }
+    });
+
+    // Evento click del botón de búsqueda
+    btnBuscar.addEventListener("click", () => {
+        const nombrePokemon = inputPokemon.value.trim().toLowerCase();
+        if (nombrePokemon) {
+            buscarPokemon(nombrePokemon);
+        } else {
+            alert("Por favor, introduce el nombre o número de un Pokémon.");
         }
     });
 
@@ -60,20 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         listaDeSugerencias.innerHTML = "";
     }
 
-    // Evento submit del formulario
-    document
-        .querySelector(".text-search")
-        .addEventListener("submit", (event) => {
-            event.preventDefault(); // Evitar el envío tradicional del formulario
-
-            const nombrePokemon = inputPokemon.value.trim().toLowerCase();
-            if (nombrePokemon) {
-                buscarPokemon(nombrePokemon);
-            } else {
-                alert("Por favor, introduce el nombre o número de un Pokémon.");
-            }
-        });
-
     // Función para buscar y mostrar la información del Pokémon seleccionado
     function buscarPokemon(nombrePokemon) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
@@ -89,15 +86,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 const imagenDeDetras = data.sprites.back_default;
                 pokemonInfo.innerHTML = `
                     <h2>${primeraLetraMayuscula(data.name)}</h2>
-                    <img src="${imagenDeFrente}" alt="${data.name} front">
-                    <img src="${imagenDeDetras}" alt="${data.name} back">
-                    <p>Altura: ${data.height / 10} m</p>
-                    <p>Peso: ${data.weight / 10} kg</p>
-                    <p>Puntos de vida: ${data.stats[0].base_stat}</p>
-                    <p>Ataque: ${data.stats[1].base_stat}</p>
-                    <p>Defensa: ${data.stats[2].base_stat}</p>
-                    <p>Velocidad: ${data.stats[5].base_stat}</p>
-                    <p>Tipos: ${data.types
+                    <img id="frontal" src="${imagenDeFrente}" alt="${
+                    data.name
+                }front">
+                    <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
+                    <img id="trasera" src="${imagenDeDetras}" alt="${
+                    data.name
+                } back">
+                    <img id="sueloTrasera" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
+                    <p id="altura">Altura: ${data.height / 10} m</p>
+                    <p id="peso">Peso: ${data.weight / 10} kg</p>
+                    <p id="vida">Puntos de vida: ${data.stats[0].base_stat}</p>
+                    <p id="ataque">Ataque: ${data.stats[1].base_stat}</p>
+                    <p id="defensa">Defensa: ${data.stats[2].base_stat}</p>
+                    <p id="velocidad">Velocidad: ${data.stats[5].base_stat}</p>
+                    <p id="tipo">Tipos: ${data.types
                         .map((typeInfo) =>
                             primeraLetraMayuscula(typeInfo.type.name)
                         )

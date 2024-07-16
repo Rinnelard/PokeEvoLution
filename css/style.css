@@ -70,6 +70,17 @@ section#seccionInput > button#btnBuscar {
     cursor: pointer;
 }
 
+section#seccionInput > ul#sugerenciasPokemon {
+    position: absolute;
+    top: 72.2%;
+    left: 32.3%;
+    max-height: 9.5%;
+    width: 40%;
+    overflow-y: auto;
+    padding: 3%;
+    list-style-type: none;
+}
+
 section#contenidoPokemon {
     grid-area: contenidoPokemon;
     width: 100%;
@@ -82,6 +93,101 @@ section#contenidoPokemon {
 section#contenidoPokemon > img {
     width: 90%;
     height: 95%;
+    max-width: 400px;
+}
+
+section#contenidoPokemon > section#contenido {
+    position: absolute;
+    top: 26.9%;
+    left: 14%;
+    height: 37%;
+    width: 72%;
+    max-width: 400px;
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+        "nombre nombre"
+        "frontal trasera"
+        "altura altura"
+        "peso peso"
+        "vida vida"
+        "ataque ataque"
+        "defensa defensa"
+        "velocidad velocidad"
+        "tipo tipo";
+    grid-template-rows: 1fr 50% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+section#contenidoPokemon > section#contenido > h2 {
+    grid-area: nombre;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+section#contenidoPokemon > section#contenido > img#frontal {
+    grid-area: frontal;
+    width: 17vh;
+    height: 17vh;
+    z-index: 1;
+}
+
+section#contenidoPokemon > section#contenido > img#sueloFrontal {
+    position: absolute;
+    width: 15vh;
+    height: 4.5vh;
+    top: 42%;
+    left: 1vh;
+}
+
+section#contenidoPokemon > section#contenido > img#trasera {
+    grid-area: trasera;
+    width: 14vh;
+    height: 14vh;
+    z-index: 1;
+}
+
+section#contenidoPokemon > section#contenido > img#sueloTrasera {
+    position: absolute;
+    width: 10vh;
+    height: 2.5vh;
+    top: 38.5%;
+    left: 21vh;
+}
+
+section#contenidoPokemon > section#contenido > p {
+    color: black;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5vh;
+}
+
+section#contenidoPokemon > section#contenido > p#altura {
+    grid-area: altura;
+}
+
+section#contenidoPokemon > section#contenido > p#peso {
+    grid-area: peso;
+}
+
+section#contenidoPokemon > section#contenido > p#vida {
+    grid-area: vida;
+}
+
+section#contenidoPokemon > section#contenido > p#ataque {
+    grid-area: ataque;
+}
+
+section#contenidoPokemon > section#contenido > p#defensa {
+    grid-area: defensa;
+}
+
+section#contenidoPokemon > section#contenido > p#velocidad {
+    grid-area: velocidad;
+}
+
+section#contenidoPokemon > section#contenido > p#tipo {
+    grid-area: tipo;
 }
 
 footer {
@@ -120,159 +226,3 @@ footer > section#nombres {
     justify-content: center;
     align-items: center;
 }
-
-/* 
-header img {
-    display: block;
-    margin: auto;
-}
-
-.text-search {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.grupoInput {
-    position: relative;
-    display: inline-block;
-    width: 300px;
-}
-
-#pokemon-input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#suggestions-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ccc;
-    border-top: none;
-    position: absolute;
-    width: 100%;
-    max-height: 150px;
-    overflow-y: auto;
-    background-color: #fff;
-    z-index: 1000;
-    box-sizing: border-box;
-    color: #4caf50;
-}
-
-#suggestions-list li {
-    padding: 10px;
-    cursor: pointer;
-}
-
-#suggestions-list li:hover {
-    background-color: #e0e0e0;
-}
-
-.btnEnviar {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.btnEnviar i {
-    margin-right: 5px;
-}
-
-.contenidoPokemon {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 90%;
-    margin: auto;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.contenidoPokemon.show {
-    display: block;  Mostrar el contenedor cuando tenga la clase 'show' 
-}
-
-.pokemon-info {
-    display: none;
-}
-
-.pokemon-info.show {
-    display: block;
-}
-
-header {
-    color: black;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 13px;
-    width: 100%;
-}
-
-label {
-    color: black;
-    font-size: 30px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-input {
-    display: block;
-    border: solid gray 2px;
-    width: calc(100% - 80px);
-    height: 40px;
-}
-
-.btnEnviar {
-    border-radius: 10vmax;
-    background-color: #ee6b2f;
-    text-align: center;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    height: 40px;
-    width: 80px;
-    cursor: pointer;
-}
-
-#subtitulo {
-    color: #ffffff;
-    font-family: "Press Start 2P", sans-serif;
-    font-size: 12px;
-    background-color: #4caf50;
-    padding: 10px;
-    border-radius: 5px;
-    width: fit-content;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 10px;
-}
-
-body {
-    background-image: url("./img/fondo.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    color: white;
-}
-
-#pokemon-info {
-    color: black;
-}
-*/
