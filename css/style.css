@@ -6,67 +6,84 @@
 }
 
 body {
+    /* Se aplica una tipografía y tamaño por defecto a todo el texto de la web */
     font-family: "Press Start 2P", sans-serif;
     font-size: 1.5vh;
+    /* Se le aplica el fondo a la página */
     background-image: url("./img/fondo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    /* En caso de no verse la imagen se vería de color blanco */
     color: white;
 }
 
+/* Contiene todo el contenido de la web */
 main {
+    /* Organizamos el contenido de la página con grid areas */
     display: grid;
     grid-template-areas:
         "header"
         "contenidoPokemon"
         "footer";
-
+    /* Nos aseguramos de que el main ocupa el total de la web */
     width: 100%;
     height: 100%;
 }
 
+/* El encabezado donde va el título */
 header {
     grid-area: header;
+    /* Hacemos flex para centrar el titulo en el header */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 14vh;
+    height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
 }
 
+/* le aplicamos un tamaño al titulo */
 header > img {
     height: 7vh;
     width: 40vh;
 }
 
+/* Este es el input para la aplicación */
 section#seccionInput > input#inputPokemon {
+    /* Aplicamos una ubicación fija para que coincida con el espacio de la interfaz de pokedex*/
     position: absolute;
     top: 67.5%;
     left: 15%;
     height: 3%;
     width: 70%;
+    /* Eliminamos el formato visual para hacerlo invisible y que se adapte a la interfaz */
     background-color: transparent;
     border: none;
     outline: none;
 }
 
+/* El botón para buscar lo escrito en el input */
 section#seccionInput > button#btnBuscar {
+    /* Le ponemos una ubicación fija en el botón verde de la interfaz */
     position: absolute;
     height: 4%;
     width: 8%;
     top: 76.6%;
     left: 80.4%;
+    /* Reseteamos el fondo y borde para hacerlo invisible */
     background-color: transparent;
     border: none;
     border-radius: 2%;
     outline: none;
+    /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
 }
 
+/* Cuando muestra sugerencias segun escribes en el input */
 section#seccionInput > ul#sugerenciasPokemon {
+    /* Ponemos una ubicacion fija para que coincida con un recuadro de la interfaz */
     position: absolute;
     top: 72.2%;
     left: 32.3%;
@@ -74,28 +91,33 @@ section#seccionInput > ul#sugerenciasPokemon {
     width: 40%;
     overflow-y: auto;
     padding: 3%;
+    /* Quitamos los puntos de los "ul" que se generan en JS */
     list-style-type: none;
 }
 
+/* Para mostrar en negrita el texto del input */
 input::placeholder {
     font-weight: bold;
 }
 
+/* El área donde va la pokedex */
 section#contenidoPokemon {
     grid-area: contenidoPokemon;
     width: 100%;
-    height: 75vh;
+    height: 75vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
+/* La imagen de la pokedex */
 section#contenidoPokemon > img {
     width: 90%;
     height: 95%;
     max-width: 400px;
 }
 
+/* El contenido que se muestra de la API pokemon */
 section#contenidoPokemon > section#contenido {
     position: absolute;
     top: 26.9%;
@@ -104,6 +126,7 @@ section#contenidoPokemon > section#contenido {
     width: 72%;
     max-width: 400px;
     text-align: center;
+    /* Las áreas para organizar el contenido */
     display: grid;
     grid-template-areas:
         "nombre nombre"
@@ -118,6 +141,9 @@ section#contenidoPokemon > section#contenido {
     grid-template-rows: 1fr 50% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+/* Asignamos las áreas del grid a los elementos generados por el JS */
+
+/* Título */
 section#contenidoPokemon > section#contenido > h2 {
     grid-area: nombre;
     color: black;
@@ -125,6 +151,7 @@ section#contenidoPokemon > section#contenido > h2 {
     height: 100%;
 }
 
+/* Imagen del pokemon de frente */
 section#contenidoPokemon > section#contenido > img#frontal {
     grid-area: frontal;
     width: 17vh;
@@ -132,6 +159,7 @@ section#contenidoPokemon > section#contenido > img#frontal {
     z-index: 1;
 }
 
+/* Imagen de suelo con cesped debajo del pokemon de frente */
 section#contenidoPokemon > section#contenido > img#sueloFrontal {
     position: absolute;
     width: 15vh;
@@ -140,6 +168,7 @@ section#contenidoPokemon > section#contenido > img#sueloFrontal {
     left: 1vh;
 }
 
+/* Imagen del pokemon trasera */
 section#contenidoPokemon > section#contenido > img#trasera {
     grid-area: trasera;
     width: 14vh;
@@ -147,6 +176,7 @@ section#contenidoPokemon > section#contenido > img#trasera {
     z-index: 1;
 }
 
+/* Imagen de suelo con cesped debajo del pokemon hacia atrás */
 section#contenidoPokemon > section#contenido > img#sueloTrasera {
     position: absolute;
     width: 10vh;
@@ -155,6 +185,7 @@ section#contenidoPokemon > section#contenido > img#sueloTrasera {
     left: 21vh;
 }
 
+/* Aplicamos tamaño y color a los textos del contenido pokemon */
 section#contenidoPokemon > section#contenido > p {
     color: black;
     width: 100%;
@@ -162,41 +193,51 @@ section#contenidoPokemon > section#contenido > p {
     font-size: 1.5vh;
 }
 
+/* El dato "Altura" */
 section#contenidoPokemon > section#contenido > p#altura {
     grid-area: altura;
 }
 
+/* El dato "Peso" */
 section#contenidoPokemon > section#contenido > p#peso {
     grid-area: peso;
 }
 
+/* El dato "Vida" */
 section#contenidoPokemon > section#contenido > p#vida {
     grid-area: vida;
 }
 
+/* El dato "Ataque" */
 section#contenidoPokemon > section#contenido > p#ataque {
     grid-area: ataque;
 }
 
+/* El dato "Defensa" */
 section#contenidoPokemon > section#contenido > p#defensa {
     grid-area: defensa;
 }
 
+/* El dato "Velocidad" */
 section#contenidoPokemon > section#contenido > p#velocidad {
     grid-area: velocidad;
 }
 
+/* El dato "Tipo" */
 section#contenidoPokemon > section#contenido > p#tipo {
     grid-area: tipo;
 }
 
+/* Información de pie de página  */
 footer {
+    /* Ordenamos la info */
     grid-area: footer;
     display: grid;
     grid-template-areas: "titulo nombres";
     grid-template-columns: 2fr 4fr;
     justify-content: center;
     align-items: center;
+    /* Le aplicamos un fondo y forma */
     width: 90%;
     height: 10vh;
     background-color: rgba(0, 0, 0, 0.786);
@@ -204,12 +245,14 @@ footer {
     margin: auto;
 }
 
+/* Color y tamaño del texto */
 footer > section > p {
     color: rgb(255, 255, 255);
     font-size: 1vh;
     margin: auto;
 }
 
+/* Centramos el contenido del título de la info */
 footer > section#tituloFooter {
     grid-area: titulo;
     height: 100%;
@@ -218,6 +261,7 @@ footer > section#tituloFooter {
     align-items: center;
 }
 
+/* Centramos el contenido de la info */
 footer > section#nombres {
     grid-area: nombres;
     height: 100%;
