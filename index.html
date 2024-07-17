@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Find U POKÉMON!</title>
-        <link rel="stylesheet" href="./css/style.css" />
-        <link rel="icon" href="./css/img/favicon.jpeg" type="image/x-icon" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find U POKÉMON!</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./css/img/favicon.jpeg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
 
+  <body>
+    <main>
+      <header>
+        <img src="./css/img/Titulo.png" alt="" />
+      </header>
     <body>
         <main>
             
@@ -33,13 +38,28 @@
                 />
                 <ul id="sugerenciasPokemon"></ul>
                 <button id="btnBuscar" type="submit"></button>
-                <!--<button id="btnDerecha" type="button"></button>
+                <button id="btnDerecha" type="button"></button>
                 <button id="btnDerecha" type="button"></button>
                 <button id="btnIzquierda" type="button"></button>
                 <button id="btnArriba" type="button"></button>
-                <button id="btnAbajo" type="button"></button>-->
+                <button id="btnAbajo" type="button"></button>
                 <button id="btnAbajo" type="button"></button>
             </section>
+      <section id="seccionInput">
+        <input
+          type="text"
+          id="inputPokemon"
+          placeholder="Nombre o número de Pokémon"
+        />
+        <ul id="sugerenciasPokemon"></ul>
+        <button id="btnBuscar" type="submit"></button>
+
+        <button id="btnDerecha"></button>
+        <button id="btnIzquierda"></button>
+
+        <button id="btnArriba" type="button"></button>
+        <button id="btnAbajo" type="button"></button>
+      </section>
 
             <section id="contenidoPokemon">
                 <img id="pokdex" src="./css/img/PokedexV2.png"></img>
@@ -62,6 +82,14 @@
 
                     <button id="modoOscuro"><img id="imgBoton" src="/css/img/iconoLuna.png" alt=""></button>
 
+      <section id="contenidoPokemon">
+        <img
+          src="./css/img/Pokedex.png"
+          alt="Interfaz de una Pokedex"
+          srcset=""
+        />
+        <section id="contenido"></section>
+      </section>
 
             <footer>
                 <section id="tituloFooter">
@@ -74,12 +102,23 @@
                     <p>Gustavo Enrique Bolivar Ogando</p>
                 </section>
             </footer>
-
-
-            <!-- <img id="fondo" src="./css/video/gifFondo.gif" alt=""> -->
-            <!-- <img id="fondoNoche" src="./css/video/gifFondoOscuro.gif" alt=""> -->
         
             <script src="./js/script.js"></script>
         </main>
     </body>
+      <footer>
+        <section id="tituloFooter">
+          <p>Realizado por:</p>
+        </section>
+        <section id="nombres">
+          <p>Ángel Suarez Sosa</p>
+          <p>Sergio Manzano Esclapez</p>
+          <p>Alejandro García Gómez</p>
+          <p>Gustavo Enrique Bolivar Ogando</p>
+        </section>
+      </footer>
+
+      <script src="./js/script.js"></script>
+    </main>
+  </body>
 </html>

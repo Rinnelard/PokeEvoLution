@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
@@ -73,12 +73,19 @@ header {
     align-items: center;
     width: 100%;
     height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 14vh;
 }
 
 /* le aplicamos un tamaño al titulo */
 header > img {
-    height: 7vh;
-    width: 40vh;
+  height: 7vh;
+  width: 40vh;
 }
 
 #modoOscuro {
@@ -92,6 +99,9 @@ header > img {
 #imgBoton {
     width: 7vh;
     height: 7%;
+section#seccionInput {
+  width: 100%;
+  height: 7vh;
 }
 
 /* Este es el input para la aplicación */
@@ -123,6 +133,104 @@ section#seccionInput > button#btnBuscar {
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
+}
+
+section#seccionInput > button#btnDerecha {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 75.5%;
+  left: 23.5%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnIzquierda {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 75.5%;
+  left: 12.9%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnArriba {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 72.7%;
+  left: 18.2%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnAbajo {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 78.5%;
+  left: 18.2%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+
+section#seccionInput > button#btnDerecha {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 75.5%;
+  left: 23.5%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnIzquierda {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 75.5%;
+  left: 12.9%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnArriba {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 72.7%;
+  left: 18.2%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
+}
+section#seccionInput > button#btnAbajo {
+  position: absolute;
+  height: 2.8%;
+  width: 5.5%;
+  top: 78.5%;
+  left: 18.2%;
+  background-color: transparent;
+  border: none;
+  border-radius: 2%;
+  outline: none;
+  cursor: pointer;
 }
 
 /* Cuando muestra sugerencias segun escribes en el input */
@@ -213,10 +321,10 @@ section#contenidoPokemon > section#contenido {
 
 /* Título */
 section#contenidoPokemon > section#contenido > h2 {
-    grid-area: nombre;
-    color: black;
-    width: 100%;
-    height: 100%;
+  grid-area: nombre;
+  color: black;
+  width: 100%;
+  height: 100%;
 }
 
 /* Imagen del pokemon de frente */
@@ -244,71 +352,71 @@ section#contenidoPokemon > section#contenido > img#frontal {
 
 /* Imagen de suelo con cesped debajo del pokemon de frente */
 section#contenidoPokemon > section#contenido > img#sueloFrontal {
-    position: absolute;
-    width: 15vh;
-    height: 4.5vh;
-    top: 42%;
-    left: 1vh;
+  position: absolute;
+  width: 15vh;
+  height: 4.5vh;
+  top: 42%;
+  left: 1vh;
 }
 
 /* Imagen del pokemon trasera */
 section#contenidoPokemon > section#contenido > img#trasera {
-    grid-area: trasera;
-    width: 14vh;
-    height: 14vh;
-    z-index: 1;
+  grid-area: trasera;
+  width: 14vh;
+  height: 14vh;
+  z-index: 1;
 }
 
 /* Imagen de suelo con cesped debajo del pokemon hacia atrás */
 section#contenidoPokemon > section#contenido > img#sueloTrasera {
-    position: absolute;
-    width: 10vh;
-    height: 2.5vh;
-    top: 38.5%;
-    left: 21vh;
+  position: absolute;
+  width: 10vh;
+  height: 2.5vh;
+  top: 38.5%;
+  left: 21vh;
 }
 
 /* Aplicamos tamaño y color a los textos del contenido pokemon */
 section#contenidoPokemon > section#contenido > p {
-    color: black;
-    width: 100%;
-    height: 100%;
-    font-size: 1.5vh;
+  color: black;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5vh;
 }
 
 /* El dato "Altura" */
 section#contenidoPokemon > section#contenido > p#altura {
-    grid-area: altura;
+  grid-area: altura;
 }
 
 /* El dato "Peso" */
 section#contenidoPokemon > section#contenido > p#peso {
-    grid-area: peso;
+  grid-area: peso;
 }
 
 /* El dato "Vida" */
 section#contenidoPokemon > section#contenido > p#vida {
-    grid-area: vida;
+  grid-area: vida;
 }
 
 /* El dato "Ataque" */
 section#contenidoPokemon > section#contenido > p#ataque {
-    grid-area: ataque;
+  grid-area: ataque;
 }
 
 /* El dato "Defensa" */
 section#contenidoPokemon > section#contenido > p#defensa {
-    grid-area: defensa;
+  grid-area: defensa;
 }
 
 /* El dato "Velocidad" */
 section#contenidoPokemon > section#contenido > p#velocidad {
-    grid-area: velocidad;
+  grid-area: velocidad;
 }
 
 /* El dato "Tipo" */
 section#contenidoPokemon > section#contenido > p#tipo {
-    grid-area: tipo;
+  grid-area: tipo;
 }
 
 /* Información de pie de página  */
@@ -330,28 +438,28 @@ footer {
 
 /* Color y tamaño del texto */
 footer > section > p {
-    color: rgb(255, 255, 255);
-    font-size: 1vh;
-    margin: auto;
+  color: rgb(255, 255, 255);
+  font-size: 1vh;
+  margin: auto;
 }
 
 /* Centramos el contenido del título de la info */
 footer > section#tituloFooter {
-    grid-area: titulo;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-area: titulo;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Centramos el contenido de la info */
 footer > section#nombres {
-    grid-area: nombres;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  grid-area: nombres;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .girarCarta {
     perspective: 1000px;
@@ -364,12 +472,12 @@ footer > section#nombres {
 }
 
 .girarCartaConstante {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transform-style: preserve-3d;
-    animation: spin 8s linear infinite; /* Animación de rotación continua */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  animation: spin 8s linear infinite; /* Animación de rotación continua */
 }
 
 .giroDeFrente,
@@ -381,7 +489,7 @@ footer > section#nombres {
 }
 
 .giroDeAtras {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 @keyframes spin {
