@@ -103,13 +103,13 @@ function buscarPokemon(nombrePokemon) {
                 </div>
             </div>
         </div>
-        <p id="altura">Altura: <span></span></p>
-        <p id="peso">Peso: <span></span></p>
-        <p id="vida">Puntos de vida: <span></span></p>
-        <p id="ataque">Ataque: <span></span></p>
-        <p id="defensa">Defensa: <span></span></p>
-        <p id="velocidad">Velocidad: <span></span></p>
-        <p id="tipo">Tipos: <span></span></p>
+        <p id="altura"> <span></span></p>
+        <p id="peso"><span></span></p>
+        <p id="vida"><span></span></p>
+        <p id="ataque"><span></span></p>
+        <p id="defensa"><span></span></p>
+        <p id="velocidad"> <span></span></p>
+        <p id="tipo"><span></span></p>
       `;
       
       pokemonInfo.innerHTML = html;
