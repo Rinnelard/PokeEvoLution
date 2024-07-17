@@ -111,7 +111,7 @@ section#contenidoPokemon {
 }
 
 /* La imagen de la pokedex */
-section#contenidoPokemon > img {
+#img1 {
     width: 90%;
     height: 95%;
     max-width: 400px;
@@ -308,6 +308,7 @@ footer > section#nombres {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
 }
+
 @media (min-width: 1024px) {
     #img1{
         display: none; 
@@ -319,15 +320,35 @@ footer > section#nombres {
         height: 100%;
         max-width: none;
     }
-    section#contenidoPokemon > section#contenido > img#frontal {
-        grid-area: frontal;
-        width: 17vh;
-        height: 17vh;
-        z-index: 1;
-        position: relative; /* Asegura que el posicionamiento sea relativo al contenedor */
-        left: 90px; /* Ajusta el valor según la cantidad de desplazamiento que desees */
+    section#contenidoPokemon > section#contenido {
+        position: absolute;
+        top: 25%;
+        left: 23%;
+        height: 40%;
+        width: 40%;
+        display: grid;
+        gap: 8px;
+        grid-template-areas:
+        "nombre nombre"
+        "altura altura"
+        "peso peso"
+        "vida vida"
+        "ataque ataque"
+        "defensa defensa"
+        "velocidad velocidad"
+        "tipo tipo";
+        grid-template-rows: repeat(8, 1fr);
+        border: solid black;
+
+        /* display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4px;
+        align-items: center;
+        border: solid black; */
     }
-    }
-=======
+#altura, #peso, #vida, #ataque, #defensa, #velocidad, #tipo {
+    margin-left: 4rem;
 }
->>>>>>> eb79ec4424781ff9291b173ef3c832e74c8700c4
+
+}
+
