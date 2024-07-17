@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("./img/fondo.png");
+    background-color: blue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* -------------- MODO OSCURO - FONDO
+    Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
+*/
+
+body.modoOscuro {
+    background-image: url('./img/fondoModoNoche.png');
+    color: rgb(0, 0, 0);
+}
+
+/* -----------Fin modo noche */
+
+/*---------------------------- Boton musica */
+
+#botonAudio {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 26vh;
+    top: 32vw;
+}
+
+#imgAudio {
+    width:5vh ;
+    height:5% ;
+}
+/* -----------------finaliza boton musica */
+
+main {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "contenidoPokemon"
+        "footer";
+
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 14vh;
+}
+
+header > img {
+    height: 7vh;
+    width: 40vh;
+}
+
+
+#modoOscuro {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 33vh;
+    top: 32vw;
+}
+
+
+#imgBoton {
+    width:7vh ;
+    height:7% ;
+}
+
+
+section#seccionInput > input#inputPokemon {
+    position: absolute;
+    top: 67.5%;
+    left: 15%;
+    height: 3%;
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+section#seccionInput > button#btnBuscar {
+    position: absolute;
+    height: 4%;
+    width: 8%;
+    top: 76.6%;
+    left: 80.4%;
+    background-color: transparent;
+    border: none;
+    border-radius: 2%;
+    outline: none;
+    cursor: pointer;
+}
+
+section#seccionInput > ul#sugerenciasPokemon {
+    position: absolute;
+    top: 72.2%;
+    left: 32.3%;
+    max-height: 9.5%;
+    width: 40%;
+    overflow-y: auto;
+    padding: 3%;
+    list-style-type: none;
+}
+
+section#contenidoPokemon {
+    grid-area: contenidoPokemon;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+section#contenidoPokemon > img{
+    background-image: url('./img/Pokedex.png');
+    width: 90%;
+    height: 95%;
+    max-width: 400px;
+}
+
+#pokdexNoche { /* por defecto la pokedex modo noche estará deshabilitada */
+    display: none;
+}
+
+/* ------------------------ MODO NOCHE - POKEDEX */
+
+body.modoOscuro section#contenidoPokemon>img{ /* descativa la pokedex de modo dia */
+    display: none;
+}
+
+body.modoOscuro section#contenidoPokemon>img#pokdexNoche{ /* activa la foto modo noche de la pokedex */
+    display: block ;
+}
+
+/* -----------------------------Finaliza modo noche */
+section#contenidoPokemon > section#contenido {
+    position: absolute;
+    top: 26.9%;
+    left: 14%;
+    height: 37%;
+    width: 72%;
+    max-width: 400px;
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+        "nombre nombre"
+        "frontal trasera"
+        "altura altura"
+        "peso peso"
+        "vida vida"
+        "ataque ataque"
+        "defensa defensa"
+        "velocidad velocidad"
+        "tipo tipo";
+    grid-template-rows: 1fr 50% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+section#contenidoPokemon > section#contenido > h2 {
+    grid-area: nombre;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+section#contenidoPokemon > section#contenido > img#frontal {
+    grid-area: frontal;
+    width: 17vh;
+    height: 17vh;
+    z-index: 1;
+}
+
+section#contenidoPokemon > section#contenido > img#sueloFrontal {
+    position: absolute;
+    width: 15vh;
+    height: 4.5vh;
+    top: 42%;
+    left: 1vh;
+}
+
+section#contenidoPokemon > section#contenido > img#trasera {
+    grid-area: trasera;
+    width: 14vh;
+    height: 14vh;
+    z-index: 1;
+}
+
+section#contenidoPokemon > section#contenido > img#sueloTrasera {
+    position: absolute;
+    width: 10vh;
+    height: 2.5vh;
+    top: 38.5%;
+    left: 21vh;
+}
+
+section#contenidoPokemon > section#contenido > p {
+    color: black;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5vh;
+}
+
+section#contenidoPokemon > section#contenido > p#altura {
+    grid-area: altura;
+}
+
+section#contenidoPokemon > section#contenido > p#peso {
+    grid-area: peso;
+}
+
+section#contenidoPokemon > section#contenido > p#vida {
+    grid-area: vida;
+}
+
+section#contenidoPokemon > section#contenido > p#ataque {
+    grid-area: ataque;
+}
+
+section#contenidoPokemon > section#contenido > p#defensa {
+    grid-area: defensa;
+}
+
+section#contenidoPokemon > section#contenido > p#velocidad {
+    grid-area: velocidad;
+}
+
+section#contenidoPokemon > section#contenido > p#tipo {
+    grid-area: tipo;
+}
+
+footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-areas: "titulo nombres";
+    grid-template-columns: 2fr 4fr;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 10vh;
+    background-color: rgba(0, 0, 0, 0.786);
+    border-radius: 2vh;
+    margin: auto;
+}
+
+footer > section > p {
+    color: rgb(255, 255, 255);
+    font-size: 1vh;
+    margin: auto;
+}
+
+footer > section#tituloFooter {
+    grid-area: titulo;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > section#nombres {
+    grid-area: nombres;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
