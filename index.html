@@ -14,11 +14,17 @@
 
     <body>
         <main>
-            <header>
+            
+        <header>
                 <img src="./css/img/Titulo.png" alt="" />
-            </header>
+            </header> 
 
-            <section id="seccionInput">
+            <section>
+                <audio id="audio" src="./css/audio/bsoFondo.mp3" loop></audio>
+                <button id="botonAudio"><img id="imgAudio" src="./css/img/iconoMusica.png" alt=""></button>
+            </section>
+
+        <section id="seccionInput">
                 <input
                     type="text"
                     id="inputPokemon"
@@ -36,6 +42,9 @@
             </section>
 
             <section id="contenidoPokemon">
+                <img id="pokdex" src="./css/img/PokedexV2.png"></img>
+                <img id="pokdexNoche" src="./css/img/pokedexMovilNoche.png"></img>
+            <section id="contenido"></section>
                 <img
                     src="./css/img/Pokedex.png"
                     alt="Interfaz de una Pokedex"
@@ -49,6 +58,11 @@
                 <section id="contenido"></section>
             </section>
 
+                <!-- boton MODO OSCURO -->
+
+                    <button id="modoOscuro"><img id="imgBoton" src="/css/img/iconoLuna.png" alt=""></button>
+
+
             <footer>
                 <section id="tituloFooter">
                     <p>Realizado por:</p>
@@ -61,6 +75,10 @@
                 </section>
             </footer>
 
+
+            <!-- <img id="fondo" src="./css/video/gifFondo.gif" alt=""> -->
+            <!-- <img id="fondoNoche" src="./css/video/gifFondoOscuro.gif" alt=""> -->
+        
             <script src="./js/script.js"></script>
         </main>
     </body>

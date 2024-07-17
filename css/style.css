@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     /* Se aplica una tipografía y tamaño por defecto a todo el texto de la web */
     font-family: "Press Start 2P", sans-serif;
@@ -12,12 +13,43 @@ body {
     /* Se le aplica el fondo a la página */
     background-image: url("./img/fondo.png");
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+/* -------------- MODO OSCURO - FONDO
+    Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
+*/
+
+body.modoOscuro {
+    background-image: url('./video/gifFondoOscuro.gif');
+    color: rgb(0, 0, 0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+} 
+
+/* -----------Fin modo noche */
+
+/*---------------------------- Boton musica */
+
+#botonAudio {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 26vh;
+    top: 32vw;
+}
+
+#imgAudio {
+    width: 5vh;
+    height: 5%;
     /* En caso de no verse la imagen se vería de color blanco */
     color: white;
 }
+/* -----------------finaliza boton musica */
 
 /* Contiene todo el contenido de la web */
 main {
@@ -47,6 +79,19 @@ header {
 header > img {
     height: 7vh;
     width: 40vh;
+}
+
+#modoOscuro {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 33vh;
+    top: 32vw;
+}
+
+#imgBoton {
+    width: 7vh;
+    height: 7%;
 }
 
 /* Este es el input para la aplicación */
@@ -111,6 +156,8 @@ section#contenidoPokemon {
 
 /* La imagen de la pokedex */
 #img1 {
+section#contenidoPokemon > img {
+    background-image: url("./img/Pokedex.png");
     width: 90%;
     height: 95%;
     max-width: 400px;
@@ -121,6 +168,24 @@ section#contenidoPokemon {
 }
 
 /* El contenido que se muestra de la API pokemon */
+#pokdexNoche {
+    /* por defecto la pokedex modo noche estará deshabilitada */
+    display: none;
+}
+
+/* ------------------------ MODO NOCHE - POKEDEX */
+
+body.modoOscuro section#contenidoPokemon > img {
+    /* descativa la pokedex de modo dia */
+    display: none;
+}
+
+body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
+    /* activa la foto modo noche de la pokedex */
+    display: block;
+}
+
+/* -----------------------------Finaliza modo noche */
 section#contenidoPokemon > section#contenido {
     position: absolute;
     top: 26.9%;
