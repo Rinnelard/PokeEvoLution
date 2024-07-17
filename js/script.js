@@ -115,14 +115,18 @@ function buscarPokemon(nombrePokemon) {
       pokemonInfo.innerHTML = html;
       pokemonInfo.classList.add("show");
 
+      
+      //retraso de cada dato en milisegundos
+      const retraso = [0, 1000, 2000, 3000, 4000, 5000, 6000];
+
       // Mostrar datos gradualmente
-      mostrarDatoGradualmente("altura", `Altura: ${data.height / 10} m`);
-      mostrarDatoGradualmente("peso", `Peso: ${data.weight / 10} kg`);
-      mostrarDatoGradualmente("vida", `Puntos de vida: ${data.stats[0].base_stat}`);
-      mostrarDatoGradualmente("ataque", `Ataque: ${data.stats[1].base_stat}`);
-      mostrarDatoGradualmente("defensa", `Defensa: ${data.stats[2].base_stat}`);
-      mostrarDatoGradualmente("velocidad", `Velocidad: ${data.stats[5].base_stat}`);
-      mostrarDatoGradualmente("tipo", `Tipos: ${data.types.map((typeInfo) => primeraLetraMayuscula(typeInfo.type.name)).join(", ")}`);
+      setTimeout(() => mostrarDatoGradualmente("altura", `Altura: ${data.height / 10} m`),retraso[0]);
+      setTimeout(() => mostrarDatoGradualmente("peso", `Peso: ${data.weight / 10} kg`),retraso[1]);
+      setTimeout(() => mostrarDatoGradualmente("vida", `Puntos de vida: ${data.stats[0].base_stat}`),retraso[2]);
+      setTimeout(() => mostrarDatoGradualmente("ataque", `Ataque: ${data.stats[1].base_stat}`),retraso[3]);
+      setTimeout(() => mostrarDatoGradualmente("defensa", `Defensa: ${data.stats[2].base_stat}`),retraso[4]);
+      setTimeout(() => mostrarDatoGradualmente("velocidad", `Velocidad: ${data.stats[5].base_stat}`),retraso[5]);
+      setTimeout(() => mostrarDatoGradualmente("tipo", `Tipos: ${data.types.map((typeInfo) => primeraLetraMayuscula(typeInfo.type.name)).join(", ")}`),retraso[6]);
     })
     .catch((error) => {
       const pokemonInfo = document.getElementById("contenido");
@@ -134,8 +138,8 @@ function buscarPokemon(nombrePokemon) {
 // Función para mostrar un dato gradualmente
 function mostrarDatoGradualmente(idElemento, texto) {
   const elemento = document.getElementById(idElemento);
-  const textoOriginal = elemento.innerHTML;
-  elemento.innerHTML = ""; // Limpiar el contenido original
+  elemento.innerHTML = "";  // Limpiar el contenido original
+
 
   // Mostrar el texto caracter por caracter
   let index = 0;
