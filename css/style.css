@@ -8,14 +8,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url("./img/fondo.png");
-    background-color: blue;
+    background-image: url('./video/fondo.gif');
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
-    color: rgb(255, 255, 255);
-    transition: background-color 0.3s, color 0.3s;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 /* -------------- MODO OSCURO - FONDO
@@ -23,9 +20,13 @@ body {
 */
 
 body.modoOscuro {
-    background-image: url('./img/fondoModoNoche.png');
+    background-image: url('./video/gifFondoOscuro.gif');
     color: rgb(0, 0, 0);
-}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+} 
 
 /* -----------Fin modo noche */
 
@@ -40,8 +41,8 @@ body.modoOscuro {
 }
 
 #imgAudio {
-    width:5vh ;
-    height:5% ;
+    width: 5vh;
+    height: 5%;
 }
 /* -----------------finaliza boton musica */
 
@@ -71,7 +72,6 @@ header > img {
     width: 40vh;
 }
 
-
 #modoOscuro {
     position: absolute;
     background-color: transparent;
@@ -80,12 +80,10 @@ header > img {
     top: 32vw;
 }
 
-
 #imgBoton {
-    width:7vh ;
-    height:7% ;
+    width: 7vh;
+    height: 7%;
 }
-
 
 section#seccionInput > input#inputPokemon {
     position: absolute;
@@ -131,25 +129,28 @@ section#contenidoPokemon {
     align-items: flex-start;
 }
 
-section#contenidoPokemon > img{
-    background-image: url('./img/Pokedex.png');
+section#contenidoPokemon > img {
+    background-image: url("./img/Pokedex.png");
     width: 90%;
     height: 95%;
     max-width: 400px;
 }
 
-#pokdexNoche { /* por defecto la pokedex modo noche estará deshabilitada */
+#pokdexNoche {
+    /* por defecto la pokedex modo noche estará deshabilitada */
     display: none;
 }
 
 /* ------------------------ MODO NOCHE - POKEDEX */
 
-body.modoOscuro section#contenidoPokemon>img{ /* descativa la pokedex de modo dia */
+body.modoOscuro section#contenidoPokemon > img {
+    /* descativa la pokedex de modo dia */
     display: none;
 }
 
-body.modoOscuro section#contenidoPokemon>img#pokdexNoche{ /* activa la foto modo noche de la pokedex */
-    display: block ;
+body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
+    /* activa la foto modo noche de la pokedex */
+    display: block;
 }
 
 /* -----------------------------Finaliza modo noche */

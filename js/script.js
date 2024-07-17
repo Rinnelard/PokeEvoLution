@@ -4,7 +4,7 @@ const btnModoOscuro = document.getElementById('modoOscuro')
 
 btnModoOscuro.addEventListener('click', ()=>{
     document.body.classList.toggle('modoOscuro')
-    
+    /* document.body.classList.toggle('modoOscuro'); */
 });
 
 
