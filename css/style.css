@@ -40,6 +40,11 @@ body.modoOscuro {
 
 /* ------------------------ MODO NOCHE - POKEDEX */
 
+#pokdexNoche {
+    /* por defecto la pokedex modo noche estará deshabilitada */
+    display: none;
+}
+
 body.modoOscuro section#contenidoPokemon > img {
     /* descativa la pokedex de modo dia */
     display: none;
@@ -262,12 +267,6 @@ section#contenidoPokemon > img {
 }
 
 /* El contenido que se muestra de la API pokemon */
-#pokdexNoche {
-    /* por defecto la pokedex modo noche estará deshabilitada */
-    display: none;
-}
-
-/* -----------------------------Finaliza modo noche */
 section#contenidoPokemon > section#contenido {
     position: absolute;
     top: 16.5%;
