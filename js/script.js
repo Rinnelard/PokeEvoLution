@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnAvanzar = document.getElementById("btnDerecha");
     const btnArriba = document.getElementById("btnArriba");
     const btnAbajo = document.getElementById("btnAbajo");
+    const btnEliminar = document.getElementById("btnEliminar");
 
     let sugerencias = []; // Array para almacenar las sugerencias de Pokémon
     let pokemonIndex = -1; // Índice inicial para el Pokémon actual mostrado
@@ -52,10 +53,21 @@ document.addEventListener("DOMContentLoaded", () => {
     btnBuscar.addEventListener("click", () => {
         const nombrePokemon = inputPokemon.value.trim().toLowerCase();
         if (nombrePokemon) {
-            buscarYGuardarIndice(nombrePokemon);
+            buscarPokemon(nombrePokemon);
         } else {
             alert("Por favor, introduce el nombre o número de un Pokémon.");
         }
+    });
+
+    //Funcion para eliminar el contenido del input
+    function limpiarInput() {
+        inputPokemon.value = "";
+    }
+
+    //Evento click para eliminar sugerencias e input
+    btnEliminar.addEventListener("click", () => {
+        limpiarSugerencias();
+        limpiarInput();
     });
 
     // Evento click del botón para bajar en la lista
@@ -148,6 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return respuesta.json();
             })
             .then((data) => {
+                currentPokemonIndex = data.id;
+
                 const pokemonInfo = document.getElementById("contenido");
                 const imagenDeFrente = data.sprites.front_default;
                 const imagenDeDetras = data.sprites.back_default;
@@ -256,24 +270,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const pokemonInfo = document.getElementById("contenido");
                 pokemonInfo.innerHTML = `<p>${error.message}</p>`;
                 pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
-            });
-    }
-
-    // Función para buscar y guardar el índice del Pokémon
-    function buscarYGuardarIndice(nombrePokemon) {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-            .then((respuesta) => {
-                if (!respuesta.ok) {
-                    throw new Error("Pokémon no encontrado");
-                }
-                return respuesta.json();
-            })
-            .then((data) => {
-                currentPokemonIndex = data.id;
-                mostrarPokemon(data);
-            })
-            .catch((error) => {
-                mostrarError(error.message);
             });
     }
 
