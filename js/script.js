@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPokemonIndex = 1; // Índice inicial del Pokémon
   let intervalos = []; // Array para almacenar los intervalos y poder limpiarlos
 
+  
+
   // Evento input para actualizar las sugerencias según lo que el usuario escribe
   inputPokemon.addEventListener("input", () => {
     const terminoDeBusqueda = inputPokemon.value.trim().toLowerCase();
@@ -86,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnBuscar.addEventListener("click", () => {
     const nombrePokemon = inputPokemon.value.trim().toLowerCase();
     if (nombrePokemon) {
-      buscarYGuardarIndice(nombrePokemon);
+      buscarPokemon(nombrePokemon);
     } else {
       alert("Por favor, introduce el nombre o número de un Pokémon.");
     }
@@ -182,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return respuesta.json();
       })
       .then((data) => {
+        currentPokemonIndex = data.id;
         const pokemonInfo = document.getElementById("contenido");
         const imagenDeFrente = data.sprites.front_default;
         const imagenDeDetras = data.sprites.back_default;
@@ -243,27 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
         intervalos.push(setTimeout(() => mostrarDatoGradualmente("tipo", `Tipos: ${tiposEnEspanol}`), retraso[6]));
       })
       .catch((error) => {
-        mostrarError(error.message);
+        console.error("Error al buscar el Pokémon:", error);
+        alert("Pokémon no encontrado. Por favor, verifica el nombre o número e inténtalo nuevamente.");
       });
   }
 
-  // Función para buscar y guardar el índice del Pokémon
-  function buscarYGuardarIndice(nombrePokemon) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-      .then((respuesta) => {
-        if (!respuesta.ok) {
-          throw new Error("Pokémon no encontrado");
-        }
-        return respuesta.json();
-      })
-      .then((data) => {
-        currentPokemonIndex = data.id;
-        mostrarPokemon(data);
-      })
-      .catch((error) => {
-        mostrarError(error.message);
-      });
-  }
+
 
   // Función para mostrar mensaje de error
   function mostrarError(message) {
@@ -292,4 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function primeraLetraMayuscula(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  
 });
