@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnAvanzar = document.getElementById("btnDerecha");
   const btnArriba = document.getElementById("btnArriba");
   const btnAbajo = document.getElementById("btnAbajo");
+  const btnEliminar = document.getElementById("btnEliminar");
 
   let sugerencias = []; // Array para almacenar las sugerencias de Pokémon
   let pokemonIndex = -1; // Índice inicial para el Pokémon actual mostrado
@@ -68,6 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       limpiarSugerencias();
     }
+  });
+
+  //Funcion para eliminar el contenido del input
+  function limpiarInput() {
+    inputPokemon.value = "";
+  }
+
+//Evento click para eliminar sugerencias e input
+  btnEliminar.addEventListener("click", () => {
+    limpiarSugerencias();
+    limpiarInput();
   });
 
   // Evento click del botón de búsqueda

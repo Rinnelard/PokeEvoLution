@@ -145,6 +145,21 @@ section#seccionInput > button#btnBuscar {
     cursor: pointer;
 }
 
+/* El botón para buscar lo escrito en el input */
+section#seccionInput > button#btnEliminar {
+  
+  position: absolute;
+  height: 4%;
+  width: 6%;
+  top: 76.8%;
+  left: 76.6%;
+  background-color: transparent;
+  border: none;
+  border-radius: 5vh;
+  outline: none;
+  cursor: pointer;
+}
+
 section#seccionInput > button#btnArriba {
     position: absolute;
     height: 3.8%;
