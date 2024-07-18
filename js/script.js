@@ -1,6 +1,6 @@
 "use strict";
 //  MODO OSCURO
-const btnModoOscuro = document.getElementById("modoOscuro");
+const btnModoOscuro = document.getElementById("btnModoOscuro");
 
 btnModoOscuro.addEventListener("click", () => {
     document.body.classList.toggle("modoOscuro");
@@ -11,7 +11,7 @@ btnModoOscuro.addEventListener("click", () => {
 const audio = document.getElementById("audio");
 const alternarAudio = document.getElementById("botonAudio");
 
-audio.volume = 0.15;
+audio.volume = 0.3;
 
 alternarAudio.addEventListener("click", () => {
     if (audio.paused) {
@@ -157,31 +157,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Preparar la información para mostrar gradualmente
                 const html = `
-        <h2>${primeraLetraMayuscula(data.name)}</h2>
-         <div class="girarCarta">
-            <div class="girarCartaConstante">
-                <div class="giroDeFrente">
-                    <img src="${imagenDeFrente}" alt="${
+                <h2>${primeraLetraMayuscula(data.name)}</h2>
+                <div class="girarCarta">
+                    <div class="giroDeFrente">
+                        <img src="${imagenDeFrente}" alt="${
                     data.name
                 } front" alt="Imagen Pokemon frontal">
-                    <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
-                </div>
-                <div class="giroDeAtras">
-                    <img src="${imagenDeDetras}" alt="${
+
+                        <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
+                    </div>
+                    <div class="giroDeAtras">
+                        <img src="${imagenDeDetras}" alt="${
                     data.name
                 } back"alt="Imagen Pokemon back">
-                    <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
+                        <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
+                    </div>
                 </div>
-            </div>
-        </div>
-        <p id="altura"> <span></span></p>
-        <p id="peso"><span></span></p>
-        <p id="vida"><span></span></p>
-        <p id="ataque"><span></span></p>
-        <p id="defensa"><span></span></p>
-        <p id="velocidad"> <span></span></p>
-        <p id="tipo"><span></span></p>
-      `;
+                
+                <p id="altura"> <span></span></p>
+                <p id="peso"><span></span></p>
+                <p id="vida"><span></span></p>
+                <p id="ataque"><span></span></p>
+                <p id="defensa"><span></span></p>
+                <p id="velocidad"> <span></span></p>
+                <p id="tipo"><span></span></p>
+                `;
 
                 pokemonInfo.innerHTML = html;
                 pokemonInfo.classList.add("show");
@@ -238,11 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         ),
                     retraso[5]
                 );
+
                 setTimeout(
                     () =>
                         mostrarDatoGradualmente(
                             "tipo",
-                            `Tipos: ${data.types
+                            `${data.types
                                 .map((typeInfo) =>
                                     primeraLetraMayuscula(typeInfo.type.name)
                                 )
@@ -255,23 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const pokemonInfo = document.getElementById("contenido");
                 pokemonInfo.innerHTML = `<p>${error.message}</p>`;
                 pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
-            });
-    }
-    // Función para buscar y mostrar la información del Pokémon seleccionado
-    function buscarPokemon(nombrePokemon) {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-            .then((respuesta) => {
-                if (!respuesta.ok) {
-                    throw new Error("Pokémon no encontrado");
-                }
-                return respuesta.json();
-            })
-            .then((data) => {
-                mostrarPokemon(data);
-                currentPokemonIndex = data.id;
-            })
-            .catch((error) => {
-                mostrarError(error.message);
             });
     }
 
@@ -291,39 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((error) => {
                 mostrarError(error.message);
             });
-    }
-
-    // Función para mostrar la información del Pokémon
-    function mostrarPokemon(data) {
-        const pokemonInfo = document.getElementById("contenido");
-        const imagenDeFrente = data.sprites.front_default;
-        const imagenDeDetras = data.sprites.back_default;
-        pokemonInfo.innerHTML = `
-      <h2>${primeraLetraMayuscula(data.name)}</h2>
-      <div class="girarCarta">
-        <div class="girarCartaConstante">
-          <div class="giroDeFrente">
-            <img src="${imagenDeFrente}" alt="${data.name} front">
-            <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
-          </div>
-          <div class="giroDeAtras">
-            <img src="${imagenDeDetras}" alt="${data.name} back">
-            <img id="sueloFrontal" src="./css/img/sueloPokemon.png" alt="suelo de cesped para el pokemon">
-          </div>
-        </div>
-      </div>
-      
-      <p id="altura">Altura: ${data.height / 10} m</p>
-      <p id="peso">Peso: ${data.weight / 10} kg</p>
-      <p id="vida">Puntos de vida: ${data.stats[0].base_stat}</p>
-      <p id="ataque">Ataque: ${data.stats[1].base_stat}</p>
-      <p id="defensa">Defensa: ${data.stats[2].base_stat}</p>
-      <p id="velocidad">Velocidad: ${data.stats[5].base_stat}</p>
-      <p id="tipo">Tipos: ${data.types
-          .map((typeInfo) => primeraLetraMayuscula(typeInfo.type.name))
-          .join(", ")}</p>
-    `;
-        pokemonInfo.classList.add("show");
     }
 
     // Función para mostrar mensaje de error
@@ -346,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index >= texto.length) {
                 clearInterval(intervalo);
             }
-        }, 80); // Intervalo de tiempo entre cada caracter
+        }, 60); // Intervalo de tiempo entre cada caracter
     }
     // Función para capitalizar la primera letra de una cadena
     function primeraLetraMayuscula(string) {
