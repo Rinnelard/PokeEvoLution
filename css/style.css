@@ -80,11 +80,10 @@ header > img {
     height: 7vh;
     width: 40vh;
 }
-
-#imgBoton {
+/* #imgBoton {
     width: 7vh;
     height: 7%;
-}
+} */
 
 /* --------------------------------- MAIN --------------------------------- */
 
@@ -216,8 +215,8 @@ section#seccionInput > ul#sugerenciasPokemon {
     position: absolute;
     background-color: transparent;
     border: none;
-    left: 26vh;
-    top: 4.5vh;
+    left: 60%;
+    top: 6%;
     width: 12%;
     height: 9%;
 }
@@ -234,8 +233,8 @@ section#seccionInput > ul#sugerenciasPokemon {
     position: absolute;
     background-color: transparent;
     border: none;
-    left: 33.5vh;
-    top: 4.5vh;
+    left: 45%;
+    top: 6%;
     width: 12%;
     height: 9%;
 }
@@ -402,11 +401,10 @@ footer > section#nombres {
 
 .girarCarta {
     perspective: 1000px;
-    width: 20vh;
-    height: 20vh;
+    width: 60%;
     position: absolute;
-    top: 2.5vh;
-    left: 9vh;
+    top: 10%;
+    left: 22%;
     text-align: center;
     transform-style: preserve-3d;
     animation: spin 8s linear infinite; /* Animación de rotación continua */
