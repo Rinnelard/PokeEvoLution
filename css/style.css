@@ -24,8 +24,6 @@ body {
     width: 100%;
     height: 100%;
     /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
-
-    
 }
 
 /* -------------- MODO OSCURO - FONDO
@@ -119,13 +117,12 @@ section#seccionInput > input#inputPokemon {
     border: none;
     outline: none;
     font-family: "Press Start 2P";
-    font-size:smaller
+    font-size: smaller;
 }
 
 /* Para mostrar en negrita el texto del input */
 section#seccionInput > input#inputPokemon::placeholder {
     font-weight: bold;
-    
 }
 
 /* El botón para buscar lo escrito en el input */
@@ -142,6 +139,20 @@ section#seccionInput > button#btnBuscar {
     border-radius: 5vh;
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
+    cursor: pointer;
+}
+
+/* Botón para vaciar texto del input */
+section#seccionInput > button#btnEliminar {
+    position: absolute;
+    height: 4%;
+    width: 6%;
+    top: 76.8%;
+    left: 76.6%;
+    background-color: transparent;
+    border: none;
+    border-radius: 5vh;
+    outline: none;
     cursor: pointer;
 }
 
