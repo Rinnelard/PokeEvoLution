@@ -24,10 +24,8 @@ body {
     width: 100%;
     height: 100%;
     /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
-    min-width: 375px;
-    max-width: 380px;
-    max-height: 667px;
-    margin: auto;
+
+    
 }
 
 /* -------------- MODO OSCURO - FONDO
@@ -92,9 +90,12 @@ main {
     position: relative;
     grid-area: main;
     height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
-    width: 100%;
     display: grid;
     grid-template-areas: "secciónPokemon";
+    min-width: 375px;
+    max-width: 380px;
+    max-height: 667px;
+    margin: auto;
 }
 
 section#seccionInput {
