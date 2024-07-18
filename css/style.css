@@ -23,6 +23,11 @@ body {
     /* Nos aseguramos de que el body ocupa el total de la web */
     width: 100%;
     height: 100%;
+    /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
+    min-width: 375px;
+    max-width: 380px;
+    max-height: 667px;
+    margin: auto;
 }
 
 /* -------------- MODO OSCURO - FONDO
@@ -113,11 +118,14 @@ section#seccionInput > input#inputPokemon {
     background-color: transparent;
     border: none;
     outline: none;
+    font-family: "Press Start 2P";
+    font-size:smaller
 }
 
 /* Para mostrar en negrita el texto del input */
 section#seccionInput > input#inputPokemon::placeholder {
     font-weight: bold;
+    
 }
 
 /* El botón para buscar lo escrito en el input */
