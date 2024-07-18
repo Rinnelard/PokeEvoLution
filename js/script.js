@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let sugerencias = []; // Array para almacenar las sugerencias de Pokémon
   let pokemonIndex = -1; // Índice inicial para el Pokémon actual mostrado
   let currentPokemonIndex = 1; // Índice inicial del Pokémon
+  let intervalos = []; // Array para almacenar los intervalos y poder limpiarlos
 
   // Evento input para actualizar las sugerencias según lo que el usuario escribe
   inputPokemon.addEventListener("input", () => {
@@ -173,8 +174,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const imagenDeFrente = data.sprites.front_default;
         const imagenDeDetras = data.sprites.back_default;
 
-        // Limpiar resultados anteriores
+        // Limpiar resultados anteriores y limpiar intervalos previos
         pokemonInfo.innerHTML = "";
+        intervalos.forEach(function(intervaloId) {
+            clearInterval(intervaloId); // Detener cada intervalo usando su identificador único
+        });
+        //reseeteo de del array intervalos
+        intervalos = [];
 
         // Preparar la información para mostrar gradualmente
         const html = `
@@ -210,63 +216,22 @@ document.addEventListener("DOMContentLoaded", () => {
         //retraso de cada dato en milisegundos
         const retraso = [0, 1000, 2000, 3000, 4000, 5000, 6000];
 
-        // Mostrar datos gradualmente
-        setTimeout(
-          () =>
-            mostrarDatoGradualmente("altura", `Altura: ${data.height / 10} m`),
-          retraso[0]
-        );
-        setTimeout(
-          () => mostrarDatoGradualmente("peso", `Peso: ${data.weight / 10} kg`),
-          retraso[1]
-        );
-        setTimeout(
-          () =>
-            mostrarDatoGradualmente(
-              "vida",
-              `Puntos de vida: ${data.stats[0].base_stat}`
-            ),
-          retraso[2]
-        );
-        setTimeout(
-          () =>
-            mostrarDatoGradualmente(
-              "ataque",
-              `Ataque: ${data.stats[1].base_stat}`
-            ),
-          retraso[3]
-        );
-        setTimeout(
-          () =>
-            mostrarDatoGradualmente(
-              "defensa",
-              `Defensa: ${data.stats[2].base_stat}`
-            ),
-          retraso[4]
-        );
-        setTimeout(
-          () =>
-            mostrarDatoGradualmente(
-              "velocidad",
-              `Velocidad: ${data.stats[5].base_stat}`
-            ),
-          retraso[5]
-        );
+        // Mostrar datos gradualmente y almacenar los intervalos
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("altura", `Altura: ${data.height / 10} m`), retraso[0]));
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("peso", `Peso: ${data.weight / 10} kg`), retraso[1]));
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("vida", `Puntos de vida: ${data.stats[0].base_stat}`), retraso[2]));
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("ataque", `Ataque: ${data.stats[1].base_stat}`), retraso[3]));
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("defensa", `Defensa: ${data.stats[2].base_stat}`), retraso[4]));
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("velocidad", `Velocidad: ${data.stats[5].base_stat}`), retraso[5]));
 
         // Traducir los tipos a español usando el diccionario tipoTraducciones
         const tiposEnEspanol = data.types
-          .map(
-            (typeInfo) =>
-              tipoTraducciones[typeInfo.type.name] || typeInfo.type.name
-          )
+          .map((typeInfo) => tipoTraducciones[typeInfo.type.name] || typeInfo.type.name)
           .join(", ");
-
-          setTimeout(() => mostrarDatoGradualmente("tipo", `Tipos: ${tiposEnEspanol}`), retraso[6]);
-        })
+        intervalos.push(setTimeout(() => mostrarDatoGradualmente("tipo", `Tipos: ${tiposEnEspanol}`), retraso[6]));
+      })
       .catch((error) => {
-        const pokemonInfo = document.getElementById("contenido");
-        pokemonInfo.innerHTML = `<p>${error.message}</p>`;
-        pokemonInfo.classList.add("show"); // Mostrar el contenedor de info incluso si hay error
+        mostrarError(error.message);
       });
   }
 
@@ -309,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(intervalo);
       }
     }, 60); // Intervalo de tiempo entre cada caracter
+    intervalos.push(intervalo); // Guardar el intervalo para poder limpiarlo después
   }
   // Función para capitalizar la primera letra de una cadena
   function primeraLetraMayuscula(string) {
