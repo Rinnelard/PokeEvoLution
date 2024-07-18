@@ -230,6 +230,7 @@ section#seccionInput > ul#sugerenciasPokemon {
 }
 /* -----------------finaliza boton musica */
 
+/* ----------------- Boton modo oscuro */
 #btnModoOscuro {
     position: absolute;
     background-color: transparent;
@@ -263,14 +264,14 @@ section#contenidoPokemon {
 
 /* La imagen de la pokedex */
 /* #img1 { */
-section#contenidoPokemon > img {
+section#contenidoPokemon > img#img1 {
     background-image: url("./img/Pokedex.png");
     width: 90%;
     height: 95%;
     max-width: 400px;
 }
 /* Oculta la imagen de la pokeDex grande en pantallas pequeñas */
-#img2 {
+section#contenidoPokemon > img#img2 {
     display: none;
 }
 
@@ -434,49 +435,168 @@ footer > section#nombres {
 
 /* ----------------------------- Media query para ordenador ------------------------------- */
 @media (min-width: 1024px) {
+
+    main {
+        height: 75vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+        min-width: 1000px;
+        max-width: 1600px; 
+        max-height: 1200px; 
+
+    }
+    section#seccionInput > input#inputPokemon{
+        left: 187%;
+        top: 66%;
+        }
+    section#seccionInput > button#btnBuscar {
+        /* Le ponemos una ubicación fija en el botón verde de la interfaz */
+        position: absolute;
+        height: 6%;
+        width: 8%;
+        top: 82%;
+        left: 500%;
+        /* Reseteamos el fondo y borde para hacerlo invisible */
+        background-color: transparent;
+        border: none;
+        border-radius: 5vh;
+        outline: none;
+        /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
+        cursor: pointer;
+    }
+    
+
+    #botonAudio {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        left: 130%;
+        top: 12%;
+        width: 12%;
+        height: 9%;
+    }
+    
+    #imgAudio {
+        width: 80%;
+        height: 100%;
+        /* En caso de no verse la imagen se vería de color blanco */
+        color: white;
+    }
+    /* -----------------finaliza boton musica */
+
+    /* ----------------- Boton modo oscuro */
+#btnModoOscuro {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 145%;
+    top: 12%;
+    width: 12%;
+    height: 9%;
+}
+
+#btnModoOscuro > img {
+    width: 100%;
+    height: 100%;
+}
+
+    /* El área donde va la pokedex */
+section#contenidoPokemon {
+    grid-area: secciónPokemon;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* La imagen de la pokedex */
+/* #img1 oscultada para pc { */
     #img1 {
         display: none;
-        max-width: none;
     }
-    #img2 {
+/* visualiza esta pokedex para pantallas grandes */
+    section#contenidoPokemon > img#img2 {
         display: block;
-        width: 180%;
+        width: 100%;
         height: 100%;
-        max-width: none;
-    }
-    section#contenidoPokemon > section#contenido {
-        position: absolute;
-        top: 25%;
-        left: 23%;
-        height: 40%;
-        width: 40%;
-        display: grid;
-        gap: 8px;
-        grid-template-areas:
-            "nombre nombre"
-            "altura altura"
-            "peso peso"
-            "vida vida"
-            "ataque ataque"
-            "defensa defensa"
-            "velocidad velocidad"
-            "tipo tipo";
-        grid-template-rows: repeat(8, 1fr);
-        border: solid black;
+}
 
-        /* display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 4px;
-        align-items: center;
-        border: solid black; */
-    }
-    #altura,
-    #peso,
-    #vida,
-    #ataque,
-    #defensa,
-    #velocidad,
-    #tipo {
-        margin-left: 4rem;
-    }
+/* El contenido que se muestra de la API pokemon */
+section#contenidoPokemon > section#contenido {
+    position: absolute;
+    top: 16.5%;
+    left: 13%;
+    height: 50%;
+    width: 74%;
+    padding: 4%;
+    text-align: center;
+    /* Las áreas para organizar el contenido */
+    display: grid;
+    grid-template-areas:
+        "nombre"
+        "relleno"
+        "altura"
+        "peso"
+        "vida"
+        "ataque"
+        "defensa"
+        "velocidad"
+        "tipo";
+    grid-template-rows: 1fr 55% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.5vh;
+}
+
+/* Asignamos las áreas del grid a los elementos generados por el JS */
+
+/* Título */
+section#contenidoPokemon > section#contenido > h2 {
+    grid-area: nombre;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+/* Aplicamos tamaño y color a los textos del contenido pokemon */
+section#contenidoPokemon > section#contenido > p {
+    color: black;
+    width: 100%;
+    height: 100%;
+    font-size: 1.3vh;
+}
+
+/* El dato "Altura" */
+section#contenidoPokemon > section#contenido > p#altura {
+    grid-area: altura;
+}
+
+/* El dato "Peso" */
+section#contenidoPokemon > section#contenido > p#peso {
+    grid-area: peso;
+}
+
+/* El dato "Vida" */
+section#contenidoPokemon > section#contenido > p#vida {
+    grid-area: vida;
+}
+
+/* El dato "Ataque" */
+section#contenidoPokemon > section#contenido > p#ataque {
+    grid-area: ataque;
+}
+
+/* El dato "Defensa" */
+section#contenidoPokemon > section#contenido > p#defensa {
+    grid-area: defensa;
+}
+
+/* El dato "Velocidad" */
+section#contenidoPokemon > section#contenido > p#velocidad {
+    grid-area: velocidad;
+}
+
+/* El dato "Tipo" */
+section#contenidoPokemon > section#contenido > p#tipo {
+    grid-area: tipo;
+}
+
+
 }
