@@ -260,6 +260,7 @@ section#contenidoPokemon {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    border: solid red 5px;
 }
 
 /* La imagen de la pokedex */
@@ -353,6 +354,27 @@ section#contenidoPokemon > section#contenido > p#tipo {
     grid-area: tipo;
 }
 
+
+/* -------------- ANIMACIONES */
+.girarCarta {
+    perspective: 1000px;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    top: 10%;
+    left: 22%;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: spin 8s linear infinite; /* Animación de rotación continua */
+}
+
+.giroDeFrente,
+.giroDeAtras {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
 /* --------------------------------- FOOTER --------------------------------- */
 
 /* Información de pie de página  */
@@ -434,63 +456,40 @@ footer > section#nombres {
 }
 
 /* ----------------------------- Media query para ordenador ------------------------------- */
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 8000px) {
 
     main {
-        height: 75vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+        height: 75vh; 
         min-width: 1000px;
         max-width: 1600px; 
         max-height: 1200px; 
 
     }
     section#seccionInput > input#inputPokemon{
-        left: 187%;
-        top: 66%;
+        left: 145%;
+        top: 68%;
+        width: 100%;
+        z-index: 1;
         }
     section#seccionInput > button#btnBuscar {
-        /* Le ponemos una ubicación fija en el botón verde de la interfaz */
-        position: absolute;
-        height: 6%;
-        width: 8%;
-        top: 82%;
-        left: 500%;
-        /* Reseteamos el fondo y borde para hacerlo invisible */
-        background-color: transparent;
-        border: none;
-        border-radius: 5vh;
-        outline: none;
-        /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
-        cursor: pointer;
+        top: 80%;
+        left: 230%;
+        z-index: 1;
     }
     
-
     #botonAudio {
-        position: absolute;
-        background-color: transparent;
-        border: none;
-        left: 130%;
+        z-index: 1;
+        left: 75%;
         top: 12%;
-        width: 12%;
-        height: 9%;
     }
     
-    #imgAudio {
-        width: 80%;
-        height: 100%;
-        /* En caso de no verse la imagen se vería de color blanco */
-        color: white;
-    }
-    /* -----------------finaliza boton musica */
+    
+    
+    #btnModoOscuro {
+        z-index: 1;
+        left: 90%;
+        top: 12%;
 
-    /* ----------------- Boton modo oscuro */
-#btnModoOscuro {
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    left: 145%;
-    top: 12%;
-    width: 12%;
-    height: 9%;
 }
 
 #btnModoOscuro > img {
@@ -500,12 +499,14 @@ footer > section#nombres {
 
     /* El área donde va la pokedex */
 section#contenidoPokemon {
+    position: relative;
     grid-area: secciónPokemon;
     width: 100%;
-    height: 75vh;
+    height: 88%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    border: solid black 5px;
 }
 
 /* La imagen de la pokedex */
@@ -518,15 +519,16 @@ section#contenidoPokemon {
         display: block;
         width: 100%;
         height: 100%;
+        z-index: -1;
 }
 
 /* El contenido que se muestra de la API pokemon */
 section#contenidoPokemon > section#contenido {
     position: absolute;
-    top: 16.5%;
-    left: 13%;
-    height: 50%;
-    width: 74%;
+    top: 25%;
+    left: 12%;
+    height: 57%;
+    width: 24%;
     padding: 4%;
     text-align: center;
     /* Las áreas para organizar el contenido */
@@ -549,6 +551,7 @@ section#contenidoPokemon > section#contenido {
 
 /* Título */
 section#contenidoPokemon > section#contenido > h2 {
+    background-color: blue;
     grid-area: nombre;
     color: black;
     width: 100%;
@@ -566,10 +569,12 @@ section#contenidoPokemon > section#contenido > p {
 /* El dato "Altura" */
 section#contenidoPokemon > section#contenido > p#altura {
     grid-area: altura;
+    
 }
 
 /* El dato "Peso" */
 section#contenidoPokemon > section#contenido > p#peso {
+
     grid-area: peso;
 }
 
@@ -598,5 +603,16 @@ section#contenidoPokemon > section#contenido > p#tipo {
     grid-area: tipo;
 }
 
+section#seccionInput > ul#sugerenciasPokemon {
+    position: absolute;
+    top: 73.5%;
+    left: 168.7%;
+    height: 13%;
+    width: 50%;
+    overflow-y: auto;
+    padding: 3%;
+    list-style-type: none;
+    z-index: 1;
+}
 
 }
