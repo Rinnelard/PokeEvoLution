@@ -4,6 +4,8 @@ ProyectoPokemonHAB
 
 Link a la web= https://rinnelard.github.io/PokeEvoLution/
 
+AWS= http://webapunteshackaboss.s3-website.eu-west-3.amazonaws.com/
+
 ## HTML
 
 -   Una imagen de pokedex centrada
