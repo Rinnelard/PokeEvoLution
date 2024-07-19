@@ -69,8 +69,7 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
-    border: 5px solid green;
+    height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
 }
 
 /* le aplicamos un tamaño al titulo */
@@ -78,10 +77,6 @@ header > img {
     height: 67%;
     width: 80%;
 }
-/* #imgBoton {
-    width: 7vh;
-    height: 7%;
-} */
 
 /* --------------------------------- MAIN --------------------------------- */
 
@@ -89,14 +84,13 @@ header > img {
 main {
     position: relative;
     grid-area: main;
-    height: 100%; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+    height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
     display: grid;
     grid-template-areas: "secciónPokemon";
     min-width: 375px;
     max-width: 380px;
     max-height: 667px;
     margin: auto;
-    border: 5px solid red;
 }
 
 section#seccionInput {
@@ -121,6 +115,7 @@ section#seccionInput > input#inputPokemon {
     outline: none;
     font-family: "Press Start 2P";
     font-size: smaller;
+    /*     border: 5px solid rgb(25, 0, 255); */
 }
 
 /* Para mostrar en negrita el texto del input */
@@ -143,6 +138,7 @@ section#seccionInput > button#btnBuscar {
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
+    /*     border: 5px solid white; */
 }
 
 /* Botón para vaciar texto del input */
@@ -170,6 +166,7 @@ section#seccionInput > button#btnArriba {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    /*     border: 5px solid white; */
 }
 
 section#seccionInput > button#btnAbajo {
@@ -183,6 +180,7 @@ section#seccionInput > button#btnAbajo {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    /*     border: 5px solid white; */
 }
 
 section#seccionInput > button#btnDerecha {
@@ -196,6 +194,7 @@ section#seccionInput > button#btnDerecha {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    /*     border: 5px solid white; */
 }
 section#seccionInput > button#btnIzquierda {
     position: absolute;
@@ -208,6 +207,7 @@ section#seccionInput > button#btnIzquierda {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    /*     border: 5px solid white; */
 }
 
 /* Cuando muestra sugerencias segun escribes en el input */
@@ -269,17 +269,17 @@ section#seccionInput > ul#sugerenciasPokemon {
 section#contenidoPokemon {
     grid-area: secciónPokemon;
     width: 100%;
-    height: 100%;
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    border: 5px solid black;
 }
 
 /* La imagen de la pokedex */
+/* #img1 { */
 section#contenidoPokemon > img {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 95%;
     max-width: 400px;
 }
 /* Oculta la imagen de la pokeDex grande en pantallas pequeñas */
@@ -378,7 +378,7 @@ footer {
     align-items: center;
     /* Le aplicamos un fondo y forma */
     width: 90%;
-    height: 100%;
+    height: 10vh;
     background-color: rgba(0, 0, 0, 0.786);
     border-radius: 2vh;
     padding: 2%;
@@ -475,7 +475,7 @@ footer > section#nombres {
             "velocidad velocidad"
             "tipo tipo";
         grid-template-rows: repeat(8, 1fr);
-        border: solid black;
+        /*         border: solid black; */
 
         /* display: grid;
         grid-template-columns: 1fr auto;
