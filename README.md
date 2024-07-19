@@ -2,8 +2,6 @@
 
 ProyectoPokemonHAB
 
-Link a la web= https://rinnelard.github.io/PokeEvoLution/
-
 ## HTML
 
 -   Una imagen de pokedex centrada
