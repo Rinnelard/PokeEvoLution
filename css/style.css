@@ -20,6 +20,8 @@ body {
         "header"
         "main"
         "footer";
+
+    grid-template-rows: 1fr 75% 1fr;
     /* Nos aseguramos de que el body ocupa el total de la web */
     width: 100%;
     height: 100%;
