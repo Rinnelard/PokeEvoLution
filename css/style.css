@@ -119,7 +119,7 @@ section#seccionInput > input#inputPokemon {
     border: none;
     outline: none;
     font-family: "Press Start 2P";
-    font-size:smaller
+    font-size:smaller;
 }
 
 /* Para mostrar en negrita el texto del input */
@@ -143,6 +143,7 @@ section#seccionInput > button#btnBuscar {
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
+    
 }
 
 section#seccionInput > button#btnArriba {
@@ -263,8 +264,7 @@ section#contenidoPokemon {
 
 /* La imagen de la pokedex */
 /* #img1 { */
-section#contenidoPokemon > img {
-    background-image: url("./img/Pokedex.png");
+section#contenidoPokemon > #img1 {
     width: 90%;
     height: 95%;
     max-width: 400px;
