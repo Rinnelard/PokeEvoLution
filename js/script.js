@@ -173,6 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const pokemonInfo = document.getElementById("contenido");
                 const imagenDeFrente = data.sprites.front_default;
                 const imagenDeDetras = data.sprites.back_default;
+                const pokedexPcInicio = document.getElementById("img2");
+                pokedexPcInicio.src = "./css/img/podekexPc.png";
 
                 // Limpiar resultados anteriores y limpiar intervalos previos
                 pokemonInfo.innerHTML = "";
