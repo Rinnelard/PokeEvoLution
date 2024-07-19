@@ -61,13 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Evento input para actualizar las sugerencias según lo que el usuario escribe
   inputPokemon.addEventListener("input", () => {
     const terminoDeBusqueda = inputPokemon.value.trim().toLowerCase();
-    if (terminoDeBusqueda.length >= 2) {
-      // Filtrar solo si hay al menos 2 caracteres
-      mostrarSugerenciasPokemon(terminoDeBusqueda);
-    } else {
-      limpiarSugerencias();
-    }
-    if (terminoDeBusqueda.length >= 2) {
+    if (terminoDeBusqueda.length >= 0) {
       // Filtrar solo si hay al menos 2 caracteres
       mostrarSugerenciasPokemon(terminoDeBusqueda);
     } else {
@@ -120,7 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función para obtener y mostrar las sugerencias de Pokémon según el término de búsqueda
   function mostrarSugerenciasPokemon(terminoDeBusqueda) {
+
+    const terminoEsNumero = !isNaN(terminoDeBusqueda) && Number.isInteger(parseFloat(terminoDeBusqueda));
+
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
+
+
       .then((respuesta) => {
         if (!respuesta.ok) {
           throw new Error("No se pudieron obtener los Pokémon");
@@ -128,10 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return respuesta.json();
       })
       .then((data) => {
+        if (terminoEsNumero) {
+         sugerencias = data.results.filter((pokemon, index) => index + 1 === parseInt(terminoDeBusqueda));
+        }else{
         // Filtrar la lista de Pokémon según el término de búsqueda
         sugerencias = data.results.filter((pokemon) => {
           return pokemon.name.includes(terminoDeBusqueda);
-        });
+        });}
     // ordenar por orden alfabetico
         sugerencias.sort((a,b) => a.name.localeCompare(b.name));
 
