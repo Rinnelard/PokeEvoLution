@@ -275,7 +275,7 @@ section#contenidoPokemon {
 /* La imagen de la pokedex */
 /* #img1 { */
 section#contenidoPokemon > img {
-    background-image: url("./img/Pokedex.png");
+    /* background-image: url("./img/Pokedex.png"); */
     width: 90%;
     height: 95%;
     max-width: 400px;
