@@ -50,6 +50,10 @@ body.modoOscuro {
 body.modoOscuro section#contenidoPokemon > img {
     /* descativa la pokedex de modo dia */
     display: none;
+    width: 90%;
+    height: 95%;
+    max-width: 400px;
+    max-height: 626px;
 }
 
 body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
