@@ -20,11 +20,13 @@ body {
         "header"
         "main"
         "footer";
-    grid-template-rows: 1fr 75% 1fr;
+
     /* Nos aseguramos de que el body ocupa el total de la web */
     width: 100%;
     height: 100vh;
     /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
+
+    
 }
 
 /* -------------- MODO OSCURO - FONDO
@@ -69,14 +71,13 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
-    border: 5px solid green;
+    height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
 }
 
 /* le aplicamos un tamaño al titulo */
 header > img {
-    height: 67%;
-    width: 80%;
+    height: 7vh;
+    width: 40vh;
 }
 /* #imgBoton {
     width: 7vh;
@@ -89,14 +90,13 @@ header > img {
 main {
     position: relative;
     grid-area: main;
-    height: 100%; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+    height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
     display: grid;
     grid-template-areas: "secciónPokemon";
     min-width: 375px;
     max-width: 380px;
     max-height: 667px;
     margin: auto;
-    border: 5px solid red;
 }
 
 section#seccionInput {
@@ -120,12 +120,13 @@ section#seccionInput > input#inputPokemon {
     border: none;
     outline: none;
     font-family: "Press Start 2P";
-    font-size: smaller;
+    font-size:smaller;
 }
 
 /* Para mostrar en negrita el texto del input */
 section#seccionInput > input#inputPokemon::placeholder {
     font-weight: bold;
+    
 }
 
 /* El botón para buscar lo escrito en el input */
@@ -143,20 +144,7 @@ section#seccionInput > button#btnBuscar {
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
-}
-
-/* Botón para vaciar texto del input */
-section#seccionInput > button#btnEliminar {
-    position: absolute;
-    height: 4%;
-    width: 6%;
-    top: 76.8%;
-    left: 76.6%;
-    background-color: transparent;
-    border: none;
-    border-radius: 5vh;
-    outline: none;
-    cursor: pointer;
+    
 }
 
 section#seccionInput > button#btnArriba {
@@ -269,17 +257,17 @@ section#seccionInput > ul#sugerenciasPokemon {
 section#contenidoPokemon {
     grid-area: secciónPokemon;
     width: 100%;
-    height: 100%;
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    border: 5px solid black;
 }
 
 /* La imagen de la pokedex */
+/* #img1 { */
 section#contenidoPokemon > img {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 95%;
     max-width: 400px;
 }
 /* Oculta la imagen de la pokeDex grande en pantallas pequeñas */
@@ -378,7 +366,7 @@ footer {
     align-items: center;
     /* Le aplicamos un fondo y forma */
     width: 90%;
-    height: 100%;
+    height: 10vh;
     background-color: rgba(0, 0, 0, 0.786);
     border-radius: 2vh;
     padding: 2%;
