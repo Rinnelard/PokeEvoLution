@@ -708,3 +708,23 @@ footer > section#nombres {
         z-index: 1;
     }
 }
+
+#btnInstrucciones {
+    position: absolute;
+    border: solid 5px white;
+    left: 13%;
+    top: 2%;
+    border-radius:30px ;
+    height: 60px;
+    width: 60px;
+}
+
+#imagenInstrucciones{
+    display: none;
+    position: absolute;
+    top: 16.5%;
+    left: 13%;
+    height: 50%;
+    width: 74%;
+
+}

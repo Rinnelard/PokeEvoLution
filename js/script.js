@@ -529,3 +529,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 });
+//----------------------------boton Instrucciones--------------------
+
+const btnInstrucciones = document.getElementById("btnInstrucciones");
+const imagenInstrucciones = document.getElementById("imagenInstrucciones");
+
+btnInstrucciones.addEventListener("click", () => {
+    if (imagenInstrucciones.style.display === "none") {
+        imagenInstrucciones.style.display = "block";
+    } else {
+        imagenInstrucciones.style.display = "none"
+    }
+});
