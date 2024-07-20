@@ -1,4 +1,11 @@
 "use strict";
+
+// Retirar tapa con estilo
+
+document.getElementById("tapaPokedexMovil").addEventListener("click", () => {
+    document.getElementById("tapaPokedexMovil").classList.add("abrirTapa");
+});
+
 // Diccionario de traducción de tipos de Pokémon de inglés a español
 const tipoTraducciones = {
     normal: "Normal",
@@ -20,7 +27,7 @@ const tipoTraducciones = {
     dark: "Siniestro",
     fairy: "Hada",
 };
-//  MODO OSCURO
+//  -------------------------- MODO OSCURO --------------------------
 const btnModoOscuro = document.getElementById("btnModoOscuro");
 
 btnModoOscuro.addEventListener("click", () => {
@@ -28,22 +35,171 @@ btnModoOscuro.addEventListener("click", () => {
     /* document.body.classList.toggle('modoOscuro'); */
 });
 
-// AUDIO
+// -------------------------- AUDIO --------------------------
 const audio = document.getElementById("audio");
 const alternarAudio = document.getElementById("botonAudio");
 
 audio.volume = 0.3;
 
 alternarAudio.addEventListener("click", () => {
+    const pokeball = document.getElementById("pokeballGiratoria");
     if (audio.paused) {
         audio.play();
+        pokeball.classList.add("girandoPokebola");
         //alternarAudio.textContent='Pause';
     } else {
         audio.pause();
+        pokeball.classList.remove("girandoPokebola");
 
         //alternarAudio.textContent = 'Play'
     }
 });
+
+function asignarAudioBtn(rutaBtn) {
+    const boton = document.getElementById(rutaBtn);
+    const audio = new Audio("./css/audio/sonidoBtn.mp3");
+
+    boton.addEventListener("click", () => {
+        audio.currentTime = 0;
+        audio.play();
+    });
+}
+
+asignarAudioBtn("btnBuscar");
+asignarAudioBtn("btnEliminar");
+asignarAudioBtn("btnDerecha");
+asignarAudioBtn("btnIzquierda");
+asignarAudioBtn("btnArriba");
+asignarAudioBtn("btnAbajo");
+asignarAudioBtn("botonAudio");
+asignarAudioBtn("btnModoOscuro");
+
+// -------------------------- ANIMACIÓN BOTONES --------------------------
+
+/* Llamando a un botón crea la animación de click a su imagen correspondiente llamando su id */
+function animacionBtn(idBtn, idImg) {
+    // Al hacer clic en el botón, reducimos el tamaño de la imagen
+    function animarBtn(btn, idImagen) {
+        // Funcionamiento en PC
+        document.getElementById(btn).addEventListener("mousedown", function () {
+            /* Disminuir el tamaño a la imagen seleccionada */
+            function aumentarTamanyoImg(idImagen) {
+                document.getElementById(idImagen).style.transform =
+                    "scale(0.80)";
+            }
+            aumentarTamanyoImg(idImagen);
+        });
+        // Funcionamiento en movil
+        document
+            .getElementById(btn)
+            .addEventListener("touchstart", function () {
+                /* Disminuir el tamaño a la imagen seleccionada */
+                function aumentarTamanyoImg(idImagen) {
+                    document.getElementById(idImagen).style.transform =
+                        "scale(0.80)";
+                }
+                aumentarTamanyoImg(idImagen);
+            });
+    }
+
+    // Al soltar el clic, volvemos al tamaño original
+    function desAnimarBtn(btn, idImagen) {
+        // Funcionamiento en PC
+        document.getElementById(btn).addEventListener("mouseup", function () {
+            /* Volver a poner original el tamaño a la imagen seleccionada */
+            function regresarTamanyoImg(idImagen) {
+                document.getElementById(idImagen).style.transform = "scale(1)";
+            }
+            regresarTamanyoImg(idImagen);
+        });
+        // Funcionamiento en movil
+        document.getElementById(btn).addEventListener("touchend", function () {
+            /* Volver a poner original el tamaño a la imagen seleccionada */
+            function regresarTamanyoImg(idImagen) {
+                document.getElementById(idImagen).style.transform = "scale(1)";
+            }
+            regresarTamanyoImg(idImagen);
+        });
+    }
+
+    animarBtn(idBtn, idImg);
+    desAnimarBtn(idBtn, idImg);
+}
+
+/* Botón buscar */
+animacionBtn("btnBuscar", "imgAceptar");
+
+/* Botón borrar input */
+animacionBtn("btnEliminar", "imgCancelar");
+
+/* Botón sonido */
+animacionBtn("botonAudio", "imgAudio");
+
+/* Botón modo noche */
+animacionBtn("btnModoOscuro", "imgBoton");
+
+//Animación cruceta
+
+function animacionCruceta(direccion, urlImagen) {
+    // Al hacer clic en el botón, cambiamos a imagen con perspectiva
+    function animarCruceta(direccion, urlImagen) {
+        // Funcionamiento en PC
+        document
+            .getElementById(`btn${direccion}`)
+            .addEventListener("mousedown", function () {
+                /* Disminuir el tamaño a la imagen seleccionada */
+                function animarImg(idImagen) {
+                    document.getElementById(idImagen).src = urlImagen;
+                }
+                animarImg("imgCruceta");
+            });
+        // Funcionamiento en movil
+        document
+            .getElementById(`btn${direccion}`)
+            .addEventListener("touchstart", function () {
+                /* Disminuir el tamaño a la imagen seleccionada */
+                function animarImg(idImagen) {
+                    document.getElementById(idImagen).src = urlImagen;
+                }
+                animarImg("imgCruceta");
+            });
+    }
+
+    // Al soltar el clic, volvemos al tamaño original
+    function desAnimarCruceta(btn, idImagen, urlImagen) {
+        // Funcionamiento en PC
+        document
+            .getElementById(`btn${direccion}`)
+            .addEventListener("mouseup", function () {
+                /* Disminuir el tamaño a la imagen seleccionada */
+                function animarImg(idImagen) {
+                    document.getElementById(idImagen).src =
+                        "./css/img/crucetaNormal.png";
+                }
+                animarImg("imgCruceta");
+            });
+        // Funcionamiento en movil
+        document
+            .getElementById(`btn${direccion}`)
+            .addEventListener("touchend", function () {
+                /* Disminuir el tamaño a la imagen seleccionada */
+                function animarImg(idImagen) {
+                    document.getElementById(idImagen).src = urlImagen;
+                }
+                animarImg("imgCruceta");
+            });
+    }
+
+    animarCruceta(direccion, urlImagen);
+    desAnimarCruceta(direccion, urlImagen);
+}
+
+animacionCruceta("Arriba", "./css/img/flechaArriba.png");
+animacionCruceta("Abajo", "./css/img/flechaAbajo.png");
+animacionCruceta("Derecha", "./css/img/flechaDerecha.png");
+animacionCruceta("Izquierda", "./css/img/flechaIzquierda.png");
+
+// -------------------------- FIN ANIMACIÓN BOTONES --------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
     const inputPokemon = document.getElementById("inputPokemon");
@@ -216,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 pokemonInfo.classList.add("show");
 
                 //retraso de cada dato en milisegundos
-                const retraso = [0, 1000, 2000, 3000, 4000, 5000, 6000];
+                const retraso = [0, 500, 1000, 1800, 2200, 2800, 3200];
 
                 // Mostrar datos gradualmente y almacenar los intervalos
                 intervalos.push(
@@ -342,7 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index >= texto.length) {
                 clearInterval(intervalo);
             }
-        }, 60); // Intervalo de tiempo entre cada caracter
+        }, 30); // Intervalo de tiempo entre cada caracter
         intervalos.push(intervalo); // Guardar el intervalo para poder limpiarlo después
     }
     // Función para capitalizar la primera letra de una cadena
