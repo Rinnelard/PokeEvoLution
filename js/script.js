@@ -236,6 +236,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //evento para buscar con la tecla enter
+    inputPokemon.addEventListener("keydown", (event) =>{
+        if (event.key === "Enter") {
+            event.preventDefault();
+            const nombrePokemon = inputPokemon.value.trim().toLowerCase();
+            if (nombrePokemon) {
+                buscarPokemon(nombrePokemon);
+            }
+        }
+    });
+
     // Evento click del botón para bajar en la lista
     btnAbajo.addEventListener("click", () => {
         if (pokemonIndex < sugerencias.length - 1) {
