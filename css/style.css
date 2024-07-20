@@ -267,7 +267,18 @@ section#seccionInput > ul#sugerenciasPokemon {
     list-style-type: none;
     font-size: 0.58rem;
 }
-
+#sugerenciasPokemon::-webkit-scrollbar {
+    width: 5px; /* Ancho de la barra de desplazamiento */
+    
+}
+#sugerenciasPokemon::-webkit-scrollbar-track {
+    background: #636363;
+    border-radius: 0px; /* Bordes redondeados del riel */
+}
+#sugerenciasPokemon::-webkit-scrollbar-thumb {
+    background:  #8EC641; 
+    border: solid #cbeb9e 0.7px;
+}
 /*---------------------------- Boton musica */
 
 #botonAudio {
