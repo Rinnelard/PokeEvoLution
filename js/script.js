@@ -474,6 +474,22 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    //funcion para eliminar datos con el btnEliminar
+    function eliminarDatos(){
+        const pokemonInfo = document.getElementById("contenido");
+        const input = document.getElementById("inputPokemon");
+        pokemonInfo.innerHTML = "";
+        if (input) {
+            input.value = "";  
+        }
+        intervalos.forEach(function (intervaloId){
+            clearInterval(intervaloId);
+        });
+        intervalos = [];
+    }
+    // Asociar la función eliminarDatos al botón btnEliminar
+    document.getElementById("btnEliminar").addEventListener("click", eliminarDatos);
+
     // Función para mostrar mensaje de error
     function mostrarError(message) {
         const pokemonInfo = document.getElementById("contenido");
