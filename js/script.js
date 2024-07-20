@@ -486,6 +486,66 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    /* ---------BOTONES TIPO POKEMON-------------------- */
+function buscarTipo(tipoPokemon) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/name`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+            if (data.types.type.name===tipoPokemon) {
+                function mostrarSugerencias(listaDePokemon) {
+                    limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
+                listaDePokemon.forEach((pokemon) => {
+                const listaPokemon = document.createElement("li");
+                    listaPokemon.textContent = pokemon.name;
+                    listaPokemon.addEventListener("click", () => {
+                            // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
+                            inputPokemon.value = pokemon.name;
+                            limpiarSugerencias();
+                            buscarPokemon(pokemon.name);
+                        });
+                        listaDeSugerencias.appendChild(listaPokemon);
+                    });
+                }
+                mostrarSugerencias(data.types.type.name);
+                console.log(data.types.type.name);
+            }
+        })
+    
+}
+
+function asignarFuncionTipoBtn(idBtnTipo,nombreTipo) {
+    const btnTipoPokemon = document.getElementById(idBtnTipo)
+    btnTipoPokemon.addEventListener('click', ()=>{
+        buscarTipo(nombreTipo);
+    })
+}
+
+asignarFuncionTipoBtn("acero","steel");
+
+
+/* 
+    const botonesHeader = document.querySelectorAll(".btnHeader")
+    botonesHeader.forEach(boton => boton.addEventListener('click', (event)=>{
+        const botonId = event.currentTarget.id
+        fetch(`https://pokeapi.co/api/v2/pokemon/`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+        })
+    })) */
+    /* -----------FINALIZA BOTONES TIPO POKEMON */
+
     //funcion para eliminar datos con el btnEliminar
     function eliminarDatos(){
         const pokemonInfo = document.getElementById("contenido");
