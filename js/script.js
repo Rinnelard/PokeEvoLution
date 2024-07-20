@@ -160,6 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
         listaDeSugerencias.innerHTML = "";
     }
 
+    /* ---------------------------- FUNCION TIPOS DE POKEMON --------------- */
+    /* -----------------------------FINALIZA TIPOS DE POKEMON */
+
     // Función para buscar y mostrar la información del Pokémon seleccionado
     function buscarPokemon(nombrePokemon) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)

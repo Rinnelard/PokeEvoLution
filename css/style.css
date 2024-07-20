@@ -718,16 +718,11 @@ footer > section#nombres {
     }
 
     #tiposPokemon > ul {
-        list-style: none;
+        list-style-type: none;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         gap: 0.5rem;
-    }
-
-    #tiposPokemon > li {
-        width: 5px;
-        
     }
 
     .btnHeader{
