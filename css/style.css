@@ -156,6 +156,7 @@ section#seccionInput > button#btnBuscar {
     z-index: 1;
 }
 
+
 /* Imagen del botón buscar */
 section#seccionInput > img#imgAceptar {
     position: absolute;
@@ -267,6 +268,14 @@ section#seccionInput > ul#sugerenciasPokemon {
     list-style-type: none;
     font-size: 0.58rem;
 }
+
+/* Estilo para el elemento seleccionado en la lista */
+.seleccionado {
+    border: 2px solid #f00; /* Borde rojo, puedes cambiar el color según prefieras */
+    padding: 0.2rem;
+}
+
+/* estilo de la barra de scroll de las sugerencias */
 #sugerenciasPokemon::-webkit-scrollbar {
     width: 5px; /* Ancho de la barra de desplazamiento */
     

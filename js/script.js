@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pokemonIndex++;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -262,6 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pokemonIndex--;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -333,11 +335,26 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             listaDeSugerencias.appendChild(listaPokemon);
         });
+        // Resaltar el primer elemento si hay sugerencias
+        if (sugerencias.length > 0) {
+            resaltarElemento(pokemonIndex);
+        }
     }
 
     // Función para limpiar la lista de sugerencias
     function limpiarSugerencias() {
         listaDeSugerencias.innerHTML = "";
+    }
+
+    // Función para resaltar el elemento en la lista
+    function resaltarElemento(index) {
+        const elementos = listaDeSugerencias.getElementsByTagName('li');
+        for (let i = 0; i < elementos.length; i++) {
+            elementos[i].classList.remove('seleccionado'); // Quitar borde de todos los elementos
+        }
+        if (elementos[index]) {
+            elementos[index].classList.add('seleccionado'); // Agregar borde al elemento seleccionado
+        }
     }
 
     // Función para buscar y mostrar la información del Pokémon seleccionado
