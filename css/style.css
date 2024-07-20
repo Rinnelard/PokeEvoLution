@@ -735,5 +735,6 @@ footer > section#nombres {
     left: 13%;
     height: 50%;
     width: 74%;
+    z-index: 2;
 
 }
