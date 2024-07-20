@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     /* Se aplica una tipografía y tamaño por defecto a todo el texto de la web */
     font-family: "Press Start 2P", sans-serif;
@@ -20,20 +21,19 @@ body {
         "header"
         "main"
         "footer";
-
     grid-template-rows: 1fr 75% 1fr;
     /* Nos aseguramos de que el body ocupa el total de la web */
     width: 100%;
-    height: 100%;
+    height: 100vh;
     /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
-
-    
 }
 
 /* -------------- MODO OSCURO - FONDO
 Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
 */
-
+#pokedexPcNoche{
+    display: none;
+}
 body.modoOscuro {
     background-image: url("./video/gifFondoOscuro.gif");
     color: rgb(0, 0, 0);
@@ -45,19 +45,31 @@ body.modoOscuro {
 
 /* ------------------------ MODO NOCHE - POKEDEX */
 
-#pokdexNoche {
-    /* por defecto la pokedex modo noche estará deshabilitada */
+#pokedeInicioNoche {
     display: none;
 }
 
-body.modoOscuro section#contenidoPokemon > img {
+/* por defecto la pokedex modo noche estará deshabilitada */
+
+
+#pokdexNoche{ 
+    display: none;
+}
+body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
+    /* descativa la pokedex de modo dia */
+    display: block;
+    width: 90%;
+    height: 95%;
+    max-width: 400px;
+    max-height: 626px
+}
+body.modoOscuro section#contenidoPokemon > img#img1 {
     /* descativa la pokedex de modo dia */
     display: none;
 }
 
-body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
-    /* activa la foto modo noche de la pokedex */
-    display: block;
+#pokedexPC {
+    display: none;
 }
 
 /* -----------Fin modo noche */
@@ -77,13 +89,9 @@ header {
 
 /* le aplicamos un tamaño al titulo */
 header > img {
-    height: 7vh;
-    width: 40vh;
+    height: 67%;
+    width: 80%;
 }
-/* #imgBoton {
-    width: 7vh;
-    height: 7%;
-} */
 
 /* --------------------------------- MAIN --------------------------------- */
 
@@ -91,7 +99,7 @@ header > img {
 main {
     position: relative;
     grid-area: main;
-    height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+    height: 76vh; 
     display: grid;
     grid-template-areas: "secciónPokemon";
     min-width: 375px;
@@ -121,13 +129,13 @@ section#seccionInput > input#inputPokemon {
     border: none;
     outline: none;
     font-family: "Press Start 2P";
-    font-size:smaller
+    font-size: smaller;
 }
 
 /* Para mostrar en negrita el texto del input */
 section#seccionInput > input#inputPokemon::placeholder {
     font-weight: bold;
-    
+    border: 5px solid rgb(0, 21, 255);
 }
 
 /* El botón para buscar lo escrito en el input */
@@ -145,6 +153,22 @@ section#seccionInput > button#btnBuscar {
     outline: none;
     /* Cuando el ratón se ponga encima se mostrara el cursor de seleccionar, para que el usuario interprete que puede hacer click */
     cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
+}
+
+/* Botón para vaciar texto del input */
+section#seccionInput > button#btnEliminar {
+    position: absolute;
+    height: 4%;
+    width: 6%;
+    top: 76.8%;
+    left: 76.6%;
+    background-color: transparent;
+    border: none;
+    border-radius: 5vh;
+    outline: none;
+    cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
 }
 
 section#seccionInput > button#btnArriba {
@@ -158,6 +182,7 @@ section#seccionInput > button#btnArriba {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
 }
 
 section#seccionInput > button#btnAbajo {
@@ -171,6 +196,7 @@ section#seccionInput > button#btnAbajo {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
 }
 
 section#seccionInput > button#btnDerecha {
@@ -184,6 +210,7 @@ section#seccionInput > button#btnDerecha {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
 }
 section#seccionInput > button#btnIzquierda {
     position: absolute;
@@ -196,6 +223,7 @@ section#seccionInput > button#btnIzquierda {
     border-radius: 2%;
     outline: none;
     cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
 }
 
 /* Cuando muestra sugerencias segun escribes en el input */
@@ -210,6 +238,7 @@ section#seccionInput > ul#sugerenciasPokemon {
     padding: 3%;
     /* Quitamos los puntos de los "ul" que se generan en JS */
     list-style-type: none;
+    border: 5px solid rgb(255, 255, 255);
 }
 
 /*---------------------------- Boton musica */
@@ -262,17 +291,19 @@ section#contenidoPokemon {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    
 }
 
 /* La imagen de la pokedex */
 /* #img1 { */
 section#contenidoPokemon > img#img1 {
-    background-image: url("./img/Pokedex.png");
     width: 90%;
     height: 95%;
     max-width: 400px;
+    max-height: 626px;
 }
+
+
+
 /* Oculta la imagen de la pokeDex grande en pantallas pequeñas */
 section#contenidoPokemon > img#img2 {
     display: none;
@@ -355,7 +386,6 @@ section#contenidoPokemon > section#contenido > p#velocidad {
 section#contenidoPokemon > section#contenido > p#tipo {
     grid-area: tipo;
 }
-
 
 /* -------------- ANIMACIONES */
 .girarCarta {
@@ -457,182 +487,232 @@ footer > section#nombres {
 
 /* ----------------------------- Media query para ordenador ------------------------------- */
 @media (min-width: 1024px) and (max-width: 8000px) {
-
     main {
-        height: 75vh; 
-        min-width: 1000px;
-        max-width: 1600px; 
-        max-height: 1200px; 
-
+        height: 75vh;
+        max-width: 1600px;
+        max-height: 1200px;
     }
-    section#seccionInput > input#inputPokemon{
+
+    /* 
+    
+    main {
+    position: relative;
+    grid-area: main;
+    height: 76vh; 
+    display: grid;
+    grid-template-areas: "secciónPokemon";
+    min-width: 375px;
+    max-width: 380px;
+    max-height: 667px;
+    margin: auto;
+}
+    
+    
+    */
+    section#seccionInput > input#inputPokemon {
         left: 145%;
         top: 69%;
         width: 100%;
         z-index: 1;
-        }
+    }
     section#seccionInput > button#btnBuscar {
-        top: 80%;
-        left: 230%;
+        top: 72.5%;
+        left: 160%;
         z-index: 1;
     }
-    
+
     #botonAudio {
         z-index: 1;
-        left: 75%;
-        top: 12%;
+        left: 40%;
+        top: 10%;
     }
-    
-    
-    
+
     #btnModoOscuro {
         z-index: 1;
-        left: 90%;
-        top: 12%;
+        left: 55%;
+        top: 10%;
+    }
 
-}
-
-#btnModoOscuro > img {
-    width: 100%;
-    height: 100%;
-}
+    #btnModoOscuro > img {
+        width: 100%;
+        height: 100%;
+    }
 
     /* El área donde va la pokedex */
-section#contenidoPokemon {
-    position: relative;
-    grid-area: secciónPokemon;
-    width: 100%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    
-}
 
-/* La imagen de la pokedex */
-/* #img1 oscultada para pc { */
+    /*  */
+    section#contenidoPokemon {
+        position: relative;
+        grid-area: secciónPokemon;
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    /* La imagen de la pokedex */
+    /* #img1 oscultada para pc { */
     #img1 {
         display: none;
     }
-/* visualiza esta pokedex para pantallas grandes */
+    /* visualiza esta pokedex para pantallas grandes */
     section#contenidoPokemon > img#img2 {
+        display: flex;
+        width: 90%;
+        height: 95%;
+        max-width: 1300px;
+        max-height: 626px;
+        z-index: -1;
+    }
+
+    
+
+    /* El contenido que se muestra de la API pokemon */
+    section#contenidoPokemon > section#contenido {
+        position: absolute;
+        top: 30%;
+        left: 8%;
+        height: 55%;
+        width: 35%;
+        padding: auto;
+        text-align: center;
+        /* Las áreas para organizar el contenido */
+        display: grid;
+        grid-template-areas:
+            "nombre número"
+            "relleno altura"
+            "relleno peso"
+            "relleno vida"
+            "relleno ataque"
+            "relleno defensa"
+            "relleno velocidad"
+            "relleno tipo";
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 60% 1fr;
+        gap: 1vh;
+    }
+    section#contenidoPokemon > section#contenido > p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1vh;
+    }
+    .girarCarta {
+        perspective: 1000px;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        text-align: center;
+        transform-style: preserve-3d;
+        animation: spin 8s linear infinite; /* Animación de rotación continua */
+    }
+
+    .giroDeFrente,
+    .giroDeAtras {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    /* Asignamos las áreas del grid a los elementos generados por el JS */
+
+    /* Título */
+    section#contenidoPokemon > section#contenido > h2 {
+        grid-area: nombre;
+        color: black;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Aplicamos tamaño y color a los textos del contenido pokemon */
+    /* El dato "Altura" */
+    section#contenidoPokemon > section#contenido > p#altura {
+        grid-area: altura;
+    }
+
+    /* El dato "Peso" */
+    section#contenidoPokemon > section#contenido > p#peso {
+        grid-area: peso;
+    }
+
+    /* El dato "Vida" */
+    section#contenidoPokemon > section#contenido > p#vida {
+        grid-area: vida;
+    }
+
+    /* El dato "Ataque" */
+    section#contenidoPokemon > section#contenido > p#ataque {
+        grid-area: ataque;
+    }
+
+    /* El dato "Defensa" */
+    section#contenidoPokemon > section#contenido > p#defensa {
+        grid-area: defensa;
+    }
+
+    /* El dato "Velocidad" */
+    section#contenidoPokemon > section#contenido > p#velocidad {
+        grid-area: velocidad;
+    }
+
+    /* El dato "Tipo" */
+    section#contenidoPokemon > section#contenido > p#tipo {
+        grid-area: tipo;
+    }
+
+    section#seccionInput > ul#sugerenciasPokemon {
+        position: absolute;
+        top: 73.5%;
+        left: 168.7%;
+        height: 13%;
+        width: 50%;
+        overflow-y: auto;
+        padding: 3%;
+        list-style-type: none;
+        z-index: 1;
+    }
+/* -------------------------BOTONES */
+section#seccionInput > button#btnDerecha {
+    top: 80%;
+    left: 160%;
+    
+}
+
+/* ---------------------MODO OSCURO MEDIA QUERY */
+    body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
+        display: none;
+    }
+
+    body.modoOscuro section#contenidoPokemon > img#img2 {
+        /* descativa la pokedex de modo dia en pantalla PC */
+        display: none;
+    }
+
+    body.modoOscuro section#contenidoPokemon > img#pokedeInicioNoche {
+        /* descativa la pokedex de modo dia */
         display: block;
         width: 100%;
         height: 100%;
         z-index: -1;
-}
+    }
 
-/* El contenido que se muestra de la API pokemon */
-section#contenidoPokemon > section#contenido {
-    position: absolute;
-    top: 33%;
-    left: 6%;
-    height: 55%;
-    width: 36.5%;
-    padding: 2.5% 2%;
-    text-align: center;
-    /* Las áreas para organizar el contenido */
-    display: grid;
-    grid-template-areas:
-        "nombre número"
-        "relleno altura"
-        "relleno peso"
-        "relleno vida"
-        "relleno ataque"
-        "relleno defensa"
-        "relleno velocidad"
-        "relleno tipo";
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 60% 1fr;
-    gap: 1vh;
-    
-}
-section#contenidoPokemon > section#contenido > p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1vh;
-}
-.girarCarta {
-    perspective: 1000px;
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    text-align: center;
-    transform-style: preserve-3d;
-    animation: spin 8s linear infinite; /* Animación de rotación continua */
-}
+    body.modoOscuro section#contenidoPokemon > img#pokedexPc {
+        display: none;
+    }
 
-.giroDeFrente,
-.giroDeAtras {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-
-
-/* Asignamos las áreas del grid a los elementos generados por el JS */
-
-/* Título */
-section#contenidoPokemon > section#contenido > h2 {
-    grid-area: nombre;
-    color: black;
-    width: 100%;
-    height: 100%;
-}
-
-/* Aplicamos tamaño y color a los textos del contenido pokemon */
-/* El dato "Altura" */
-section#contenidoPokemon > section#contenido > p#altura {
-    grid-area: altura;
-    
-}
-
-/* El dato "Peso" */
-section#contenidoPokemon > section#contenido > p#peso {
-
-    grid-area: peso;
-}
-
-/* El dato "Vida" */
-section#contenidoPokemon > section#contenido > p#vida {
-    grid-area: vida;
-}
-
-/* El dato "Ataque" */
-section#contenidoPokemon > section#contenido > p#ataque {
-    grid-area: ataque;
-}
-
-/* El dato "Defensa" */
-section#contenidoPokemon > section#contenido > p#defensa {
-    grid-area: defensa;
-}
-
-/* El dato "Velocidad" */
-section#contenidoPokemon > section#contenido > p#velocidad {
-    grid-area: velocidad;
-}
-
-/* El dato "Tipo" */
-section#contenidoPokemon > section#contenido > p#tipo {
-    grid-area: tipo;
-}
-
-section#seccionInput > ul#sugerenciasPokemon {
-    position: absolute;
-    top: 73.5%;
-    left: 168.7%;
-    height: 13%;
-    width: 50%;
-    overflow-y: auto;
-    padding: 3%;
-    list-style-type: none;
-    z-index: 1;
-}
-
+    body.modoOscuro section#contenidoPokemon > img#pokedexPCNoche {
+        /* descativa la pokedex de modo dia */
+        display: flex;
+        width: 90%;
+        height: 95%;
+        max-width: 1300px;
+        max-height: 626px;
+        z-index: -1;
+        
+    }
 }
