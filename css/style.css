@@ -341,6 +341,7 @@ section#contenidoPokemon > img#tapaPokedexMovil {
     cursor: pointer;
 }
 
+/* Animación Tapa */
 section#contenidoPokemon > img.abrirTapa {
     perspective: 1000px !important;
     transform-origin: right center !important;
