@@ -265,6 +265,7 @@ section#seccionInput > ul#sugerenciasPokemon {
     padding: 3%;
     /* Quitamos los puntos de los "ul" que se generan en JS */
     list-style-type: none;
+    font-size: 0.58rem;
 }
 
 /*---------------------------- Boton musica */
@@ -382,6 +383,12 @@ section#contenidoPokemon > section#contenido > h2 {
     color: black;
     width: 100%;
     height: 100%;
+    text-align: center;
+    font-size: 2vh ;
+}
+
+section#contenidoPokemon > section#contenido > h3 {
+    font-size: 1.5vh;
     text-align: center;
 }
 
