@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((data) => {
                 const pokemonInfo = document.getElementById("contenido");
                 const imagenDeFrente = data.sprites.front_default;
-                const imagenDeDetras = data.sprites.back_default;
+                const imagenDeDetras = data.sprites.back_default || imagenDeFrente;// si no tiene imagen de atras muestra directamente la de frente otra vez
                 const pokedexPcInicio = document.getElementById("img2");
                 pokedexPcInicio.src = "./css/img/podekexPc.png";
 
