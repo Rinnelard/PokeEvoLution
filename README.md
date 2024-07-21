@@ -2,9 +2,7 @@
 
 ProyectoPokemonHAB
 
-Link a la web= https://rinnelard.github.io/PokeEvoLution/
-
-AWS= http://webapunteshackaboss.s3-website.eu-west-3.amazonaws.com/
+Link a la web= https://poke-evo-lution.vercel.app/
 
 ## HTML
 
