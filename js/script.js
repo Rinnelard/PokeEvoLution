@@ -1,5 +1,4 @@
 "use strict";
-
 // Retirar tapa con estilo
 
 document.getElementById("tapaPokedexMovil").addEventListener("click", () => {
