@@ -535,24 +535,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     asignarFuncionTipoBtn("acero", "steel");
-    asignarFuncionTipoBtn("agua", "water");
-    asignarFuncionTipoBtn("bicho", "bug");
-    asignarFuncionTipoBtn("dragon", "dragon");
-    asignarFuncionTipoBtn("electrico", "electric");
-    asignarFuncionTipoBtn("fantasma", "ghost");
-    asignarFuncionTipoBtn("fuego", "fire");
-    asignarFuncionTipoBtn("hada", "fairy");
-    asignarFuncionTipoBtn("hielo", "ice");
-    asignarFuncionTipoBtn("lucha", "fighting");
-    asignarFuncionTipoBtn("normal", "normal");
-    asignarFuncionTipoBtn("planta", "grass");
-    asignarFuncionTipoBtn("psiquico", "psychic");
-    asignarFuncionTipoBtn("roca", "rock");
-    asignarFuncionTipoBtn("siniestro", "dark");
-    asignarFuncionTipoBtn("tierra", "ground");
-    asignarFuncionTipoBtn("veneno", "poison");
-    asignarFuncionTipoBtn("volador", "flying");
-
     // Variables necesarias
     /* function buscarTipo(tipoPokemon) {
     fetch(`https://pokeapi.co/api/v2/pokemon/name`)
