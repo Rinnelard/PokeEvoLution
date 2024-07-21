@@ -645,6 +645,9 @@ footer > section#nombres {
         justify-content: center;
         align-items: flex-start;
     }
+    #tapaPokedexMovil{
+        display: none;
+    }
 
     /* La imagen de la pokedex */
     /* #img1 oscultada para pc { */
