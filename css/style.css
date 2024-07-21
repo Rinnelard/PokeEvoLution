@@ -6,66 +6,78 @@
 }
 
 body {
-  /* Se aplica una tipografía y tamaño por defecto a todo el texto de la web */
+  /*fuente*/
   font-family: "Press Start 2P", sans-serif;
   font-size: 1.5vh;
-  /* Se le aplica el fondo a la página */
+  /*fondo a la página */
   background-image: url("./video/fondo.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Organizamos el contenido de la página con grid areas */
+  /* GRID AREAS*/
   display: grid;
   grid-template-areas:
     "header"
     "main"
     "footer";
   grid-template-rows: 1fr 75% 1fr;
-  /* Nos aseguramos de que el body ocupa el total de la web */
   width: 100%;
   height: 100vh;
-  /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
 }
+/* --------------------------------- HEADER --------------------------------- */
+header {
+  grid-area: header;
 
-/* -------aqui pongo todas las img que van a estar en display none ------------*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 14vh;
+}
+header > img {
+  height: 67%;
+  width: 80%;
+}
+/*----------------------------------FIN DEL HEADER---------------------*/
 
-/* pokdexNoche */
+/* ----------------------IMG EN DISPLAY NONE ---------------------------------------*/
+
+/* POKEDEX NOCHE */
 #pokedeInicioNoche {
-    /* por defecto la pokedex modo noche estará deshabilitada */
-    display: none;
-  }
-  
-  body.modoOscuro section#contenidoPokemon > img {
-    /* descativa la pokedex de modo dia */
-    display: none;
-  }
-  /* por defecto la pokedex modo noche estará deshabilitada */
-  
-  #pokdexNoche {
-    display: none;
-  }
+  display: none;
+}
+body.modoOscuro section#contenidoPokemon > img {
+  display: none;
+}
+#pokdexNoche {
+  display: none;
+}
+/*FIN POKEDEX NOCHE*/
+
+/*POKEDEX PC*/
 #pokedexPC {
-    display: none;
+  display: none;
 }
-#tapaPokedexPC{
-    display: none;
+#tapaPokedexPC {
+  display: none;
 }
-#tapaAbiertaPokedexPC{
-    display: none;
+#tapaAbiertaPokedexPC {
+  display: none;
 }
-#podekexCerrada{
-    display: none;
+#podekexCerrada {
+  display: none;
 }
-
-
-/* -------------- MODO OSCURO - FONDO
-Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
-*/
-
 #pokedexPcNoche {
   display: none;
 }
+#tiposPokemon {
+  display: none;
+}
+/*FIN POKEDEX PC */
 
+/*------------------- FIN DE IMG EN MODO DISPLAY NONE---------------------*/
+
+/* ------------------------ MODO NOCHE - POKEDEX -------------------------*/
 body.modoOscuro {
   background-image: url("./video/gifFondoOscuro.gif");
   color: rgb(0, 0, 0);
@@ -74,10 +86,6 @@ body.modoOscuro {
   background-repeat: no-repeat;
   height: 100vh;
 }
-
-/* ------------------------ MODO NOCHE - POKEDEX */
-
-
 body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
   /* activa la foto modo noche de la pokedex */
   display: block;
@@ -89,49 +97,19 @@ body.modoOscuro section#contenidoPokemon > img#img1 {
   /* descativa la pokedex de modo dia */
   display: none;
 }
-
-
-
-/* -----------Fin modo noche */
-
-/* --------------------------------- HEADER --------------------------------- */
-
-/* El encabezado donde va el título */
-header {
-  grid-area: header;
-  /* Hacemos flex para centrar el titulo en el header */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
-}
-
-/* le aplicamos un tamaño al titulo */
-header > img {
-  height: 67%;
-  width: 80%;
-}
+/* -----------FIN DE MODO NOCHE------------------- */
 
 /* --------------------------------- MAIN --------------------------------- */
-
-/* Contiene todo el contenido de la pokedex */
 main {
   position: relative;
   grid-area: main;
-  height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+  height: 76vh;
   display: grid;
   grid-template-areas: "secciónPokemon";
   min-width: 360px;
   max-width: 360px;
-
   margin: auto;
 }
-
-#tiposPokemon {
-  display: none;
-}
-
 section#seccionInput {
   position: absolute;
   width: 100%;
@@ -631,7 +609,7 @@ footer > section#nombres {
   #tapaPokedexMovil {
     display: none;
   }
-  #tapaPokedexPC{
+  #tapaPokedexPC {
     position: absolute;
     width: 45%;
     height: 90%;
@@ -639,7 +617,7 @@ footer > section#nombres {
     top: 10%;
     z-index: 3;
   }
-  #tapaAbiertaPokedexPC{
+  #tapaAbiertaPokedexPC {
     position: absolute;
     height: 100%;
     width: 95%;
@@ -647,7 +625,7 @@ footer > section#nombres {
     top: 10%;
     z-index: 3;
   }
-  #podekexCerrada{
+  #podekexCerrada {
     position: absolute;
     width: 95%;
     height: 100%;
