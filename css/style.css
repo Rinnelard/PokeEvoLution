@@ -155,6 +155,12 @@ section#seccionInput > img.girandoPokebola {
   display: block !important;
 }
 
+
+/* ------------------------------------BOTONES------------------------------------ */
+
+
+/* -----------------BOTONES BUSCAR Y ELIMINAR-------------- */
+
 /* El botón para buscar lo escrito en el input */
 section#seccionInput > button#btnBuscar {
   /* Le ponemos una ubicación fija en el botón verde de la interfaz */
@@ -205,6 +211,7 @@ section#seccionInput > img#imgCancelar {
   top: 58vh;
   left: 17rem;
 }
+/* ------------BOTONES DE LA CRUCETA --------------------- */
 
 /* Imagen de la cruceta de movimiento (Boton arriba, derecha, izquierda y derecha */
 section#seccionInput > img#imgCruceta {
@@ -269,7 +276,44 @@ section#seccionInput > button#btnIzquierda {
   cursor: pointer;
   z-index: 1;
 }
+/* -----------------BOTONES AUDIO Y MODO OSCURO ----------- */
 
+
+#botonAudio {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 60%;
+    top: 6%;
+    width: 12%;
+    height: 9%;
+  }
+  
+  #imgAudio {
+    width: 80%;
+    height: 100%;
+    /* En caso de no verse la imagen se vería de color blanco */
+    color: white;
+  }
+  
+  #btnModoOscuro {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 45%;
+    top: 6%;
+    width: 12%;
+    height: 9%;
+  }
+  
+  #btnModoOscuro > img {
+    width: 100%;
+    height: 100%;
+  }
+  /* -----------------------FIN DE BOTONES --------------- */
+
+
+  
 /* Cuando muestra sugerencias segun escribes en el input */
 section#seccionInput > ul#sugerenciasPokemon {
   /* Ponemos una ubicacion fija para que coincida con un recuadro de la interfaz */
@@ -303,41 +347,8 @@ section#seccionInput > ul#sugerenciasPokemon {
   background: #8ec641;
   border: solid #cbeb9e 0.7px;
 }
-/*---------------------------- Boton musica */
 
-#botonAudio {
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  left: 60%;
-  top: 6%;
-  width: 12%;
-  height: 9%;
-}
 
-#imgAudio {
-  width: 80%;
-  height: 100%;
-  /* En caso de no verse la imagen se vería de color blanco */
-  color: white;
-}
-/* -----------------finaliza boton musica */
-
-/* ----------------- Boton modo oscuro */
-#btnModoOscuro {
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  left: 45%;
-  top: 6%;
-  width: 12%;
-  height: 9%;
-}
-
-#btnModoOscuro > img {
-  width: 100%;
-  height: 100%;
-}
 
 /*
 ----------------------------------------------------------------------
