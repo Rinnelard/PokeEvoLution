@@ -501,6 +501,39 @@ section#contenidoPokemon > section#contenido > p#tipo {
     grid-area: tipo;
 }
 
+#btnInstrucciones {
+    position: absolute;
+    border: none;
+    background: none;
+    left: 13%;
+    top: 2%;
+    border-radius:30px ;
+    height: 60px;
+    width: 60px;
+    z-index: 2;
+}
+
+#imagenInstrucciones{
+    display: none;
+    position: absolute;
+    top: 16.5%;
+    left: 13%;
+    height: 50%;
+    width: 74%;
+    z-index: 2;
+
+}
+
+#imgInstrucciones{
+    display: none;
+    position: absolute;
+    left: 12.5%;
+    top: 1%;
+    width: 17%;
+    height: 12%;
+    z-index: 1;
+}
+
 /* --------------------------------- FOOTER --------------------------------- */
 
 /* Información de pie de página  */
@@ -546,6 +579,7 @@ footer > section#nombres {
     justify-content: center;
     align-items: center;
 }
+
 
 /* ----------------------------- Media query para ordenador ------------------------------- */
 @media (min-width: 1024px) and (max-width: 8000px) {
@@ -718,35 +752,4 @@ footer > section#nombres {
     }
 }
 
-#btnInstrucciones {
-    position: absolute;
-    border: none;
-    background: none;
-    left: 13%;
-    top: 2%;
-    border-radius:30px ;
-    height: 60px;
-    width: 60px;
-    z-index: 2;
-}
 
-#imagenInstrucciones{
-    display: none;
-    position: absolute;
-    top: 16.5%;
-    left: 13%;
-    height: 50%;
-    width: 74%;
-    z-index: 2;
-
-}
-
-#imgInstrucciones{
-    display: none;
-    position: absolute;
-    left: 12.5%;
-    top: 1%;
-    width: 17%;
-    height: 12%;
-    z-index: 1;
-}
