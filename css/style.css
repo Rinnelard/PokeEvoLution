@@ -27,6 +27,37 @@ body {
   /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
 }
 
+/* -------aqui pongo todas las img que van a estar en display none ------------*/
+
+/* pokdexNoche */
+#pokedeInicioNoche {
+    /* por defecto la pokedex modo noche estará deshabilitada */
+    display: none;
+  }
+  
+  body.modoOscuro section#contenidoPokemon > img {
+    /* descativa la pokedex de modo dia */
+    display: none;
+  }
+  /* por defecto la pokedex modo noche estará deshabilitada */
+  
+  #pokdexNoche {
+    display: none;
+  }
+#pokedexPC {
+    display: none;
+}
+#tapaPokedexPC{
+    display: none;
+}
+#tapaAbiertaPokedexPC{
+    display: none;
+}
+#podekexCerrada{
+    display: none;
+}
+
+
 /* -------------- MODO OSCURO - FONDO
 Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
 */
@@ -45,21 +76,7 @@ body.modoOscuro {
 }
 
 /* ------------------------ MODO NOCHE - POKEDEX */
-/* pokdexNoche */
-#pokedeInicioNoche {
-  /* por defecto la pokedex modo noche estará deshabilitada */
-  display: none;
-}
 
-body.modoOscuro section#contenidoPokemon > img {
-  /* descativa la pokedex de modo dia */
-  display: none;
-}
-/* por defecto la pokedex modo noche estará deshabilitada */
-
-#pokdexNoche {
-  display: none;
-}
 
 body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
   /* activa la foto modo noche de la pokedex */
@@ -73,9 +90,7 @@ body.modoOscuro section#contenidoPokemon > img#img1 {
   display: none;
 }
 
-#pokedexPC {
-  display: none;
-}
+
 
 /* -----------Fin modo noche */
 
@@ -615,6 +630,30 @@ footer > section#nombres {
   }
   #tapaPokedexMovil {
     display: none;
+  }
+  #tapaPokedexPC{
+    position: absolute;
+    width: 45%;
+    height: 90%;
+    left: 3%;
+    top: 10%;
+    z-index: 3;
+  }
+  #tapaAbiertaPokedexPC{
+    position: absolute;
+    height: 100%;
+    width: 95%;
+    left: 54%;
+    top: 10%;
+    z-index: 3;
+  }
+  #podekexCerrada{
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    left: 2.5%;
+    top: 0%;
+    z-index: 3;
   }
 
   /* La imagen de la pokedex */
