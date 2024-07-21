@@ -612,6 +612,11 @@ asignarFuncionTipoBtn("acero","steel");
     document
         .getElementById("btnEliminar")
         .addEventListener("click", eliminarDatos);
+    document
+        .getElementById("btnEliminar")
+        .addEventListener("click", limpiarSugerencias);
+
+    limpiarSugerencias;
 
     //----------------------------boton Instrucciones--------------------
 
