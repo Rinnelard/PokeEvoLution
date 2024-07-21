@@ -31,6 +31,10 @@ body {
 Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
 */
 
+#pokedexPcNoche {
+    display: none;
+}
+
 body.modoOscuro {
     background-image: url("./video/gifFondoOscuro.gif");
     color: rgb(0, 0, 0);
@@ -41,14 +45,19 @@ body.modoOscuro {
 }
 
 /* ------------------------ MODO NOCHE - POKEDEX */
-
-#pokdexNoche {
+/* pokdexNoche */
+#pokedeInicioNoche {
     /* por defecto la pokedex modo noche estará deshabilitada */
     display: none;
 }
 
 body.modoOscuro section#contenidoPokemon > img {
     /* descativa la pokedex de modo dia */
+    display: none;
+}
+/* por defecto la pokedex modo noche estará deshabilitada */
+
+#pokdexNoche {
     display: none;
 }
 
@@ -58,6 +67,14 @@ body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
     width: 90%;
     height: 95%;
     max-width: 400px;
+}
+body.modoOscuro section#contenidoPokemon > img#img1 {
+    /* descativa la pokedex de modo dia */
+    display: none;
+}
+
+#pokedexPC {
+    display: none;
 }
 
 /* -----------Fin modo noche */
@@ -94,6 +111,10 @@ main {
     max-width: 360px;
 
     margin: auto;
+}
+
+#tiposPokemon {
+    display: none;
 }
 
 section#seccionInput {
@@ -155,7 +176,6 @@ section#seccionInput > button#btnBuscar {
     cursor: pointer;
     z-index: 1;
 }
-
 
 /* Imagen del botón buscar */
 section#seccionInput > img#imgAceptar {
@@ -278,14 +298,13 @@ section#seccionInput > ul#sugerenciasPokemon {
 /* estilo de la barra de scroll de las sugerencias */
 #sugerenciasPokemon::-webkit-scrollbar {
     width: 5px; /* Ancho de la barra de desplazamiento */
-    
 }
 #sugerenciasPokemon::-webkit-scrollbar-track {
     background: #636363;
     border-radius: 0px; /* Bordes redondeados del riel */
 }
 #sugerenciasPokemon::-webkit-scrollbar-thumb {
-    background:  #8EC641; 
+    background: #8ec641;
     border: solid #cbeb9e 0.7px;
 }
 /*---------------------------- Boton musica */
@@ -404,7 +423,7 @@ section#contenidoPokemon > section#contenido > h2 {
     width: 100%;
     height: 100%;
     text-align: center;
-    font-size: 2vh ;
+    font-size: 2vh;
 }
 
 section#contenidoPokemon > section#contenido > h3 {
@@ -507,13 +526,13 @@ section#contenidoPokemon > section#contenido > p#tipo {
     background: none;
     left: 13%;
     top: 2%;
-    border-radius:30px ;
+    border-radius: 30px;
     height: 60px;
     width: 60px;
     z-index: 2;
 }
 
-#imagenInstrucciones{
+#imagenInstrucciones {
     display: none;
     position: absolute;
     top: 16.5%;
@@ -521,10 +540,9 @@ section#contenidoPokemon > section#contenido > p#tipo {
     height: 50%;
     width: 74%;
     z-index: 2;
-
 }
 
-#imgInstrucciones{
+#imgInstrucciones {
     display: none;
     position: absolute;
     left: 12.5%;
@@ -579,7 +597,6 @@ footer > section#nombres {
     justify-content: center;
     align-items: center;
 }
-
 
 /* ----------------------------- Media query para ordenador ------------------------------- */
 @media (min-width: 1024px) and (max-width: 8000px) {
@@ -750,6 +767,214 @@ footer > section#nombres {
         list-style-type: none;
         z-index: 1;
     }
+        /* -------------------------BOTONES */
+
+        section#seccionInput > input#inputPokemon {
+            left: 58%;
+            top: 61.5%;
+            width: 40%;
+            z-index: 1;
+        }
+        section#seccionInput > button#btnBuscar {
+            top: 72.7%;
+            left: 87.8%;
+            width: 3.5%;
+            z-index: 1;
+        }
+    
+        #botonAudio {
+            height: 8%;
+            width: 8%;
+            z-index: 1;
+            left: 21.5%;
+            top: 10%;
+        }
+    
+        #btnModoOscuro {
+            height: 8%;
+            width: 8%;
+            z-index: 1;
+            left: 29%;
+            top: 10.1%;
+        }
+    
+        #btnModoOscuro > img {
+            width: 100%;
+            height: 100%;
+        }
+        section#seccionInput > button#btnDerecha {
+            top: 71.4%;
+            left: 62%;
+            width: 3%;
+        }
+        section#seccionInput > button#btnIzquierda {
+            width: 3%;
+            top: 71.4%;
+            left: 57%;
+        }
+    
+        section#seccionInput > button#btnAbajo {
+            width: 3%;
+            top: 76%;
+            left: 59.4%;
+        }
+    
+        section#seccionInput > button#btnArriba {
+            width: 3%;
+            top: 67%;
+            left: 59.4%;
+        }
+    
+        section#seccionInput > button#btnEliminar {
+            height: 5%;
+            width: 4%;
+            top: 66.8%;
+            left: 85.5%;
+        }
+    
+        /*--------------------------------------------------------------------------------------------------------------------- BOTONES TIPOS DE POKEMON ------------------------------------------------------------------------------------- */
+    
+        #tiposPokemon {
+            z-index: 5;
+            display: flex;
+            position: absolute;
+            left: 55%;
+            top: 20%;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1rem;
+            width: 300px;
+        }
+    
+        #tiposPokemon > ul {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+    
+        .btnHeader {
+            border: solid green 2px;
+            background-color: #cfcfcf;
+            box-shadow: 0 0 0.5rem #0303032c;
+            padding: 0.5rem;
+            border-radius: 100vmax;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    
+        /* colores de los botones */
+        .acero {
+            background-color: #60a2b9;
+            color: #030303;
+        }
+        .agua {
+            background-color: #2481f0;
+            color: #ffffff;
+        }
+        .bicho {
+            background-color: #92a212;
+            color: #030303;
+        }
+        .dragon {
+            background-color: #4f60e2;
+            color: #ffffff;
+        }
+        .electrico {
+            background-color: #fac100;
+            color: #030303;
+        }
+        .fantasma {
+            background-color: #713f71;
+            color: #ffffff;
+        }
+        .fuego {
+            background-color: #e72324;
+            color: #030303;
+        }
+        .hada {
+            background-color: #ef71f0;
+            color: #030303;
+        }
+        .hielo {
+            background-color: #3dd9ff;
+            color: #030303;
+        }
+        .lucha {
+            background-color: #ff8100;
+            color: #ffffff;
+        }
+        .normal {
+            background-color: #a0a2a0;
+            color: #030303;
+        }
+        .planta {
+            background-color: #3da224;
+            color: #030303;
+        }
+        .psiquico {
+            background-color: #ef3f7a;
+            color: #030303;
+        }
+        .roca {
+            background-color: #b0ab82;
+            color: #030303;
+        }
+        .siniestro {
+            background-color: #4f3f3d;
+            color: #ffffff;
+        }
+        .tierra {
+            background-color: #92501b;
+            color: #030303;
+        }
+        .veneno {
+            background-color: #923fcc;
+            color: #ffffff;
+        }
+        .volador {
+            background-color: #82baf0;
+            color: #030303;
+        }
+    
+        /* ---- FINALIZA BOTONES TIPOS DE POKEMON--------------------------------------------- */
+    
+        /* ---------------------MODO OSCURO MEDIA QUERY */
+        body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
+            display: none;
+        }
+    
+        body.modoOscuro section#contenidoPokemon > img#img2 {
+            /* descativa la pokedex de modo dia en pantalla PC */
+            display: none;
+        }
+    
+        body.modoOscuro section#contenidoPokemon > img#pokedeInicioNoche {
+            /* descativa la pokedex de modo dia */
+            display: flex;
+            width: 90%;
+            height: 95%;
+            /* max-width: 1300px; */
+            /* max-height: 626px; */
+            z-index: -1;
+        }
+    
+        body.modoOscuro section#contenidoPokemon > img#pokedexPc {
+            display: none;
+        }
+    
+        body.modoOscuro section#contenidoPokemon > img#pokedexPCNoche {
+            /* descativa la pokedex de modo dia */
+            display: flex;
+            width: 90%;
+            height: 95%;
+            max-width: 1300px;
+            max-height: 626px;
+            z-index: -1;
+        }
+    }
+    
 }
-
-
