@@ -374,9 +374,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 const imagenDeFrente = data.sprites.front_default;
                 const imagenDeDetras =
                     data.sprites.back_default || imagenDeFrente; // si no tiene imagen de atras muestra directamente la de frente otra vez
-                const pokedexPcInicio = document.getElementById("img2");
-                pokedexPcInicio.src = "./css/img/podekexPc.png";
-
+                const pokedexPc = document.getElementById("img2");
+                pokedexPc.src = "./css/img/podekexPC.png";
+                const pokedexPcNoche =
+                    document.getElementById("pokedeInicioNoche");
+                pokedexPcNoche.src = "./css/img/podekexPcNoche.png";
                 // Limpiar resultados anteriores y limpiar intervalos previos
                 pokemonInfo.innerHTML = "";
                 intervalos.forEach(function (intervaloId) {
@@ -505,6 +507,110 @@ document.addEventListener("DOMContentLoaded", () => {
                 mostrarError(error.message);
             });
     }
+
+    /* ---------BOTONES TIPO POKEMON-------------------- */
+
+    function buscarTipo(tipoPokemon) {
+        fetch(`https://pokeapi.co/api/v2/type/${tipoPokemon}`)
+            .then((respuesta) => {
+                if (!respuesta.ok) {
+                    throw new Error("Tipo de Pokémon no encontrado");
+                }
+                return respuesta.json();
+            })
+            .then((data) => {
+                const listaDePokemon = data.pokemon.map((p) => p.pokemon); // Obtenemos la lista de Pokémon de ese tipo
+                mostrarSugerencias(listaDePokemon);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    function mostrarSugerencias(listaDePokemon) {
+        limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
+        listaDePokemon.forEach((pokemon) => {
+            const listaPokemon = document.createElement("li");
+            if (data.types.type.name === tipoPokemon) {
+                listaPokemon.textContent = pokemon.name;
+                listaPokemon.addEventListener("click", () => {
+                    // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
+                    inputPokemon.value = pokemon.name;
+                    limpiarSugerencias();
+                    buscarPokemon(pokemon.name);
+                });
+                listaDeSugerencias.appendChild(listaPokemon);
+            }
+        });
+    }
+
+    function asignarFuncionTipoBtn(idBtnTipo, nombreTipo) {
+        const btnTipoPokemon = document.getElementById(idBtnTipo);
+        btnTipoPokemon.addEventListener("click", () => {
+            buscarTipo(nombreTipo);
+        });
+    }
+
+    asignarFuncionTipoBtn("acero", "steel");
+    // Variables necesarias
+    /* function buscarTipo(tipoPokemon) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/name`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+            if (data.types.type.name===tipoPokemon) {
+                function mostrarSugerencias(listaDePokemon) {
+                    limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
+                listaDePokemon.forEach((pokemon) => {
+                const listaPokemon = document.createElement("li");
+                    listaPokemon.textContent = pokemon.name;
+                    listaPokemon.addEventListener("click", () => {
+                            // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
+                            inputPokemon.value = pokemon.name;
+                            limpiarSugerencias();
+                            buscarPokemon(pokemon.name);
+                        });
+                        listaDeSugerencias.appendChild(listaPokemon);
+                    });
+                }
+                mostrarSugerencias(data.types.type.name);
+                console.log(data.types.type.name);
+            }
+        })
+    
+}
+
+function asignarFuncionTipoBtn(idBtnTipo,nombreTipo) {
+    const btnTipoPokemon = document.getElementById(idBtnTipo)
+    btnTipoPokemon.addEventListener('click', ()=>{
+        buscarTipo(nombreTipo);
+    })
+}
+
+asignarFuncionTipoBtn("acero","steel");
+ */
+
+    /* 
+    const botonesHeader = document.querySelectorAll(".btnHeader")
+    botonesHeader.forEach(boton => boton.addEventListener('click', (event)=>{
+        const botonId = event.currentTarget.id
+        fetch(`https://pokeapi.co/api/v2/pokemon/`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+        })
+    })) */
+    /* -----------FINALIZA BOTONES TIPO POKEMON */
 
     //funcion para eliminar datos con el btnEliminar
     function eliminarDatos() {
