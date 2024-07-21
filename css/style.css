@@ -265,8 +265,27 @@ section#seccionInput > ul#sugerenciasPokemon {
     padding: 3%;
     /* Quitamos los puntos de los "ul" que se generan en JS */
     list-style-type: none;
+    font-size: 0.58rem;
 }
 
+/* Estilo para el elemento seleccionado en la lista */
+.seleccionado {
+    border: 2px solid #f00; /* Borde rojo, puedes cambiar el color según prefieras */
+    padding: 0.2rem;
+}
+
+/* estilo de la barra de scroll de las sugerencias */
+#sugerenciasPokemon::-webkit-scrollbar {
+    width: 5px; /* Ancho de la barra de desplazamiento */
+}
+#sugerenciasPokemon::-webkit-scrollbar-track {
+    background: #636363;
+    border-radius: 0px; /* Bordes redondeados del riel */
+}
+#sugerenciasPokemon::-webkit-scrollbar-thumb {
+    background: #8ec641;
+    border: solid #cbeb9e 0.7px;
+}
 /*---------------------------- Boton musica */
 
 #botonAudio {
@@ -382,6 +401,12 @@ section#contenidoPokemon > section#contenido > h2 {
     color: black;
     width: 100%;
     height: 100%;
+    text-align: center;
+    font-size: 2vh;
+}
+
+section#contenidoPokemon > section#contenido > h3 {
+    font-size: 1.5vh;
     text-align: center;
 }
 
@@ -689,4 +714,36 @@ footer > section#nombres {
         list-style-type: none;
         z-index: 1;
     }
+}
+
+#btnInstrucciones {
+    position: absolute;
+    border: none;
+    background: none;
+    left: 13%;
+    top: 2%;
+    border-radius: 30px;
+    height: 60px;
+    width: 60px;
+    z-index: 2;
+}
+
+#imagenInstrucciones {
+    display: none;
+    position: absolute;
+    top: 16.5%;
+    left: 13%;
+    height: 50%;
+    width: 74%;
+    z-index: 2;
+}
+
+#imgInstrucciones {
+    display: none;
+    position: absolute;
+    left: 12.5%;
+    top: 1%;
+    width: 17%;
+    height: 12%;
+    z-index: 1;
 }

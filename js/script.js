@@ -1,4 +1,5 @@
 "use strict";
+
 // Retirar tapa con estilo
 
 document.getElementById("tapaPokedexMovil").addEventListener("click", () => {
@@ -72,6 +73,7 @@ asignarAudioBtn("btnArriba");
 asignarAudioBtn("btnAbajo");
 asignarAudioBtn("botonAudio");
 asignarAudioBtn("btnModoOscuro");
+asignarAudioBtn("btnInstrucciones");
 
 // -------------------------- ANIMACIÓN BOTONES --------------------------
 
@@ -137,6 +139,8 @@ animacionBtn("botonAudio", "imgAudio");
 /* Botón modo noche */
 animacionBtn("btnModoOscuro", "imgBoton");
 
+/* boton instrucciones */
+animacionBtn("btnInstrucciones", "imgInstrucciones");
 //Animación cruceta
 
 function animacionCruceta(direccion, urlImagen) {
@@ -235,12 +239,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //evento para buscar con la tecla enter
+    inputPokemon.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            const nombrePokemon = inputPokemon.value.trim().toLowerCase();
+            if (nombrePokemon) {
+                buscarPokemon(nombrePokemon);
+            }
+        }
+    });
+
     // Evento click del botón para bajar en la lista
     btnAbajo.addEventListener("click", () => {
         if (pokemonIndex < sugerencias.length - 1) {
             pokemonIndex++;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -250,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pokemonIndex--;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -321,11 +338,26 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             listaDeSugerencias.appendChild(listaPokemon);
         });
+        // Resaltar el primer elemento si hay sugerencias
+        if (sugerencias.length > 0) {
+            resaltarElemento(pokemonIndex);
+        }
     }
 
     // Función para limpiar la lista de sugerencias
     function limpiarSugerencias() {
         listaDeSugerencias.innerHTML = "";
+    }
+
+    // Función para resaltar el elemento en la lista
+    function resaltarElemento(index) {
+        const elementos = listaDeSugerencias.getElementsByTagName("li");
+        for (let i = 0; i < elementos.length; i++) {
+            elementos[i].classList.remove("seleccionado"); // Quitar borde de todos los elementos
+        }
+        if (elementos[index]) {
+            elementos[index].classList.add("seleccionado"); // Agregar borde al elemento seleccionado
+        }
     }
 
     // Función para buscar y mostrar la información del Pokémon seleccionado
@@ -340,7 +372,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((data) => {
                 const pokemonInfo = document.getElementById("contenido");
                 const imagenDeFrente = data.sprites.front_default;
-                const imagenDeDetras = data.sprites.back_default;
+                const imagenDeDetras =
+                    data.sprites.back_default || imagenDeFrente; // si no tiene imagen de atras muestra directamente la de frente otra vez
                 const pokedexPcInicio = document.getElementById("img2");
                 pokedexPcInicio.src = "./css/img/podekexPc.png";
 
@@ -472,6 +505,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 mostrarError(error.message);
             });
     }
+
+    //funcion para eliminar datos con el btnEliminar
+    function eliminarDatos() {
+        const pokemonInfo = document.getElementById("contenido");
+        const input = document.getElementById("inputPokemon");
+        pokemonInfo.innerHTML = "";
+        if (input) {
+            input.value = "";
+        }
+        intervalos.forEach(function (intervaloId) {
+            clearInterval(intervaloId);
+        });
+        intervalos = [];
+    }
+    // Asociar la función eliminarDatos al botón btnEliminar
+    document
+        .getElementById("btnEliminar")
+        .addEventListener("click", eliminarDatos);
+
+    //----------------------------boton Instrucciones--------------------
+
+    const btnInstrucciones = document.getElementById("btnInstrucciones");
+    const imagenInstrucciones = document.getElementById("imagenInstrucciones");
+    const imgBtnInstruccion = document.getElementById("imgInstrucciones");
+
+    btnInstrucciones.addEventListener("click", () => {
+        if (
+            imagenInstrucciones.style.display === "none" ||
+            imagenInstrucciones.style.display === ""
+        ) {
+            imgBtnInstruccion.style.display = "block";
+            imagenInstrucciones.style.display = "block";
+        } else {
+            imagenInstrucciones.style.display = "none";
+            imgBtnInstruccion.style.display = "none";
+        }
+    });
 
     // Función para mostrar mensaje de error
     function mostrarError(message) {
