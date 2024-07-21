@@ -28,12 +28,50 @@
         <header>
             <img src="./css/img/Titulo.png" alt="Find u Pokemon!" />
         </header>
-
         <!-- El cuerpo principal de la web donde estan todos los botones y la pokedex -->
-
         <main>
             <!-- Sección donde van todos los botones y input -->
             <section id="seccionInput">
+                <!-- inputs para TIPOS de pokemons -->
+
+                <h2>Buscar Pokemon por tipo:</h2>
+
+                <button class="btnHeader" id="acero">Acero</button>
+
+                <button class="btnHeader" id="agua">Agua</button>
+
+                <button class="btnHeader" id="bicho">Bicho</button>
+
+                <button class="btnHeader" id="dragon">Dragon</button>
+
+                <button class="btnHeader" id="electrico">Electrico</button>
+
+                <button class="btnHeader" id="fantasma">Fantasma</button>
+
+                <button class="btnHeader" id="fuego">Fuego</button>
+
+                <button class="btnHeader" id="hada">Hada</button>
+
+                <button class="btnHeader" id="hielo">Hielo</button>
+
+                <button class="btnHeader" id="lucha">Lucha</button>
+
+                <button class="btnHeader" id="normal">Normal</button>
+
+                <button class="btnHeader" id="planta">Planta</button>
+
+                <button class="btnHeader" id="psiquico">Psiquico</button>
+
+                <button class="btnHeader" id="roca">Roca</button>
+
+                <button class="btnHeader" id="siniestro">Siniestro</button>
+
+                <button class="btnHeader" id="tierra">Tierra</button>
+
+                <button class="btnHeader" id="veneno">Veneno</button>
+
+                <button class="btnHeader" id="volador">Volador</button>
+
                 <!-- Input de texto para buscar un pokemon en la API -->
                 <input
                     type="text"
@@ -42,13 +80,30 @@
                     autocomplete="off"
                 />
 
+                <!-- boton para que muestre las instrucciones de uso  -->
+                <button
+                    id="btnInstrucciones"
+                    type="submit"
+                    alt="boton de instrucciones"
+                ></button>
+                <img
+                    id="imagenInstrucciones"
+                    src="./css/img/pantallaTutorial.png"
+                    alt="pantalla tutorial"
+                />
+
                 <!-- Botón para buscar el texto introducido en el input -->
                 <button
                     id="btnBuscar"
                     type="submit"
                     aria-label="Buscar Pokémon"
                 ></button>
-                <img id="imgAceptar" class="imgAceptarAnimacion" src="./css/img/btnAceptar.png" alt="">
+                <img
+                    id="imgAceptar"
+                    class="imgAceptarAnimacion"
+                    src="./css/img/btnAceptar.png"
+                    alt="boton buscar para traer datos de la api"
+                />
 
                 <!--Botón para eliminar todas las sugerencias-->
                 <button
@@ -56,13 +111,17 @@
                     type="submit"
                     aria-label="Eliminar sugerencias"
                 ></button>
-                <img id="imgCancelar" src="./css/img/btnCancelar.png" alt="">
-                
+                <img
+                    id="imgCancelar"
+                    src="./css/img/btnCancelar.png"
+                    alt="boton para eliminar la busqueda de la api"
+                />
+
                 <!-- Aquí se añaden los "li" de las coincidencias de la API con JS a modo de sugerencia -->
                 <ul id="sugerenciasPokemon"></ul>
 
                 <!-- Botones del panel de movimiento de la pokedex -->
-                <img id="imgCruceta" src="./css/img/crucetaNormal.png" alt="">
+                <img id="imgCruceta" src="./css/img/crucetaNormal.png" alt="" />
                 <button
                     id="btnDerecha"
                     type="button"
@@ -73,6 +132,11 @@
                     type="button"
                     aria-label="Navegar a la izquierda en la pokeDex"
                 ></button>
+                <img
+                    id="imgInstrucciones"
+                    src="./css/img/btnAyuda2.png"
+                    alt="este es el boton de instrucciones"
+                />
                 <button id="btnArriba" type="button" aria-label=""></button>
                 <button id="btnAbajo" type="button" aria-label=""></button>
 
@@ -83,7 +147,11 @@
                     <img id="imgAudio" src="./css/img/iconoMusica.png" alt="" />
                 </button>
 
-                <img id="pokeballGiratoria" src="./css/video/pokeballGiratoria.gif" alt="">
+                <img
+                    id="pokeballGiratoria"
+                    src="./css/video/pokeballGiratoria.gif"
+                    alt=""
+                />
 
                 <!-- boton MODO OSCURO -->
 
@@ -92,30 +160,74 @@
                 </button>
             </section>
 
-            <!-- Aquí va la pokedex -->
+            <!----------------------------  INICIO DE LA POKEDEX-------------------->
 
+            <!---------------DONDE MUESTRA LOS DATOS TRAIDOS DE LA API------------>
             <section id="contenidoPokemon">
-                <!-- Aquí se introduce de forma dinámica la info pokemon de la API con JS -->
                 <section id="contenido"></section>
+                <!--------------------TODAS LAS IMAGENES DE LA POKEDEX ------------->
 
-                <!-- Interfaz de pokedex modo claro -->
+                <!-- IMG DE POKEDEX MOVIL -->
                 <img
+                    id="img1"
                     src="./css/img/Pokedex.png"
                     alt="Interfaz de una Pokedex"
-                    id="img1"
+                />
+                <!-- Interfaz de pokedex modo oscuro -->
+                <img
+                    id="pokdexNoche"
+                    src="./css/img/pokedexMovilNoche.png"
+                    alt="pokedex movil noche"
+                />
+                <!-- Tapa de la pokedex del movil-->
+                <img
+                    id="tapaPokedexMovil"
+                    src="./css/img/tapaPokedexMovil.png"
+                    alt="esta es la tapa pokedex del movil"
                 />
 
-                <!-- Interfaz de pokedex modo oscuro -->
-                <img id="pokdexNoche" src="./css/img/pokedexMovilNoche.png"></img>
-
-                <!-- Pokedex tamaño grande -->
+                <!-----------IMG POKEDEX GRANDE -------------->
                 <img
                     src="./css/img/podekexPcInicio.png"
                     alt="pokeDex pantalla grande"
                     id="img2"
                 />
-
-                <img id="tapaPokedexMovil" src="./css/img/tapaPokedexMovil.png" alt="">
+                <!-- Pokedex grande modo noche con pantalla de inicio-->
+                <img
+                    src="./css/img/podekexPcInicioNoche.png"
+                    alt="pokedex grande modo noche"
+                    id="pokedeInicioNoche"
+                />
+                <!-- pokedex grande modo noche pantalla activa -->
+                <img
+                    src="./css/img/podekexPcNoche.png"
+                    alt="modelo de la pokedex grande de noche "
+                    id="pokedexPcNoche"
+                />
+                <!-- pokedex modo grande  -->
+                <img
+                    src="./css/img/podekexPC.png"
+                    alt="modelo pokedex grande"
+                    id="pokedexPC"
+                />
+                <!-- tapa de la pokedex grande -->
+                <img
+                    src="./css/img/tapaPokedexPC.png"
+                    alt="tapa de la pokedex grande"
+                    id="tapaPokedexPC"
+                />
+                <!-- tapa abierta de la pokedex grande -->
+                <img
+                    src="./css/img/tapaAbiertaPokedexPC.png"
+                    alt="tapa abierta pokedex"
+                    id="tapaAbiertaPokedexPC"
+                />
+                <!-- pokedex grande sin tapa -->
+                <img
+                    src="./css/img/podekexCerrada.png"
+                    alt="esta es la pokedex sin tapa"
+                    id="podekexCerrada"
+                />
             </section>
         </main>
 
@@ -135,6 +247,13 @@
 
         <!-- Link al archivo JS -->
 
-        <script src="./js/script.js"></script>
+        <script src="./js/scriptPokedex.js"></script>
+        <script src="./js/musica.js"></script>
+        <script src="./js/audioBtn.js"></script>
+        <script src="./js/animacionCruceta.js"></script>
+        <script src="./js/animacionesBtn.js"></script>
+        <script src="./js/animacionesTapa.js"></script>
+        <script src="./js/btnInstrucciones.js"></script>
+        <script src="./js/btnModoNoche.js"></script>
     </body>
 </html>

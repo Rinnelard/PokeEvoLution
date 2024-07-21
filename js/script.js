@@ -73,6 +73,7 @@ asignarAudioBtn("btnArriba");
 asignarAudioBtn("btnAbajo");
 asignarAudioBtn("botonAudio");
 asignarAudioBtn("btnModoOscuro");
+asignarAudioBtn("btnInstrucciones");
 
 // -------------------------- ANIMACIÓN BOTONES --------------------------
 
@@ -138,6 +139,8 @@ animacionBtn("botonAudio", "imgAudio");
 /* Botón modo noche */
 animacionBtn("btnModoOscuro", "imgBoton");
 
+/* boton instrucciones */
+animacionBtn("btnInstrucciones", "imgInstrucciones");
 //Animación cruceta
 
 function animacionCruceta(direccion, urlImagen) {
@@ -218,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Evento input para actualizar las sugerencias según lo que el usuario escribe
     inputPokemon.addEventListener("input", () => {
         const terminoDeBusqueda = inputPokemon.value.trim().toLowerCase();
-        if (terminoDeBusqueda.length >= 2) {
+        if (terminoDeBusqueda.length >= 0) {
             // Filtrar solo si hay al menos 2 caracteres
             mostrarSugerenciasPokemon(terminoDeBusqueda);
         } else {
@@ -230,9 +233,20 @@ document.addEventListener("DOMContentLoaded", () => {
     btnBuscar.addEventListener("click", () => {
         const nombrePokemon = inputPokemon.value.trim().toLowerCase();
         if (nombrePokemon) {
-            buscarYGuardarIndice(nombrePokemon);
+            buscarPokemon(nombrePokemon);
         } else {
             alert("Por favor, introduce el nombre o número de un Pokémon.");
+        }
+    });
+
+    //evento para buscar con la tecla enter
+    inputPokemon.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            const nombrePokemon = inputPokemon.value.trim().toLowerCase();
+            if (nombrePokemon) {
+                buscarPokemon(nombrePokemon);
+            }
         }
     });
 
@@ -242,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pokemonIndex++;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -251,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pokemonIndex--;
             const nombrePokemon = sugerencias[pokemonIndex].name;
             buscarPokemon(nombrePokemon);
+            resaltarElemento(pokemonIndex); // Resaltar el elemento seleccionado
         }
     });
 
@@ -270,6 +286,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para obtener y mostrar las sugerencias de Pokémon según el término de búsqueda
     function mostrarSugerenciasPokemon(terminoDeBusqueda) {
+        const terminoEsNumero =
+            !isNaN(terminoDeBusqueda) &&
+            Number.isInteger(parseFloat(terminoDeBusqueda));
+
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
             .then((respuesta) => {
                 if (!respuesta.ok) {
@@ -278,10 +298,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 return respuesta.json();
             })
             .then((data) => {
-                // Filtrar la lista de Pokémon según el término de búsqueda
-                sugerencias = data.results.filter((pokemon) => {
-                    return pokemon.name.includes(terminoDeBusqueda);
-                });
+                if (terminoEsNumero) {
+                    sugerencias = data.results.filter(
+                        (pokemon, index) =>
+                            index + 1 === parseInt(terminoDeBusqueda)
+                    );
+                } else {
+                    // Filtrar la lista de Pokémon según el término de búsqueda
+                    sugerencias = data.results.filter((pokemon) => {
+                        return pokemon.name.includes(terminoDeBusqueda);
+                    });
+                }
+                // ordenar por orden alfabetico
+                sugerencias.sort((a, b) => a.name.localeCompare(b.name));
 
                 // Mostrar las sugerencias en la lista
                 mostrarSugerencias(sugerencias);
@@ -309,11 +338,26 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             listaDeSugerencias.appendChild(listaPokemon);
         });
+        // Resaltar el primer elemento si hay sugerencias
+        if (sugerencias.length > 0) {
+            resaltarElemento(pokemonIndex);
+        }
     }
 
     // Función para limpiar la lista de sugerencias
     function limpiarSugerencias() {
         listaDeSugerencias.innerHTML = "";
+    }
+
+    // Función para resaltar el elemento en la lista
+    function resaltarElemento(index) {
+        const elementos = listaDeSugerencias.getElementsByTagName("li");
+        for (let i = 0; i < elementos.length; i++) {
+            elementos[i].classList.remove("seleccionado"); // Quitar borde de todos los elementos
+        }
+        if (elementos[index]) {
+            elementos[index].classList.add("seleccionado"); // Agregar borde al elemento seleccionado
+        }
     }
 
     // Función para buscar y mostrar la información del Pokémon seleccionado
@@ -328,10 +372,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((data) => {
                 const pokemonInfo = document.getElementById("contenido");
                 const imagenDeFrente = data.sprites.front_default;
-                const imagenDeDetras = data.sprites.back_default;
+                const imagenDeDetras =
+                    data.sprites.back_default || imagenDeFrente; // si no tiene imagen de atras muestra directamente la de frente otra vez
                 const pokedexPcInicio = document.getElementById("img2");
                 pokedexPcInicio.src = "./css/img/podekexPc.png";
-
+                const pokedexPcNoche =
+                    document.getElementById("pokedeInicioNoche");
+                pokedexPcNoche.src = "./css/img/podekexPcNoche.png";
                 // Limpiar resultados anteriores y limpiar intervalos previos
                 pokemonInfo.innerHTML = "";
                 intervalos.forEach(function (intervaloId) {
@@ -343,6 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Preparar la información para mostrar gradualmente
                 const html = `
                 <h2>${primeraLetraMayuscula(data.name)}</h2>
+                <h3>#${data.id}</h3>
                 <div class="girarCarta">
                     <div class="giroDeFrente">
                         <img id="imgDefrente" src="${imagenDeFrente}" alt="imgDefrente"${
@@ -460,23 +508,134 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Función para buscar y guardar el índice del Pokémon
-    function buscarYGuardarIndice(nombrePokemon) {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+    /* ---------BOTONES TIPO POKEMON-------------------- */
+
+    function buscarTipo(tipoPokemon) {
+        fetch(`https://pokeapi.co/api/v2/type/${tipoPokemon}`)
             .then((respuesta) => {
                 if (!respuesta.ok) {
-                    throw new Error("Pokémon no encontrado");
+                    throw new Error("Tipo de Pokémon no encontrado");
                 }
                 return respuesta.json();
             })
             .then((data) => {
-                currentPokemonIndex = data.id;
-                mostrarPokemon(data);
+                const listaDePokemon = data.pokemon.map((p) => p.pokemon); // Obtenemos la lista de Pokémon de ese tipo
+                mostrarSugerencias(listaDePokemon);
             })
             .catch((error) => {
-                mostrarError(error.message);
+                console.error(error);
             });
     }
+
+    function asignarFuncionTipoBtn(idBtnTipo, nombreTipo) {
+        const btnTipoPokemon = document.getElementById(idBtnTipo);
+        btnTipoPokemon.addEventListener("click", () => {
+            buscarTipo(nombreTipo);
+        });
+    }
+
+    asignarFuncionTipoBtn("acero", "steel");
+    // Variables necesarias
+    /* function buscarTipo(tipoPokemon) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/name`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+            if (data.types.type.name===tipoPokemon) {
+                function mostrarSugerencias(listaDePokemon) {
+                    limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
+                listaDePokemon.forEach((pokemon) => {
+                const listaPokemon = document.createElement("li");
+                    listaPokemon.textContent = pokemon.name;
+                    listaPokemon.addEventListener("click", () => {
+                            // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
+                            inputPokemon.value = pokemon.name;
+                            limpiarSugerencias();
+                            buscarPokemon(pokemon.name);
+                        });
+                        listaDeSugerencias.appendChild(listaPokemon);
+                    });
+                }
+                mostrarSugerencias(data.types.type.name);
+                console.log(data.types.type.name);
+            }
+        })
+    
+}
+
+function asignarFuncionTipoBtn(idBtnTipo,nombreTipo) {
+    const btnTipoPokemon = document.getElementById(idBtnTipo)
+    btnTipoPokemon.addEventListener('click', ()=>{
+        buscarTipo(nombreTipo);
+    })
+}
+
+asignarFuncionTipoBtn("acero","steel");
+ */
+
+    /* 
+    const botonesHeader = document.querySelectorAll(".btnHeader")
+    botonesHeader.forEach(boton => boton.addEventListener('click', (event)=>{
+        const botonId = event.currentTarget.id
+        fetch(`https://pokeapi.co/api/v2/pokemon/`)
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("Pokémon no encontrado");
+            }
+            return respuesta.json();
+        })
+        .then((data) =>{
+            console.log(data);
+        })
+    })) */
+    /* -----------FINALIZA BOTONES TIPO POKEMON */
+
+    //funcion para eliminar datos con el btnEliminar
+    function eliminarDatos() {
+        const pokemonInfo = document.getElementById("contenido");
+        const input = document.getElementById("inputPokemon");
+        pokemonInfo.innerHTML = "";
+        if (input) {
+            input.value = "";
+        }
+        intervalos.forEach(function (intervaloId) {
+            clearInterval(intervaloId);
+        });
+        intervalos = [];
+    }
+    // Asociar la función eliminarDatos al botón btnEliminar
+    document
+        .getElementById("btnEliminar")
+        .addEventListener("click", eliminarDatos);
+    document
+        .getElementById("btnEliminar")
+        .addEventListener("click", limpiarSugerencias);
+
+    limpiarSugerencias;
+
+    //----------------------------boton Instrucciones--------------------
+
+    const btnInstrucciones = document.getElementById("btnInstrucciones");
+    const imagenInstrucciones = document.getElementById("imagenInstrucciones");
+    const imgBtnInstruccion = document.getElementById("imgInstrucciones");
+
+    btnInstrucciones.addEventListener("click", () => {
+        if (
+            imagenInstrucciones.style.display === "none" ||
+            imagenInstrucciones.style.display === ""
+        ) {
+            imgBtnInstruccion.style.display = "block";
+            imagenInstrucciones.style.display = "block";
+        } else {
+            imagenInstrucciones.style.display = "none";
+            imgBtnInstruccion.style.display = "none";
+        }
+    });
 
     // Función para mostrar mensaje de error
     function mostrarError(message) {
