@@ -634,11 +634,12 @@ footer > section#nombres {
   section#contenidoPokemon > section#contenido {
     position: absolute;
     top: 33%;
-    left: 6%;
+    left: 8%;
     height: 55%;
-    width: 36.5%;
+    width: 35%;
     padding: 2.5% 2%;
     text-align: center;
+    border: solid;
     /* Las áreas para organizar el contenido */
     display: grid;
     grid-template-areas:
