@@ -834,44 +834,42 @@ footer > section#nombres {
   }
 
   #btnInstrucciones {
-    height: 13%;
+    height: 18%;
     width: 25%;
     top: 3.5%;
     left: 11%;
   }
- 
-  #imgInstrucciones{
-    height: 13.5%;
-    width: 26%;
-    top: 3.4%;
-    left: 11%;
+
+  #imgInstrucciones {
+    height: 16%;
+    width: 31%;
+    top: 2.7%;
+    left: 8.8%;
   }
-  #imagenInstrucciones{
+  #imagenInstrucciones {
     top: 28%;
-    left:16%;
+    left: 16%;
     border-radius: 8%;
     height: 59%;
     width: 102%;
   }
   .giroDeFrente > img#sueloFrontal,
-.giroDeAtras > img#sueloFrontal {
+  .giroDeAtras > img#sueloFrontal {
     height: 10%;
     width: 65%;
     border-radius: 50%;
-}
-.girarCarta {
+  }
+  .girarCarta {
     top: 4vh;
     left: 1rem;
     width: 13rem;
     height: 45vh;
-}
-.giroDeFrente,
-.giroDeAtras {
+  }
+  .giroDeFrente,
+  .giroDeAtras {
     height: 70%;
     width: 100%;
-}
-
-
+  }
 
   /*--------------------------------------------------------------------------------------------------------------------- BOTONES TIPOS DE POKEMON ------------------------------------------------------------------------------------- */
 
