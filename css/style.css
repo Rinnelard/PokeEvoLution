@@ -720,12 +720,14 @@ footer > section#nombres {
 
 #btnInstrucciones {
     position: absolute;
-    border: solid 5px white;
+    border: none;
+    background: none;
     left: 13%;
     top: 2%;
     border-radius:30px ;
     height: 60px;
     width: 60px;
+    z-index: 2;
 }
 
 #imagenInstrucciones{
@@ -737,4 +739,14 @@ footer > section#nombres {
     width: 74%;
     z-index: 2;
 
+}
+
+#imgInstrucciones{
+    display: none;
+    position: absolute;
+    left: 12.5%;
+    top: 1%;
+    width: 17%;
+    height: 12%;
+    z-index: 1;
 }
