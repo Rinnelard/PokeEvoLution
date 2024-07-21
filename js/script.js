@@ -374,8 +374,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const imagenDeFrente = data.sprites.front_default;
                 const imagenDeDetras =
                     data.sprites.back_default || imagenDeFrente; // si no tiene imagen de atras muestra directamente la de frente otra vez
-                const pokedexPc = document.getElementById("img2");
-                pokedexPc.src = "./css/img/podekexPC.png";
+                const pokedexPcInicio = document.getElementById("img2");
+                pokedexPcInicio.src = "./css/img/podekexPc.png";
                 const pokedexPcNoche =
                     document.getElementById("pokedeInicioNoche");
                 pokedexPcNoche.src = "./css/img/podekexPcNoche.png";
@@ -525,23 +525,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((error) => {
                 console.error(error);
             });
-    }
-
-    function mostrarSugerencias(listaDePokemon) {
-        limpiarSugerencias(); // Limpiar la lista antes de añadir nuevas sugerencias
-        listaDePokemon.forEach((pokemon) => {
-            const listaPokemon = document.createElement("li");
-            if (data.types.type.name === tipoPokemon) {
-                listaPokemon.textContent = pokemon.name;
-                listaPokemon.addEventListener("click", () => {
-                    // Cuando se hace clic en una sugerencia, llenar el input con el nombre del Pokémon y buscarlo
-                    inputPokemon.value = pokemon.name;
-                    limpiarSugerencias();
-                    buscarPokemon(pokemon.name);
-                });
-                listaDeSugerencias.appendChild(listaPokemon);
-            }
-        });
     }
 
     function asignarFuncionTipoBtn(idBtnTipo, nombreTipo) {
