@@ -1,7 +1,5 @@
 "use strict";
 
-// Diccionario de traducción de tipos de Pokémon de inglés a español
-
 document.addEventListener("DOMContentLoaded", () => {
     const inputPokemon = document.getElementById("inputPokemon");
     const listaDeSugerencias = document.getElementById("sugerenciasPokemon");

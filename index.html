@@ -28,9 +28,7 @@
         <header>
             <img src="./css/img/Titulo.png" alt="Find u Pokemon!" />
         </header>
-
         <!-- El cuerpo principal de la web donde estan todos los botones y la pokedex -->
-
         <main>
             <!-- Sección donde van todos los botones y input -->
             <section id="seccionInput">
@@ -162,67 +160,74 @@
                 </button>
             </section>
 
-            <!-- Aquí va la pokedex -->
+            <!----------------------------  INICIO DE LA POKEDEX-------------------->
 
+            <!---------------DONDE MUESTRA LOS DATOS TRAIDOS DE LA API------------>
             <section id="contenidoPokemon">
-                <!-- Aquí se introduce de forma dinámica la info pokemon de la API con JS -->
                 <section id="contenido"></section>
+                <!--------------------TODAS LAS IMAGENES DE LA POKEDEX ------------->
 
-                <!-- Interfaz de pokedex modo claro -->
+                <!-- IMG DE POKEDEX MOVIL -->
                 <img
+                    id="img1"
                     src="./css/img/Pokedex.png"
                     alt="Interfaz de una Pokedex"
-                    id="img1"
+                />
+                <!-- Interfaz de pokedex modo oscuro -->
+                <img
+                    id="pokdexNoche"
+                    src="./css/img/pokedexMovilNoche.png"
+                    alt="pokedex movil noche"
+                />
+                <!-- Tapa de la pokedex del movil-->
+                <img
+                    id="tapaPokedexMovil"
+                    src="./css/img/tapaPokedexMovil.png"
+                    alt="esta es la tapa pokedex del movil"
                 />
 
-                <!-- Interfaz de pokedex modo oscuro -->
-                <img id="pokdexNoche" src="./css/img/pokedexMovilNoche.png" />
-
-                <!-- Pokedex tamaño grande -->
+                <!-----------IMG POKEDEX GRANDE -------------->
                 <img
                     src="./css/img/podekexPcInicio.png"
                     alt="pokeDex pantalla grande"
                     id="img2"
                 />
-
-                <!-- Tapa de pokedex movil -->
-                <img
-                    id="tapaPokedexMovil"
-                    src="./css/img/tapaPokedexMovil.png"
-                    alt=""
-                />
-
-                <!-- Tapa pokedex pc -->
-                <img
-                    id="podekexCerrada"
-                    src="./css/img/podekexCerrada.png"
-                    alt="La pokedex está cerrada"
-                />
-                <img
-                    id="tapaPokedexPC"
-                    src="./css/img/tapaPokedexPC.png"
-                    alt="La tapadera de la pokedex"
-                />
-                <img
-                    id="tapaAbiertaPokedexPC"
-                    src="./css/img/tapaAbiertaPokedexPC.png"
-                    alt="La pokedex está abierta"
-                />
-
-                <!-- Pokedex noche -->
+                <!-- Pokedex grande modo noche con pantalla de inicio-->
                 <img
                     src="./css/img/podekexPcInicioNoche.png"
-                    alt=""
+                    alt="pokedex grande modo noche"
                     id="pokedeInicioNoche"
                 />
-
+                <!-- pokedex grande modo noche pantalla activa -->
                 <img
                     src="./css/img/podekexPcNoche.png"
-                    alt=""
+                    alt="modelo de la pokedex grande de noche "
                     id="pokedexPcNoche"
                 />
-
-                <img src="./css/img/podekexPC.png" alt="" id="pokedexPC" />
+                <!-- pokedex modo grande  -->
+                <img
+                    src="./css/img/podekexPC.png"
+                    alt="modelo pokedex grande"
+                    id="pokedexPC"
+                />
+                <!-- tapa de la pokedex grande -->
+                <img
+                    src="./css/img/tapaPokedexPC.png"
+                    alt="tapa de la pokedex grande"
+                    id="tapaPokedexPC"
+                />
+                <!-- tapa abierta de la pokedex grande -->
+                <img
+                    src="./css/img/tapaAbiertaPokedexPC.png"
+                    alt="tapa abierta pokedex"
+                    id="tapaAbiertaPokedexPC"
+                />
+                <!-- pokedex grande sin tapa -->
+                <img
+                    src="./css/img/podekexCerrada.png"
+                    alt="esta es la pokedex sin tapa"
+                    id="podekexCerrada"
+                />
             </section>
         </main>
 

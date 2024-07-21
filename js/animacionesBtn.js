@@ -60,9 +60,7 @@ animacionBtn("botonAudio", "imgAudio");
 /* Botón modo noche */
 animacionBtn("btnModoOscuro", "imgBoton");
 
-/* boton instrucciones */
-animacionBtn("btnInstrucciones", "imgInstrucciones");
-
+/* Botones de tipo */
 animacionBtn("acero", "acero");
 animacionBtn("agua", "agua");
 animacionBtn("bicho", "bicho");

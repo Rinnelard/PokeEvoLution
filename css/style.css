@@ -6,35 +6,78 @@
 }
 
 body {
-    /* Se aplica una tipografía y tamaño por defecto a todo el texto de la web */
+    /*fuente*/
     font-family: "Press Start 2P", sans-serif;
     font-size: 1.5vh;
-    /* Se le aplica el fondo a la página */
+    /*fondo a la página */
     background-image: url("./video/fondo.gif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Organizamos el contenido de la página con grid areas */
+    /* GRID AREAS*/
     display: grid;
     grid-template-areas:
         "header"
         "main"
         "footer";
     grid-template-rows: 1fr 75% 1fr;
-    /* Nos aseguramos de que el body ocupa el total de la web */
     width: 100%;
     height: 100vh;
-    /*nos aseguramos de que no se ponga la pantalla mas pequeña y se descoloque todo*/
 }
+/* --------------------------------- HEADER --------------------------------- */
+header {
+    grid-area: header;
 
-/* -------------- MODO OSCURO - FONDO
-Para aplicar el modo noche declaramos una clase al body que "no existe" y con el boton le damos funciones en js para que le cambie la clase al body y se active.
-*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 14vh;
+}
+header > img {
+    height: 67%;
+    width: 80%;
+}
+/*----------------------------------FIN DEL HEADER---------------------*/
 
+/* ----------------------IMG EN DISPLAY NONE ---------------------------------------*/
+
+/* POKEDEX NOCHE */
+#pokedeInicioNoche {
+    display: none;
+}
+body.modoOscuro section#contenidoPokemon > img {
+    display: none;
+}
+#pokdexNoche {
+    display: none;
+}
+/*FIN POKEDEX NOCHE*/
+
+/*POKEDEX PC*/
+#pokedexPC {
+    display: none;
+}
+#tapaPokedexPC {
+    display: none;
+}
+#tapaAbiertaPokedexPC {
+    display: none;
+}
+#podekexCerrada {
+    display: none;
+}
 #pokedexPcNoche {
     display: none;
 }
+#tiposPokemon {
+    display: none;
+}
+/*FIN POKEDEX PC */
 
+/*------------------- FIN DE IMG EN MODO DISPLAY NONE---------------------*/
+
+/* ------------------------ MODO NOCHE - POKEDEX -------------------------*/
 body.modoOscuro {
     background-image: url("./video/gifFondoOscuro.gif");
     color: rgb(0, 0, 0);
@@ -43,24 +86,6 @@ body.modoOscuro {
     background-repeat: no-repeat;
     height: 100vh;
 }
-
-/* ------------------------ MODO NOCHE - POKEDEX */
-/* pokdexNoche */
-#pokedeInicioNoche {
-    /* por defecto la pokedex modo noche estará deshabilitada */
-    display: none;
-}
-
-body.modoOscuro section#contenidoPokemon > img {
-    /* descativa la pokedex de modo dia */
-    display: none;
-}
-/* por defecto la pokedex modo noche estará deshabilitada */
-
-#pokdexNoche {
-    display: none;
-}
-
 body.modoOscuro section#contenidoPokemon > img#pokdexNoche {
     /* activa la foto modo noche de la pokedex */
     display: block;
@@ -72,51 +97,19 @@ body.modoOscuro section#contenidoPokemon > img#img1 {
     /* descativa la pokedex de modo dia */
     display: none;
 }
-
-#pokedexPC {
-    display: none;
-}
-
-/* -----------Fin modo noche */
-
-/* --------------------------------- HEADER --------------------------------- */
-
-/* El encabezado donde va el título */
-header {
-    grid-area: header;
-    /* Hacemos flex para centrar el titulo en el header */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 14vh; /* Esta altura es el 14% del "view height" para sumarlo al contenido pokemon y al footer y hacer el 100% */
-}
-
-/* le aplicamos un tamaño al titulo */
-header > img {
-    height: 67%;
-    width: 80%;
-}
+/* -----------FIN DE MODO NOCHE------------------- */
 
 /* --------------------------------- MAIN --------------------------------- */
-
-/* Contiene todo el contenido de la pokedex */
 main {
     position: relative;
     grid-area: main;
-    height: 76vh; /* Esta altura es el 75% del "view height" de la web, para centrarlo con el header y el footer */
+    height: 76vh;
     display: grid;
     grid-template-areas: "secciónPokemon";
     min-width: 360px;
     max-width: 360px;
-
     margin: auto;
 }
-
-#tiposPokemon {
-    display: none;
-}
-
 section#seccionInput {
     position: absolute;
     width: 100%;
@@ -139,11 +132,6 @@ section#seccionInput > input#inputPokemon {
     outline: none;
     font-family: "Press Start 2P";
     font-size: 0.58rem;
-    font-weight: bold;
-}
-
-/* Para mostrar en negrita el texto del input */
-section#seccionInput > input#inputPokemon::placeholder {
     font-weight: bold;
 }
 
@@ -405,20 +393,6 @@ section#contenidoPokemon > img.abrirTapa {
     transition: 1s transform !important;
 }
 
-/* ------------------------------ Tapa pc ------------------------------ */
-
-section#contenidoPokemon > img#podekexCerrada {
-    display: none;
-}
-
-section#contenidoPokemon > img#tapaPokedexPC {
-    display: none;
-}
-
-section#contenidoPokemon > img#tapaAbiertaPokedexPC {
-    display: none;
-}
-
 /* El contenido que se muestra de la API pokemon */
 section#contenidoPokemon > section#contenido {
     position: absolute;
@@ -556,7 +530,7 @@ section#contenidoPokemon > section#contenido > p#tipo {
     background: none;
     left: 13%;
     top: 2%;
-    border-radius: 30px;
+    border-radius: 60px;
     height: 60px;
     width: 60px;
     z-index: 2;
@@ -646,6 +620,30 @@ footer > section#nombres {
     #tapaPokedexMovil {
         display: none;
     }
+    #tapaPokedexPC {
+        position: absolute;
+        width: 45%;
+        height: 90%;
+        left: 3%;
+        top: 10%;
+        z-index: 3;
+    }
+    #tapaAbiertaPokedexPC {
+        position: absolute;
+        height: 100%;
+        width: 95%;
+        left: 54%;
+        top: 10%;
+        z-index: 3;
+    }
+    #podekexCerrada {
+        position: absolute;
+        width: 95%;
+        height: 100%;
+        left: 2.5%;
+        top: 0%;
+        z-index: 3;
+    }
 
     /* La imagen de la pokedex */
     /* #img1 ocultada para pc { */
@@ -664,9 +662,9 @@ footer > section#nombres {
     section#contenidoPokemon > section#contenido {
         position: absolute;
         top: 33%;
-        left: 6%;
+        left: 8%;
         height: 55%;
-        width: 36.5%;
+        width: 35%;
         padding: 2.5% 2%;
         text-align: center;
         /* Las áreas para organizar el contenido */
@@ -758,10 +756,10 @@ footer > section#nombres {
     }
 
     section#seccionInput > ul#sugerenciasPokemon {
-        top: 77%;
-        left: 188%;
-        height: 14%;
-        width: 56%;
+        top: 78%;
+        left: 185%;
+        height: 15%;
+        width: 55%;
         overflow-y: auto;
         padding: 3%;
         list-style-type: none;
@@ -771,13 +769,13 @@ footer > section#nombres {
 
     section#seccionInput > input#inputPokemon {
         left: 160%;
-        top: 68.5%;
+        top: 72%;
         z-index: 1;
     }
 
     section#seccionInput > img#pokeballGiratoria {
         width: 20.9%;
-        height: 10%;
+        height: 11%;
         top: 10.8%;
         left: 107.1%;
     }
@@ -803,25 +801,25 @@ footer > section#nombres {
         height: 100%;
     }
     section#seccionInput > button#btnBuscar {
-        top: 82.7%;
-        left: 256%;
-        width: 11%;
+        top: 85%;
+        left: 248%;
+        width: 13%;
     }
     section#seccionInput > img#imgAceptar {
-        top: 82.7%;
-        left: 255%;
+        top: 85%;
+        left: 248%;
         width: 13%;
     }
 
     section#seccionInput > button#btnEliminar {
-        height: 5%;
-        width: 8%;
-        top: 76.8%;
-        left: 250.5%;
+        height: 6%;
+        width: 12%;
+        top: 78%;
+        left: 245%;
     }
     section#seccionInput > img#imgCancelar {
-        top: 76.5%;
-        left: 249%;
+        top: 78%;
+        left: 245%;
         width: 12%;
         height: 6%;
     }
@@ -859,24 +857,24 @@ footer > section#nombres {
     }
 
     #btnInstrucciones {
-        height: 18%;
-        width: 25%;
-        top: 3.5%;
-        left: 11%;
+        height: 15%;
+        width: 29%;
+        top: 3%;
+        left: 15%;
     }
 
     #imgInstrucciones {
-        height: 16%;
+        height: 17%;
         width: 31%;
-        top: 2.7%;
-        left: 8.8%;
+        top: 2%;
+        left: 14%;
     }
     #imagenInstrucciones {
         top: 28%;
-        left: 16%;
-        border-radius: 8%;
-        height: 59%;
-        width: 102%;
+        left: 22%;
+        border-radius: 7%;
+        height: 60%;
+        width: 97%;
     }
     .giroDeFrente > img#sueloFrontal,
     .giroDeAtras > img#sueloFrontal {
@@ -1088,8 +1086,8 @@ footer > section#nombres {
     body.modoOscuro section#contenidoPokemon > img#pokedeInicioNoche {
         /* descativa la pokedex de modo dia */
         display: flex;
-        width: 90%;
-        height: 95%;
+        width: 95%;
+        height: 100%;
         /* max-width: 1300px; */
         /* max-height: 626px; */
         z-index: -1;
@@ -1101,11 +1099,8 @@ footer > section#nombres {
 
     body.modoOscuro section#contenidoPokemon > img#pokedexPCNoche {
         /* descativa la pokedex de modo dia */
-        display: flex;
-        width: 90%;
-        height: 95%;
-        max-width: 1300px;
-        max-height: 626px;
-        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 }
