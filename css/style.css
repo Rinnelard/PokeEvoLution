@@ -288,10 +288,12 @@ section#seccionInput > button#btnIzquierda {
   top: 6%;
   width: 12%;
   height: 9%;
+  cursor: pointer;
 }
 #btnModoOscuro > img {
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 /* --------------------BOTONES INSTRUCCION---------------*/
 #btnInstrucciones {
@@ -304,6 +306,7 @@ section#seccionInput > button#btnIzquierda {
   height: 60px;
   width: 60px;
   z-index: 2;
+  cursor: pointer;
 }
 #imagenInstrucciones {
   display: none;
@@ -313,6 +316,7 @@ section#seccionInput > button#btnIzquierda {
   height: 50%;
   width: 74%;
   z-index: 2;
+  cursor: pointer;
 }
 #imgInstrucciones {
   display: none;
@@ -322,6 +326,7 @@ section#seccionInput > button#btnIzquierda {
   width: 17%;
   height: 12%;
   z-index: 1;
+  cursor: pointer;
 }
 /* -----------------------FIN DE BOTONES --------------- */
 /* ---------LISTA DE LAS SUGERENCIAS--------------------- */
