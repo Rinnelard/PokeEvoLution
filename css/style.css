@@ -639,7 +639,6 @@ footer > section#nombres {
     width: 35%;
     padding: 2.5% 2%;
     text-align: center;
-    border: solid;
     /* Las áreas para organizar el contenido */
     display: grid;
     grid-template-areas:
