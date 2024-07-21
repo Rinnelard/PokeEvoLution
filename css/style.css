@@ -728,10 +728,10 @@ footer > section#nombres {
   }
 
   section#seccionInput > ul#sugerenciasPokemon {
-    top: 77%;
-    left: 188%;
-    height: 14%;
-    width: 56%;
+    top: 78%;
+    left: 185%;
+    height: 15%;
+    width: 55%;
     overflow-y: auto;
     padding: 3%;
     list-style-type: none;
@@ -741,13 +741,13 @@ footer > section#nombres {
 
   section#seccionInput > input#inputPokemon {
     left: 160%;
-    top: 68.5%;
+    top: 72%;
     z-index: 1;
   }
 
   section#seccionInput > img#pokeballGiratoria {
     width: 20.9%;
-    height: 10%;
+    height: 11%;
     top: 10.8%;
     left: 107.1%;
   }
@@ -773,25 +773,25 @@ footer > section#nombres {
     height: 100%;
   }
   section#seccionInput > button#btnBuscar {
-    top: 82.7%;
-    left: 256%;
-    width: 11%;
+    top: 85%;
+    left: 248%;
+    width: 13%;
   }
   section#seccionInput > img#imgAceptar {
-    top: 82.7%;
-    left: 255%;
+    top: 85%;
+    left: 248%;
     width: 13%;
   }
 
   section#seccionInput > button#btnEliminar {
-    height: 5%;
-    width: 8%;
-    top: 76.8%;
-    left: 250.5%;
+    height: 6%;
+    width: 12%;
+    top: 78%;
+    left: 245%;
   }
   section#seccionInput > img#imgCancelar {
-    top: 76.5%;
-    left: 249%;
+    top: 78%;
+    left: 245%;
     width: 12%;
     height: 6%;
   }
@@ -829,24 +829,24 @@ footer > section#nombres {
   }
 
   #btnInstrucciones {
-    height: 18%;
-    width: 25%;
-    top: 3.5%;
-    left: 11%;
+    height: 15%;
+    width: 29%;
+    top: 3%;
+    left: 15%;
   }
 
   #imgInstrucciones {
-    height: 16%;
+    height: 17%;
     width: 31%;
-    top: 2.7%;
-    left: 8.8%;
+    top: 2%;
+    left: 14%;
   }
   #imagenInstrucciones {
     top: 28%;
-    left: 16%;
-    border-radius: 8%;
-    height: 59%;
-    width: 102%;
+    left: 22%;
+    border-radius: 7%;
+    height: 60%;
+    width: 97%;
   }
   .giroDeFrente > img#sueloFrontal,
   .giroDeAtras > img#sueloFrontal {
@@ -873,8 +873,8 @@ footer > section#nombres {
     display: flex;
     width: 25rem;
     height: 35vh;
-    left: 35rem;
-    top: 8rem;
+    left: 155%;
+    top: 22%;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3rem;
@@ -894,6 +894,7 @@ footer > section#nombres {
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+    width: 100%;
     z-index: 1;
   }
 
@@ -995,8 +996,8 @@ footer > section#nombres {
   body.modoOscuro section#contenidoPokemon > img#pokedeInicioNoche {
     /* descativa la pokedex de modo dia */
     display: flex;
-    width: 90%;
-    height: 95%;
+    width: 95%;
+    height: 100%;
     /* max-width: 1300px; */
     /* max-height: 626px; */
     z-index: -1;
@@ -1008,11 +1009,8 @@ footer > section#nombres {
 
   body.modoOscuro section#contenidoPokemon > img#pokedexPCNoche {
     /* descativa la pokedex de modo dia */
-    display: flex;
-    width: 90%;
-    height: 95%;
-    max-width: 1300px;
-    max-height: 626px;
-    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
