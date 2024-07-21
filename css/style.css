@@ -272,6 +272,7 @@ section#seccionInput > button#btnIzquierda {
   top: 6%;
   width: 12%;
   height: 9%;
+  cursor: pointer;
 }
 #imgAudio {
   width: 80%;
@@ -288,6 +289,7 @@ section#seccionInput > button#btnIzquierda {
   top: 6%;
   width: 12%;
   height: 9%;
+  cursor: pointer;
 }
 #btnModoOscuro > img {
   width: 100%;
@@ -304,6 +306,7 @@ section#seccionInput > button#btnIzquierda {
   height: 60px;
   width: 60px;
   z-index: 2;
+  cursor: pointer;
 }
 #imagenInstrucciones {
   display: none;
