@@ -751,17 +751,17 @@ footer > section#nombres {
   }
 
   section#seccionInput > img#pokeballGiratoria {
-    width: 20%;
-    height: 12%;
-    top: 10%;
-    left: 104%;
+    width: 20.9%;
+    height: 10%;
+    top: 11%;
+    left: 105.1%;
   }
 
   #botonAudio {
     height: 10%;
     width: 15%;
-    top: 10%;
-    left: 82%;
+    top: 11%;
+    left: 85%;
     z-index: 1;
   }
 
