@@ -5,11 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const listaDeSugerencias = document.getElementById("sugerenciasPokemon");
     const btnBuscar = document.getElementById("btnBuscar");
 
-    const btnRetroceder = document.getElementById("btnIzquierda");
-    const btnAvanzar = document.getElementById("btnDerecha");
-    const btnArriba = document.getElementById("btnArriba");
-    const btnAbajo = document.getElementById("btnAbajo");
-
     let sugerencias = []; // Array para almacenar las sugerencias de Pokémon
     let pokemonIndex = -1; // Índice inicial para el Pokémon actual mostrado
     let currentPokemonIndex = 1; // Índice inicial del Pokémon
